@@ -12,7 +12,7 @@ const MainPage = () => {
             <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={{clickable: true}}
-                slidesPerView={2}
+                slidesPerView={1}
                 pagination={{ clickable: true }}
             >
                 <SwiperSlide>
