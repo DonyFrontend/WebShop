@@ -9,9 +9,11 @@ function App() {
     <>
     <Header/>
 
+    <div className='mt-20'>
     <Routes>
       <Route path='/' element={<MainPage/>}/>
     </Routes>
+    </div>
     </>
   )
 }

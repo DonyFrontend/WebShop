@@ -7,7 +7,7 @@ import Bag from './images/Bag.png';
 
 const Header = () => {
 
-    return <header className="flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
+    return <header className="fixed top-0 w-[100%] z-10 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
         <div>
             <img src={logo} width={120} alt="Error!"/>
         </div>
