@@ -1,6 +1,6 @@
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import {Navigation, Pagination} from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import slide_1 from './SwiperImages/slide_1.png';
@@ -11,7 +11,7 @@ const MainPage = () => {
         <div>
             <Swiper
                 modules={[Navigation, Pagination]}
-                navigation={{clickable: true}}
+                navigation={{ clickable: true }}
                 slidesPerView={1}
                 pagination={{ clickable: true }}
             >
@@ -22,6 +22,11 @@ const MainPage = () => {
                     <img src={slide_2} alt="Error!" />
                 </SwiperSlide>
             </Swiper>
+        </div>
+
+        <div className='w-[100%] flex justify-center'>
+            <div className='w-[90%] flex-col'>
+            </div>
         </div>
     </div>
 }
