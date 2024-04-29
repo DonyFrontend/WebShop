@@ -26,7 +26,7 @@ const Header = () => {
         <div className='flex gap-x-1'>
             <CustomImagesLink to={'/select'} image={Select}/>
             <CustomImagesLink to={'/profile'} image={Profile}/>
-            <CustomImagesLink to={'/bag'} image={Bag}/>
+            <CustomImagesLink to={'/basket'} image={Bag}/>
         </div>
     </header>
 }
