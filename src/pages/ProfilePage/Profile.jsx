@@ -5,6 +5,7 @@ import SignOut from './Images/signOut.svg';
 import CustomLink from './CustomLink';
 import { Routes, Route } from 'react-router-dom';
 import UserPage from './ProfilePages/User';
+import WishList from './ProfilePages/WishList';
 
 const Profile = () => {
 
@@ -29,7 +30,8 @@ const Profile = () => {
 
             <div className='w-[75%]'>
                 <Routes>
-                    <Route path='user' element={<UserPage/>}></Route>
+                    <Route path='/*' element={<UserPage/>}></Route>
+                    <Route path='wishlist' element={<WishList/>}></Route>
                 </Routes>
             </div>
         </div>
