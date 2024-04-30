@@ -15,7 +15,7 @@ const Header = () => {
             <CustomLink to={'/'} text={'Home'}/>
             <CustomLink to={'/shop'} text={'Shop'}/>
             <CustomLink to={'/men'} text={'Men'}/>
-            <CustomLink to={'/women'} text={'Momen'}/>
+            <CustomLink to={'/women'} text={'Women'}/>
             <CustomLink to={'/shoe'} text={'Shoe'}/>
         </div>
         <div>
