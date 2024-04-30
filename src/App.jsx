@@ -13,26 +13,16 @@ function App() {
   return (
     <>
     <Header/>
-<<<<<<< HEAD
-
-    <div className='mt-[55px]'>
-      <Routes>
-        <Route path='/' element={<MainPage/>}/>
-        <Route path='/basket' element={<Basket/>}/>
-        <Route path='/profile/*' element={<Profile/>}/>
-      </Routes>
-    </div>
-=======
   
     <Routes>
       <Route path='/' element={<MainPage/>}/>
       {/* <Route path='/profile' element={<SingIn/>}/> */}
       {/* <Route path='/SingUp' element={<SingUp/>}/> */}
       <Route path='/basket' element={<Basket/>}/>
+      <Route path='/profile/*' element={<Profile/>}/>
     </Routes>
 
     <Footer/>
->>>>>>> e53ace2b948cfe70d8fe9bf70548ccd3da99b7a5
     </>
   )
 }
