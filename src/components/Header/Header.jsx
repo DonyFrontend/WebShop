@@ -23,7 +23,7 @@ const Header = () => {
                 <input type="text" placeholder='Search...' className='p-1 border-gray-500 border-[1px] rounded-lg active:border-violet-600'/>
             </label>
         </div>
-        <div className='flex gap-x-1'>
+        <div className='flex gap-x-3'>
             <CustomImagesLink to={'/select'} image={Select}/>
             <CustomImagesLink to={'/profile'} image={Profile}/>
             <CustomImagesLink to={'/basket'} image={Bag}/>
