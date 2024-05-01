@@ -1,12 +1,12 @@
 import Orders from './Images/orders.svg';
 import Heart from './Images/heart.svg';
 import User from './Images/user.svg';
-import SignOut from './Images/signOut.svg';
 import CustomLink from './CustomLink';
 import { Routes, Route } from 'react-router-dom';
 import UserPage from './ProfilePages/User';
 import WishList from './ProfilePages/WishList';
 import Order from './ProfilePages/Order';
+import ProfileModal from './ProfileModal';
 
 const Profile = () => {
 
@@ -25,7 +25,7 @@ const Profile = () => {
                     <CustomLink image={Orders} text={'My orders'} to={'/profile/orders'}/>   
                     <CustomLink image={Heart} text={'Wishlist'} to={'/profile/wishlist'}/>   
                     <CustomLink image={User} text={'My info'} to={'/profile/user'}/>   
-                    <CustomLink image={SignOut} text={'Sign out'} to={'/profile/signout'}/>   
+                    <ProfileModal/>
                 </div>
             </div>
 
