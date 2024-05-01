@@ -6,6 +6,7 @@ import CustomLink from './CustomLink';
 import { Routes, Route } from 'react-router-dom';
 import UserPage from './ProfilePages/User';
 import WishList from './ProfilePages/WishList';
+import Order from './ProfilePages/Order';
 
 const Profile = () => {
 
@@ -32,6 +33,7 @@ const Profile = () => {
                 <Routes>
                     <Route path='/*' element={<UserPage/>}></Route>
                     <Route path='wishlist' element={<WishList/>}></Route>
+                    <Route path='orders' element={<Order/>}></Route>
                 </Routes>
             </div>
         </div>
