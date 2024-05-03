@@ -13,8 +13,9 @@ const Header = () => {
         </div>
         <div className='flex gap-x-5'>
             <CustomLink to={'/'} text={'Home'}/>
+            <CustomLink to={'/shop'} text={'Shop'}/>
             <CustomLink to={'/men'} text={'Men'}/>
-            <CustomLink to={'/women'} text={'Momen'}/>
+            <CustomLink to={'/women'} text={'Women'}/>
             <CustomLink to={'/shoe'} text={'Shoe'}/>
         </div>
         <div>
@@ -22,10 +23,10 @@ const Header = () => {
                 <input type="text" placeholder='Search...' className='p-1 border-gray-500 border-[1px] rounded-lg active:border-violet-600'/>
             </label>
         </div>
-        <div className='flex gap-x-3'>
-            <CustomImagesLink to={'/select'} image={Select}/>
-            <CustomImagesLink to={'/profile'} image={Profile}/>
-            <CustomImagesLink to={'/bag'} image={Bag}/>
+        <div className='flex gap-x-1'>
+            <CustomImagesLink to={'/profile/wishlist'} image={Select}/>
+            <CustomImagesLink to={'/profile/*'} image={Profile}/>
+            <CustomImagesLink to={'/basket'} image={Bag}/>
         </div>
     </header>
 }
