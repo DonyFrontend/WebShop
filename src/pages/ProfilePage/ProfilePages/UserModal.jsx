@@ -38,22 +38,22 @@ const UserModal = () => {
                     <ModalBody pb={6}>
                         <FormControl>
                             <FormLabel>Name</FormLabel>
-                            <Input ref={initialRef} placeholder='First name' />
+                            <Input ref={initialRef} placeholder='Name' />
                         </FormControl>
 
                         <FormControl mt={4}>
                             <FormLabel>Email</FormLabel>
-                            <Input placeholder='Last name' />
+                            <Input placeholder='Email' />
                         </FormControl>
 
                         <FormControl mt={4}>
                             <FormLabel>Country</FormLabel>
-                            <Input placeholder='Last name' />
+                            <Input placeholder='Country' />
                         </FormControl>
 
                         <FormControl mt={4}>
                             <FormLabel>City</FormLabel>
-                            <Input placeholder='Last name' />
+                            <Input placeholder='City' />
                         </FormControl>
                     </ModalBody>
 

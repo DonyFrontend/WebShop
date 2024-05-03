@@ -1,7 +1,6 @@
 import Orders from './Images/orders.svg';
 import Heart from './Images/heart.svg';
 import User from './Images/user.svg';
-import SignOut from './Images/signOut.svg';
 import CustomLink from './CustomLink';
 import { Routes, Route } from 'react-router-dom';
 import UserPage from './ProfilePages/User';
@@ -9,6 +8,9 @@ import WishList from './ProfilePages/WishList';
 import { auth } from '../../FirebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useState } from 'react';
+import Order from './ProfilePages/Order';
+import ProfileModal from './ProfileModal';
+import SingIn from '../../components/authentification/singIn';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -33,7 +35,7 @@ const Profile = () => {
                     <CustomLink image={Orders} text={'My orders'} to={'/profile/orders'}/>   
                     <CustomLink image={Heart} text={'Wishlist'} to={'/profile/wishlist'}/>   
                     <CustomLink image={User} text={'My info'} to={'/profile/user'}/>   
-                    <CustomLink image={SignOut} text={'Sign out'} to={'/profile/signout'}/>   
+                    <ProfileModal/>
                 </div>
             </div>
 
@@ -41,10 +43,11 @@ const Profile = () => {
                 <Routes>
                     <Route path='/*' element={<UserPage/>}></Route>
                     <Route path='wishlist' element={<WishList/>}></Route>
+                    <Route path='orders' element={<Order/>}></Route>
                 </Routes>
             </div>
         </div>
-    </div> : <h1>You don`t have account. Please sign in or sign up</h1>}
+    </div> : <SingIn/>}
         </>
     )
 }

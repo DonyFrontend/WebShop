@@ -22,7 +22,7 @@ const MainPage = () => {
                 pagination={{ clickable: true }}
             >
                 <SwiperSlide>
-                    <img src={slide_1} alt="Error!" />
+                    <img style={{width: '100%'}} src={slide_1} alt="Error!" />
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide_2} alt="Error!" />
