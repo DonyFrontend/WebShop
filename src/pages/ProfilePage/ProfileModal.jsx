@@ -10,9 +10,16 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import SignOut from './Images/signOut.svg';
+import { SignOutUserTC } from '../../Slices/SignOutUserTC';
+import { useDispatch } from 'react-redux';
 
 const ProfileModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const dispatch = useDispatch();
+
+    function postData() {
+        dispatch(SignOutUserTC());
+    }
 
     return (
         <>
@@ -31,7 +38,7 @@ const ProfileModal = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button colorScheme='blue' mr={3} onClick={() => {onClose, postData()}}>
                             Exit
                         </Button>
                         <Button variant='ghost' onClick={onClose}>Close</Button>
