@@ -1,6 +1,20 @@
 import { Link } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { useState } from "react";
+import { SignUpUserTC } from "../../Slices/SignUpUserTC";
 
 function SingUp(){
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    function postData(e) {
+        e.preventDefault();
+        dispatch(SignUpUserTC({email, password}));
+        setEmail('');
+        setPassword('');
+    }
+
     return(
         <div className="w-[100] flex items-center justify-center">
             <form className="w-[60] flex  flex-col">
@@ -26,12 +40,12 @@ function SingUp(){
                 <div className="my-[20px]"></div>
 
                     <h2 className="my-[10px]">Email Address</h2>
-                    <input type="email" className="border-[1px] rounded-md p-3 border-[#3C4242]"/>
+                    <input value={email} onChange={e => setEmail(e.target.value)} required type="email" className="border-[1px] rounded-md p-3 border-[#3C4242]"/>
 
                     <div className="my-[10px]"></div>
 
                     <h2 className="my-[10px]">Password</h2>
-                    <input type="password" className="border-[1px] rounded-md p-3 border-[#3C4242]" />
+                    <input value={password} onChange={e => setPassword(e.target.value)} required type="password" className="border-[1px] rounded-md p-3 border-[#3C4242]" />
                     <h2>Use 8 or more characters with a mix of letters, numbers & symbols</h2>
                     <div className="my-[25px]">
                         <div className="flex">
@@ -41,7 +55,7 @@ function SingUp(){
                             <input type="checkbox" />Subscribe to our monthly newsletter
                         </div>
                     </div>
-                    <button className="w-[40%] rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing up</button>
+                    <button onClick={postData} className="w-[40%] rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing up</button>
                     <div className="flex">
                     <h1>Already have an  account?</h1><Link to='/profile' className="text-[#8A33FD]"> Log in</Link>  
                     </div>
