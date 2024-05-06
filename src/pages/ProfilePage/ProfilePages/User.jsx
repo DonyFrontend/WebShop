@@ -1,4 +1,5 @@
 import UserModal from "./UserModal";
+import { auth } from "../../../FirebaseConfig";
 
 const User = () => {
 
@@ -10,14 +11,14 @@ const User = () => {
             <div>
                 <h1 className="font-semibold">Name</h1>
                 <div className="bg-[#f1f0f0] rounded-md p-1">
-                    <p>Arman</p>
+                    <p>{auth.name}</p>
                 </div>
             </div>
 
             <div>
                 <h1 className="font-semibold">Email</h1>
                 <div className="bg-[#f1f0f0] rounded-md p-1">
-                    <p>Arman@gmail.com</p>
+                    <p>{auth.currentUser.email}</p>
                 </div>
             </div>
 
