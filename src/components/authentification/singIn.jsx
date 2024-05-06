@@ -3,10 +3,10 @@ import Google from '../../assets/Google.png'
 import twitter from '../../assets/twitter.png'
 function SingIn(){
     return(
-        <div className="w-[100] flex items-center justify-center">
-            <form className="w-[60] flex  flex-col">
-                <div className="my-[6%]">
-                    <h1 className="text-[100] text-4xl  ">
+        <div className="flex  w-full items-center justify-center">
+            <form className="flex flex-col">
+                <div className="mt-16 my-[6%]">
+                    <h1 className="text-4xl mb-[5%]">
                         Sign In Page
                     </h1>
                 </div>
@@ -27,7 +27,7 @@ function SingIn(){
                 <div className="flex my-[6%] span-origin items-center justify-between">
                 <div className=" w-[200px] border-y-[1px] border-gray-300">
                      </div>
-                        <hi>OR</hi>
+                        <h1>OR</h1>
                      <div className="w-[200px]  border-y-[1px] top-none border-gray-300">
                      </div>
                 </div>
@@ -35,15 +35,13 @@ function SingIn(){
                 <div className=""></div>
 
                     <h2 className="my-[10px]">User name or email address</h2>
-                    <input type="email" className="border-[1px] rounded-md p-3 border-[#3C4242]"/>
-
-                    <div className="my-[10px]"></div>
+                    <input required type="email" className="border-[1px] rounded-md p-3 border-[#3C4242]"/>
 
                     <h2 className="my-[10px]">Password</h2>
-                    <input type="password" className="border-[1px] rounded-md p-3 border-[#3C4242]" />
+                    <input required type="password" className="border-[1px] rounded-md p-3 border-[#3C4242]" />
                     <Link className="text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
                     <button className="w-[40%] rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing in</button>
-                    <div className="flex">
+                    <div className="mb-16 flex">
                     <h1>Don’t have an account?</h1><Link to='/singup' className="text-[#8A33FD]">Sign up</Link>  
                     </div>
            </form>

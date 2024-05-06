@@ -3,13 +3,13 @@ import Google from '../../assets/Google.png'
 import twitter from '../../assets/twitter.png'
 function SingUp(){
     return(
-        <div className="w-full flex items-center justify-center">
-            <form className="w-[60] flex  flex-col">
+        <div className="w-full mb-16 flex items-center justify-center">
+            <form className="flex  flex-col">
                 <div className="my-[10%]">
-                    <h1 className="text-[100] text-4xl font-medium ">
+                    <h1 className="text-4xl font-medium ">
                         Sign Up
                     </h1>
-                <h2>Sign up for free to access to in any of our products </h2>
+                <h2 className="pt-5">Sign up for free to access to in any of our products </h2>
                 </div>
            
                 <div className=" w-[500px] border-[1px] rounded-md border-black">
@@ -26,26 +26,27 @@ function SingUp(){
                     </div>
                 </div>
 
-                <div className="my-[20px]"></div>
 
-                    <h2 className="my-[10px]">Email Address</h2>
-                    <input type="email" className="border-[1px] rounded-md p-3 border-[#3C4242]"/>
+                <div>
+                    <h2 className="my-[3%] mt-[5%]">Email Address</h2>
+                </div>
+                    <input  required  type="email" className="border-[1px] rounded-md p-3 border-[#3C4242]"/>
 
-                    <div className="my-[10px]"></div>
-
-                    <h2 className="my-[10px]">Password</h2>
-                    <input type="password" className="border-[1px] rounded-md p-3 border-[#3C4242]" />
+                <div className="my-[2%] mt-[5%]">
+                    <h2 className="">Password</h2>
+                </div>
+                    <input  required  type="password" className="border-[1px] rounded-md p-3 border-[#3C4242]" />
                     <h2>Use 8 or more characters with a mix of letters, numbers & symbols</h2>
                     <div className="my-[25px]">
                         <div className="flex gap-x-2">
-                            <input type="checkbox"/> <p>Agree to our Terms of use and Privacy Policy</p>  
+                            <input required type="checkbox"/> <p>Agree to our Terms of use and Privacy Policy</p>  
                         </div>
                         <div className="flex gap-x-2">
                             <input type="checkbox" /> <p>Subscribe to our monthly newsletter</p>
                         </div>
                     </div>
                     <button className="w-[40%] rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing up</button>
-                    <div className="flex">
+                    <div className="mb-16 flex">
                     <h1>Already have an  account?</h1><Link to='/profile/*' className="text-[#8A33FD]"> Log in</Link>  
                     </div>
            </form>
