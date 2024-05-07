@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from '../../assets/twitter.png'
-import { Link } from "react-router-dom";
 import {useDispatch} from 'react-redux'
 import { SignInTC } from "../../Slices/SignInTC";
 import { useState } from "react";
