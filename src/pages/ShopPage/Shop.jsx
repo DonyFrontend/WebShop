@@ -3,6 +3,9 @@ import filter from './images/filter.svg';
 import navBarIcon from './images/navBarIcon.svg';
 import { sortData } from './utils/data';
 import AccordionFilter from './Accordion';
+import { useSelector,  useDispatch } from 'react-redux';
+import { shopTC } from '../../Slices/getProductsSlice';
+import { useEffect } from 'react';
 
 const Shop = () => {
     const navBar = sortData.map((item, index) => <div key={index}>
@@ -12,6 +15,13 @@ const Shop = () => {
         </NavLink>
     </div>)
 
+    const selector = useSelector(state => state.getProductsSlice);
+    console.log(selector);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(shopTC());
+    }, [])
 
     return <div className="flex w-[100%] justify-center mt-20">
         <div className="flex w-[90%] justify-between">
@@ -30,8 +40,18 @@ const Shop = () => {
                 </div>
             </div>
 
-            <div className="w-[70%]">
-
+            <div className="w-[80%] grid grid-cols-3 gap-5">
+                {selector.products.map((item, index) => <div key={index} className='flex flex-col justify-between'>
+                    <div>
+                        <img src={item.images[0]}  alt="Error!" />
+                    </div>
+                    <div className='flex flex-col gap-y-1'>
+                        <h2 className='font-medium text-xl'>{item.title}</h2>
+                        <div className='flex gap-1 text-lg'>{item.categories.map((item, index) => <p key={index} className='text-gray-600'>{item}/</p>)}</div>
+                        <p className='text-lg text-gray-600'>{item.colors.length} Colors</p>
+                        <p className='font-medium text-base'>Price: ${item.price}</p>
+                    </div>
+                </div>)}
             </div>
         </div>
     </div>

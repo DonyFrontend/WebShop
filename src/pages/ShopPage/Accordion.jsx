@@ -21,7 +21,7 @@ const AccordionFilter = () => {
                     <AccordionIcon />
                 </AccordionButton>
             </h1>
-            <AccordionPanel pb={4} className='flex flex-col'>
+            <AccordionPanel className='flex flex-col'>
                 <RadioGroup className='flex flex-col gap-y-2'>
                     <Radio value='1'>Men</Radio>
                     <Radio value='2'>Women</Radio>
@@ -39,7 +39,7 @@ const AccordionFilter = () => {
                     <AccordionIcon />
                 </AccordionButton>
             </h1>
-            <AccordionPanel pb={4} className='flex flex-col'>
+            <AccordionPanel className='flex flex-col'>
                 <CheckboxGroup>
                     <Checkbox>Black</Checkbox>
                     <Checkbox>Blue</Checkbox>
@@ -66,7 +66,7 @@ const AccordionFilter = () => {
                 </AccordionButton>
             </h1>
 
-            <AccordionPanel pb={4} className='flex flex-col'>
+            <AccordionPanel className='flex flex-col'>
                 <RadioGroup className='flex flex-col gap-y-2'>
                     <Radio value='1'>Boys</Radio>
                     <Radio value='2'>Girls</Radio>
