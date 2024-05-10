@@ -36,7 +36,7 @@ const Shop = () => {
             </div>
 
             <div className="w-[80%] grid grid-cols-3 gap-5">
-                {selector.products.map((item, index) => <div key={index} className='flex flex-col justify-between'>
+                {selector.products.length != 0 ? selector.products.map((item, index) => <div key={index} className='flex flex-col justify-between'>
                     <div>
                         <img src={item.images[0]}  alt="Error!" />
                     </div>
@@ -46,7 +46,7 @@ const Shop = () => {
                         <p className='text-lg text-gray-600'>{item.colors.length} Colors</p>
                         <p className='font-medium text-base'>Price: ${item.price}</p>
                     </div>
-                </div>)}
+                </div>) : <h1 className='font-semibold text-3xl'>We do not have such products :(</h1>}
             </div>
         </div>
     </div>

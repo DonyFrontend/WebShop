@@ -14,10 +14,6 @@ import { sortProductsTC } from '../../Slices/getProductsSlice';
 const AccordionFilter = () => {
     const dispatch = useDispatch();
 
-    function sortMen() {
-        dispatch(sortProductsTC('Men'))
-    }
-
     return <Accordion defaultIndex={[0]} allowMultiple>
         <AccordionItem>
             <h1>
@@ -30,9 +26,9 @@ const AccordionFilter = () => {
             </h1>
             <AccordionPanel className='flex flex-col'>
                 <RadioGroup className='flex flex-col gap-y-2'>
-                    <Radio value='1' onClick={sortMen}>Men</Radio>
-                    <Radio value='2'>Women</Radio>
-                    <Radio value='3'>Unisex</Radio>
+                    <Radio value='1' onClick={() => dispatch(sortProductsTC('Men'))}>Men</Radio>
+                    <Radio value='2' onClick={() => dispatch(sortProductsTC('Women'))}>Women</Radio>
+                    <Radio value='3' onClick={() => dispatch(sortProductsTC('Unisex'))}>Unisex</Radio>
                 </RadioGroup>
             </AccordionPanel>
         </AccordionItem>
