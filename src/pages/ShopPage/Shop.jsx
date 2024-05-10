@@ -3,9 +3,7 @@ import filter from './images/filter.svg';
 import navBarIcon from './images/navBarIcon.svg';
 import { sortData } from './utils/data';
 import AccordionFilter from './Accordion';
-import { useSelector,  useDispatch } from 'react-redux';
-import { shopTC } from '../../Slices/getProductsSlice';
-import { useEffect } from 'react';
+import { useSelector} from 'react-redux';
 
 const Shop = () => {
     const navBar = sortData.map((item, index) => <div key={index}>
@@ -17,11 +15,8 @@ const Shop = () => {
 
     const selector = useSelector(state => state.getProductsSlice);
     console.log(selector);
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(shopTC());
-    }, [])
+
 
     return <div className="flex w-[100%] justify-center mt-20">
         <div className="flex w-[90%] justify-between">

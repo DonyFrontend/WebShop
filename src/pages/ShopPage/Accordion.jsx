@@ -8,8 +8,15 @@ import {
     Box
 } from '@chakra-ui/react'
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { sortProductsTC } from '../../Slices/getProductsSlice';
 
 const AccordionFilter = () => {
+    const dispatch = useDispatch();
+
+    function sortMen() {
+        dispatch(sortProductsTC('Men'))
+    }
 
     return <Accordion defaultIndex={[0]} allowMultiple>
         <AccordionItem>
@@ -23,7 +30,7 @@ const AccordionFilter = () => {
             </h1>
             <AccordionPanel className='flex flex-col'>
                 <RadioGroup className='flex flex-col gap-y-2'>
-                    <Radio value='1'>Men</Radio>
+                    <Radio value='1' onClick={sortMen}>Men</Radio>
                     <Radio value='2'>Women</Radio>
                     <Radio value='3'>Unisex</Radio>
                 </RadioGroup>
