@@ -1,6 +1,3 @@
-import React from "react";
-import {FaFacebook,FaGitthub,FaInstagram,FaTwitter,FaTwitch } from 'react'
-
 const sections = [
     {
         title:'Need Help',
@@ -99,10 +96,10 @@ const Footer = () =>{
 
 
 <div className="text-center text-xl text-white md-2">
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-twitter"></i></a>
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-instagram"></i></a>
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-twitter"></i></a>
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-twitter"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-twitter"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-instagram"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-twitter"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-twitter"></i></a>
 </div>
 
 
