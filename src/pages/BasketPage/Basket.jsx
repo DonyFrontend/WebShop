@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import bag from './images/bag.svg';
+import { scrollToZero } from '../utils/CustomFC';
 
 const Basket = () => {
+    useEffect(() => {
+        scrollToZero()
+    }, [])
 
     return <div className="flex flex-col">
         <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">

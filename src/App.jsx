@@ -6,10 +6,16 @@ import Profile from './pages/ProfilePage/Profile';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 import SingUp from './components/authentification/singup';
-import Shop from './pages/ShopPage/Shop'; 
+import Shop from './pages/ShopPage/Shop';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { shopTC } from './Slices/getProductsSlice'; 
 
 function App() {
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(shopTC());
+}, [])
   return (
     <>
     <Header/>
