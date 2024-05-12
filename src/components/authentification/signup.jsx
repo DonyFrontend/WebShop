@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import Google from '../../assets/Google.png'
-import twitter from '../../assets/twitter.png'
+import Google from './authImages/Google.png'
+import twitter from './authImages/twitter.png'
 function SignUp(){
     return(
         <div className="flex  w-full items-center justify-center">
