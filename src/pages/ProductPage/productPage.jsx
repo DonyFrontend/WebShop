@@ -15,8 +15,9 @@ import hoody from './productImages/hoody.png'
 function Product(){
     return(
         <>
-            <div className='w-full  flex justify-evenly gap-40'>
-            <div className='w-[20%] ml-72'>
+        <div className=' flex items-center'>
+            <div className='flex gap-40 '>
+            <div className='w-[20%]  '>
                 <Swiper
                     modules={[Navigation, Pagination]}
                     navigation={{ clickable: true }}
@@ -69,11 +70,12 @@ function Product(){
                                    
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className='w-full my-20 gap-y-10 flex flex-col ml-72'>
+            <div className='w-[80%] my-20 gap-y-10 flex flex-col'>
                 <div className='flex'>
                     <div className='bg-[#8A33FD] w-2 rounded-lg border-[1px]'></div>
                     <h1 className='text-4xl'>Product Description</h1>
@@ -86,35 +88,37 @@ function Product(){
                     <p className='text-xl pl-5 text-gray-500'>Question & Answer</p>
                     <div className='bg-black px-2 text-center rounded-lg text-white'>4</div>
                 </div>
-                <div className='flex w-[40%]'>
+                <div className='flex w-[50%]'>
                     <p>100% Bio-washed Cotton – makes the fabric extra soft & silky. Flexible ribbed crew neck. Precisely stitched with no pilling & no fading. Provide  all-time comfort. Anytime, anywhere. Infinite range of matte-finish HD prints.</p>
                 </div>
 
-                <div className='flex w-[50%] gap-16 flex-wrap'>
-                    <div className='pl-10'>
+                <div className='flex mt-10 ml-20'>
+                <div className='flex w-[60%]  gap-20 flex-wrap'>
+                    <div className='flex flex-col gap-3'>
                         <h2 className='text-xl text-gray-500'>Fabric</h2>
-                        <p className='text-2xl'> Bio-washed Cotton</p>
+                        <p className='text-2xl'>Bio-washed Cotton</p>
                     </div>
-                    <div className='pl-10'>
+                    <div className='flex flex-col gap-3'>
                         <h2 className='text-xl text-gray-500'>Pattern</h2>
-                        <p className='text-2xl'> Printed</p>
+                        <p className='text-2xl'>Printed</p>
                     </div>
-                    <div  className='pl-10 text-gray-500'>
-                        <h2 className='text-xl'>Fit</h2>
-                        <p className='text-2xl'> Regular-fit</p>
+                    <div className='flex flex-col gap-3'>
+                        <h2 className='text-xl text-gray-500'>Fit</h2>
+                        <p className='text-2xl'>Regular-fit</p>
                     </div>
-                    <div  className='pl-10'>
-                        <h2 className='text-xl text-gray-500'>Neck</h2>
-                        <p className='text-2xl'> Round Neck</p>
+                    <div className='flex flex-col gap-3'>
+                        <h2 className='text-xl text-gray-500'>Regular-fit</h2>
+                        <p className='text-2xl'>Round Neck</p>
                     </div>
-                    <div  className='pl-24'>
-                        <h2 className='text-xl text-gray-500'>Sleeve</h2>
-                        <p className='text-2xl'> Half-sleeves</p>
+                    <div className='flex flex-col gap-3 ml-16'>
+                        <h2 className='text-xl text-gray-500 '>Sleeve</h2>
+                        <p className='text-2xl'>Half-sleeves</p>
                     </div>
-                    <div  className='pl-10'>
+                    <div className='flex flex-col gap-3'>
                         <h2 className='text-xl text-gray-500'>Style</h2>
-                        <p className='text-2xl'> Casual Wear</p>
+                        <p className='text-2xl'>Casual Wear</p>
                     </div>
+                </div>
                 </div>
             </div>
         </>
