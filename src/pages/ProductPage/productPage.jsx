@@ -14,7 +14,8 @@ import Free from "./productImages/Free.png";
 function Product() {
   return (
     <>
-      <div className="w-full flex justify-center">
+    <div className="w-full flex justify-center">
+      <div className="w-[90%] flex flex-col justify-center">
         <div className="flex gap-40 ">
           <div className="w-[20%]  ">
             <Swiper
@@ -35,7 +36,7 @@ function Product() {
             </Swiper>
           </div>
 
-          <div className="w-[80%] flex">
+          <div className="w-[80%] mt-5 flex">
             <div className="">
               <h1 className="text-4xl">
                 Raven Hoodie With Black colored Design
@@ -96,12 +97,10 @@ function Product() {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="w-full flex justify-center">
       <div className="w-[80%] my-20 gap-y-10 flex flex-col">
-        <div className="flex">
-          <div className="bg-[#8A33FD] w-2 rounded-lg border-[1px]"></div>
+        <div className="flex gap-x-2">
+        <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
           <h1 className="text-4xl">Product Description</h1>
         </div>
 
@@ -154,13 +153,15 @@ function Product() {
           </div>
         </div>
       </div>
-      </div>
 
-      <div className="w-full flex justify-center">
-      <div className="bg-[#8A33FD] w-2 rounded-lg border-[1px]"></div>
-        <div className="text-left">
+     
+        <div className="flex gap-x-2">
+      <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+
             <h1 className="text-4xl">Similar Products</h1>
         </div>
+      
+      </div>
       </div>
     </>
   );
