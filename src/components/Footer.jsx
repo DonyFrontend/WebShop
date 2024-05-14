@@ -72,15 +72,15 @@ const Footer = () =>{
         }
 
         <div className="col-span-2 pt-8 md:pt-2 ">
-            <p className="font-bold uppercase">
+            <p className="font-bold text-center lg:text-left uppercase">
                 Subscribe to our newsletter
             </p>
-            <p className="py-4">
+            <p className="py-4 text-center lg:text-left">
                 The latest updates,articcles and resources,sent to your index weekly.
             </p>
-            <form className="flex flex-col sm:flex-row ">
+            <form className="flex flex-col items-center sm:flex-row ">
                 <input type="email" placeholder="Enter email address " 
-                className="w-full p-2 mr-4 rounded-md md-4"/>
+                className="w-80 lg:w-full p-2 mr-4 rounded-md md-4"/>
             <button className="p-2 md-4">
                 Subscribe
             </button>
@@ -99,10 +99,10 @@ const Footer = () =>{
 
 
 <div className="text-center text-xl text-white md-2">
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-twitter"></i></a>
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-instagram"></i></a>
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-twitter"></i></a>
-    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i class="fa fa-twitter"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-twitter"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-instagram"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-twitter"></i></a>
+    <a href="" className="w-10 h-10 rounded-full bg-gray-600 hover:bg-white mx-1 inline-block pt-1"><i className="fa fa-twitter"></i></a>
 </div>
 
 

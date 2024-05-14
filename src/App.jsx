@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import SingUp from './components/authentification/singup';
 import Shop from './pages/ShopPage/Shop'; 
 
+import Product from './pages/ProductPage/productPage';
+
 function App() {
 
   return (
@@ -21,6 +23,7 @@ function App() {
         <Route path='/profile/*' element={<Profile/>}/>
         <Route path='/SingUp' element={<SingUp/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/productpage' element={<Product/>}/>
       </Routes>
     </div>
 
