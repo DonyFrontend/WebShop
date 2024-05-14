@@ -10,7 +10,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import Order from './ProfilePages/Order';
 import ProfileModal from './ProfileModal';
-import SingIn from '../../components/authentification/singIn';
+import SignIn from '../../components/authentification/signIn';
 import { scrollToZero } from '../utils/CustomFC';
 
 const Profile = () => {
