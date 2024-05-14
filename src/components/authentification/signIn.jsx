@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Google from './authImages/Google.png'
+import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
 function SignIn(){
     return(
