@@ -7,12 +7,17 @@ import UserPage from './ProfilePages/User';
 import WishList from './ProfilePages/WishList';
 import { auth } from '../../FirebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Order from './ProfilePages/Order';
 import ProfileModal from './ProfileModal';
 import SingIn from '../../components/authentification/singIn';
+import { scrollToZero } from '../utils/CustomFC';
 
 const Profile = () => {
+    useEffect(() => {
+        scrollToZero()
+    }, [])
+
     const [user, setUser] = useState(null);
       onAuthStateChanged(auth, user => {
     user ? setUser(true) : setUser(false);

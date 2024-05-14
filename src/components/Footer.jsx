@@ -1,6 +1,3 @@
-import React from "react";
-import {FaFacebook,FaGitthub,FaInstagram,FaTwitter,FaTwitch } from 'react'
-
 const sections = [
     {
         title:'Need Help',
