@@ -13,6 +13,7 @@ import { sortProductsTC } from '../../Slices/getProductsSlice';
 import { sortData } from './utils/data';
 import { NavLink } from 'react-router-dom';
 import navBarIcon from './images/navBarIcon.svg';
+import { shopTC } from '../../Slices/getProductsSlice';
 
 const AccordionFilter = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const AccordionFilter = () => {
     return <div className='flex flex-col gap-y-5'>
         <div className='flex flex-col gap-y-4'>{navBar}</div>
 
-        <Accordion defaultIndex={[0]} allowMultiple>
+        <Accordion allowMultiple>
             <AccordionItem>
                 <h1>
                     <AccordionButton>
@@ -41,6 +42,7 @@ const AccordionFilter = () => {
                         <Radio value='1' onClick={() => dispatch(sortProductsTC('Men'))}>Men</Radio>
                         <Radio value='2' onClick={() => dispatch(sortProductsTC('Women'))}>Women</Radio>
                         <Radio value='3' onClick={() => dispatch(sortProductsTC('Unisex'))}>Unisex</Radio>
+                        <Radio value='4' onClick={() => dispatch(shopTC())}>All</Radio>
                     </RadioGroup>
                 </AccordionPanel>
             </AccordionItem>

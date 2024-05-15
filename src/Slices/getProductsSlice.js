@@ -45,5 +45,5 @@ const productsSlice = createSlice({
     }
 })
 
-export const {setData, sortData} = productsSlice.actions;
+export const {setData} = productsSlice.actions;
 export default productsSlice.reducer; 

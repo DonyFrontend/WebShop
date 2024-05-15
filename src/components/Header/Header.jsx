@@ -25,7 +25,7 @@ const Header = () => {
         </div>
         <div>
             <label htmlFor="search">
-                <input type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 '/>
+                <input type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1'/>
             </label>
         </div>
         <div className='flex gap-x-1'>
