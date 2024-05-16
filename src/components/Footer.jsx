@@ -50,8 +50,8 @@ const sections = [
 const Footer = () =>{
     return(
         <>
-   <div className="w-full bg-[rgba(60,66,66,1)] text-gray-300 py-y px-2">
-    <div className=" md:grid-cols-2 max-w-[1240px] mx-auto grid grid-cols-2 lg:grid-cols-4 py-16  border-b-2 border-gray-600 ">
+   <div className="w-full  bg-[rgba(60,66,66,1)] text-gray-300 py-y px-2">
+    <div className=" md:grid-cols-2 max-w-[1240px] mx-auto grid lg:grid-cols-4 py-16  border-b-2 border-gray-600 ">
         {
             sections.map((section,index)=>(
                 <div key={index}>

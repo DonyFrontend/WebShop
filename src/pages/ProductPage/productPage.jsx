@@ -11,21 +11,13 @@ import credit from "./productImages/credit.png";
 import truck from "./productImages/truck.png";
 import Size from "./productImages/Size.png";
 import Free from "./productImages/Free.png";
-import yellow from './productImages/yellow.png'
-import greenBlue from './productImages/greenBlue.png'
-import pink from './productImages/pink.png'
-import white_1 from './productImages/white_1.png'
-import white_2 from './productImages/white_2.png'
-import brown from './productImages/brown.png'
-import blue from './productImages/blue.png'
-import blue_2 from './productImages/blue_2.png'
 function Product() {
   return (
     <>
     <div className="w-full flex justify-center">
       <div className="w-[90%] flex flex-col justify-center">
         <div className="flex flex-col lg:flex-row lg:gap-40 ">
-          <div className="w-full lg:w-[30%]  ">
+          <div className="w-full lg:w-[30%] md:w-full ">
             <Swiper
               modules={[Navigation, Pagination]}
               navigation={{ clickable: true }}
@@ -46,7 +38,7 @@ function Product() {
 
           <div className="w-[80%] mt-16 lg:mt-5 flex">
             <div className="">
-              <h1 className="text-4xl text-center lg:text-left">
+              <h1 className="text-4xl lg:text-4xl  md:text-6xl  text-center lg:text-left">
                 Raven Hoodie With Black colored Design
               </h1>
               <div className="flex gap-y-5 lg:gap-y-0 items-center flex-col lg:flex-row mt-10 lg:items-start gap-x-10">
@@ -78,9 +70,7 @@ function Product() {
                         <button className="rounded-2xl ml-3 border-[1px] border-black w-full lg:w-16 py-2 px-2 lg:px-4 lg:py-2 active:bg-black active:text-white">
                             L
                         </button>
-                        <button className="rounded-2xl ml-3 border-[1px] border-black w-full lg:w-16 py-2 px-2 lg:px-4 lg:py-2 active:bg-black active:text-white">
-                            XL
-                        </button>
+                        <button className="rounded-2xl ml-3 border-[1px] border-black w-full lg:w-16 py-2 px-2 lg:px-4 lg:py-2 active:bg-black active:text-white">XL</button>
                     </div>
                   
                 </div>
@@ -88,28 +78,28 @@ function Product() {
                   <button className="bg-[#8A33FD] border-[1px] border-black text-white text-xl flex justify-center rounded-lg gap-x-2 py-3 px-10">
                     <img className="w-7" src={cart} alt="" /> Add to cart
                   </button>
-                  <button className="border-[1px] border-black py-3 px-5 font-medium rounded-lg">
+                  <div className="border-[1px] border-black py-3 px-5 font-medium rounded-lg">
                     $63.00
-                  </button>
+                  </div>
                 </div>
 
                 <div className="w-full mt-5 border-y-[1px] border-gray-300"></div>
                 
                 <div className="flex mt-16 text-2xl lg:text-xl flex-col">
                   <div className="flex flex-col items-center lg:flex-row gap-10">
-                    <img className="w-20 h-20 lg:w-5 lg:h-5 mt-1" src={credit} alt="" />{" "}
+                    <img className="w-20 h-20 lg:w-5 lg:h-5 mt-1" src={credit} alt="" />
                     <p>Secure payment</p>
-                    <img className="w-20 h-20 lg:w-5 lg:h-5 mt-1" src={truck} alt="" />{" "}
+                    <img className="w-20 h-20 lg:w-5 lg:h-5 mt-1" src={truck} alt="" />
                     <p>Free shipping</p>
                   </div>
                   <div className="flex flex-col items-center lg:flex-row  mt-5 gap-10">
-                    <img className="w-20 h-20 lg:w-5 lg:h-5 mt-1" src={Size} alt="" />{" "}
+                    <img className="w-20 h-20 lg:w-5 lg:h-5 mt-1" src={Size} alt="" />
                     <p>Size & Fit</p>
                     <img
                       className="w-20 h-20 lg:w-5 lg:h-5 lg:ml-14 mt-1"
                       src={Free}
                       alt=""
-                    />{" "}
+                    />
                     <p>Free Shipping & Returns</p>
                   </div>
                 </div>
@@ -144,7 +134,7 @@ function Product() {
           </p>
         </div>
 
-        <div className="flex mt-10 ml-20">
+        <div className="grid grid-cols-2 grid-rows-3 ml-20">
           <div className="flex w-[70%]  gap-20 flex-wrap">
             <div className="flex flex-col gap-3">
               <h2 className="text-xl text-gray-500">Fabric</h2>
@@ -162,7 +152,7 @@ function Product() {
               <h2 className="text-xl text-gray-500">Regular-fit</h2>
               <p className="text-2xl">Round Neck</p>
             </div>
-            <div className="flex flex-col gap-3 ml-16">
+            <div className="flex flex-col gap-3 ">
               <h2 className="text-xl text-gray-500 ">Sleeve</h2>
               <p className="text-2xl">Half-sleeves</p>
             </div>
@@ -180,7 +170,7 @@ function Product() {
             <h1 className="text-4xl">Similar Products</h1>
         </div>
 
-        <div className="flex mt-10 mb-20 gap-16 flex-wrap">
+        {/* <div className="grid grid-cols-4 grid-rows-2 mt-10 mb-20 gap-16 flex-wrap">
             <div className="flex flex-col">
                 <img src={yellow} alt="" />
                 <div className="flex items-center justify-between">
@@ -237,7 +227,7 @@ function Product() {
                 </div>
                 <p className="text-xl text-gray-500">MOMO’s  Brand</p>
             </div>
-        </div>
+        </div> */}
       </div>
       </div>
     </>
