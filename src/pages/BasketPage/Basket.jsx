@@ -70,7 +70,7 @@ const Basket = () => {
                     <div className="flex">
                         <label htmlFor="coupon" className="shadow-md">
                             <input type="text" style={{ border: '1px solid #BEBCBD', borderBottomLeftRadius: '7px', borderTopLeftRadius: '7px', padding: 3 }} />
-                            <button className="bg-[#8A33FD] hover:bg-[#6620C1] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius: '7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button>
+                            <button className="bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius: '7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button>
                         </label>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const Basket = () => {
                         <h1 className="font-medium">Grand Total: $29</h1>
                     </div>
                     <div>
-                        <button className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] transition-colors text-white rounded-[7px]">Proceed To Checkout</button>
+                        <button className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</button>
                     </div>
                 </div>
             </div>

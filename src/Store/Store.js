@@ -8,6 +8,9 @@ import productPageTC from '../Slices/productPageTC';
 import { addBasketProduct } from '../Slices/addBasketProductTC';
 import getBasketProductSlice from '../Slices/getBasketProductSlice';
 import { deleteBasketProductTC } from '../Slices/deleteBasketProductTC';
+import { addWishlistProduct } from '../Slices/addWishlistProductTC';
+import getWishlistProductSlice from '../Slices/getWishlistProductSlice';
+import { deleteWishlistProductTC } from '../Slices/deleteWishlistProductTC';
 
 export const store = configureStore({
     reducer: {
@@ -19,6 +22,9 @@ export const store = configureStore({
         productPageTC,
         addBasketProduct,
         getBasketProductSlice,
-        deleteBasketProductTC
+        deleteBasketProductTC,
+        addWishlistProduct,
+        getWishlistProductSlice,
+        deleteWishlistProductTC
     }
 })

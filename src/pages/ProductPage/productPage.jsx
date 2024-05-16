@@ -24,6 +24,7 @@ import {
   Radio
 } from "@chakra-ui/react";
 import { addBasketProduct } from "../../Slices/addBasketProductTC";
+import { addWishlistProduct } from "../../Slices/addWishlistProductTC";
 
 function Product() {
   const dispatch = useDispatch();
@@ -48,12 +49,21 @@ function Product() {
     <img style={{ width: "100%" }} src={item} alt="Error!" />
   </SwiperSlide>)
 
-  const postProduct = () => {    
+  const postBasketProduct = () => {    
     if (size == false | color == false) alert('Please select size and color!');
     else {
       dispatch(addBasketProduct({product, newSize: size, newColor: color}))
     }
   }
+
+  const postWishlistProduct = () => {    
+    if (size == false | color == false) alert('Please select size and color!');
+    else {
+      dispatch(addWishlistProduct({product, newSize: size, newColor: color}))
+    }
+  }
+
+
 
   return (
     <>
@@ -121,14 +131,14 @@ function Product() {
                     </Accordion>
                   </div>
                   <div className="my-10 flex gap-10">
-                    <button onClick={postProduct} className="bg-[#8A33FD] border-[1px] hover:bg-[#6620C1] transition-colors border-black text-white flex rounded-lg gap-x-2 py-3 px-10">
+                    <button onClick={postBasketProduct} className="bg-[#8A33FD] border-[1px] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors border-black text-white flex rounded-lg gap-x-2 py-3 px-10">
                       <img src={cart} alt='Error' />
                       <p>Add to cart</p>
                     </button>
-                    <button className="bg-[#8A33FD] border-[1px] hover:bg-[#6620C1] transition-colors border-black text-white flex rounded-lg gap-x-2 py-3 px-10">
+                    <button onClick={postWishlistProduct} className="bg-[#8A33FD] border-[1px] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors border-black text-white flex rounded-lg gap-x-2 py-3 px-10">
                       <p>Add to wishlist</p>
                     </button>
-                    {postProduct}
+                    {postBasketProduct}
                     <div className="border-[1px] border-black py-3 px-5 font-medium rounded-lg">
                       <p>${product.price}</p>
                     </div>
