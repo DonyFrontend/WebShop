@@ -23,6 +23,19 @@ const Header = () => {
             <CustomLink to={'/women'} text={'Women'}/>
             <CustomLink to={'/shoe'} text={'Shoe'}/>
         </div>
+
+        { click ?<div className='flex rounded-lg text-xl text-center flex-col fixed top-0 right-0 gap-3 p-5 bg-white border border-black'>
+            <div className='border-b-2 border-gray-300'>
+                <h1>MENU</h1>
+            </div>
+            <CustomLink to={'/'} text={'Home'}/>
+            <CustomLink to={'/shop'} text={'Shop'}/>
+            <CustomLink to={'/men'} text={'Men'}/>
+            <CustomLink to={'/women'} text={'Women'}/>
+            <CustomLink to={'/shoe'} text={'Shoe'}/>
+
+           <button className='border border-gray-500 rounded-lg px-5' onClick={onHandleClick}>Close</button>
+        </div> : ""} 
         <div>
             <label htmlFor="search">
                 <input type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 '/>

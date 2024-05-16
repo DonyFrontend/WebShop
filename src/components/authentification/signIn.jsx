@@ -36,12 +36,24 @@ function SignIn(){
                      </div>
                 </div>
 
+                
+
                 <div className="flex flex-col mb-10 lg:mb-0">
+                <div className="text-left">
+                 <h2 className="my-[10px] text-2xl lg:text-xl">Select town</h2>
+                </div>
+                <select className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
+                    <option value='option1'>Bishkek</option>
+                    <option value='option2'>Kara-Balta</option>
+                    <option value='option3'>Osh</option>
+                    <option value="option 4">Talas</option>
+                    <option value="option 5">Karakol</option>
+                </select>   
                 <div className="text-left">
                 <h2 className=" my-[10px] text-2xl lg:text-xl">User name or email address</h2>
                 </div>
                 <div>
-                    <input required type="email" className="p-2 w-80   lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                    <input required type="email" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
                 </div>
               
 
