@@ -24,6 +24,8 @@ export const db = getFirestore(app);
 
 //collections
 export const productsCollectionRef = collection(db, 'products');
+export const basketCollectionRef = collection(db, 'basket');
+export const wishlistCollectionRef = collection(db, 'wishlist');
 
 //auth
 export const auth = getAuth(app);

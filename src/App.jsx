@@ -5,11 +5,14 @@ import Basket from './pages/BasketPage/Basket';
 import Profile from './pages/ProfilePage/Profile';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
-import SingUp from './components/authentification/singup';
+import SignUp from './components/authentification/signup';
+import SignIn from './components/authentification/signIn';
 import Shop from './pages/ShopPage/Shop';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { shopTC } from './Slices/getProductsSlice'; 
+
+import Product from './pages/ProductPage/productPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,8 +28,10 @@ function App() {
         <Route path='/' element={<MainPage/>}/>
         <Route path='/basket' element={<Basket/>}/>
         <Route path='/profile/*' element={<Profile/>}/>
-        <Route path='/SingUp' element={<SingUp/>}/>
+        <Route path='/SingUp' element={<SignUp/>}/>
+        <Route path='/SignIn' element={<SignIn/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/shop/:id' element={<Product/>}/>
       </Routes>
     </div>
 

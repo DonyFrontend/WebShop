@@ -3,7 +3,9 @@ import AccordionFilter from './Accordion';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { scrollToZero } from '../utils/CustomFC';
- 
+import { Link } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { productTC } from '../../Slices/productPageTC'; 
 
 const Shop = () => {
     useEffect(() => {
@@ -12,6 +14,9 @@ const Shop = () => {
 
     const selector = useSelector(state => state.getProductsSlice);
     console.log(selector);
+
+    // const dispatch = useDispatch();
+    
 
     return <div className="flex w-[100%] justify-center mt-20">
         <div className="flex w-[95%] justify-between">
@@ -29,17 +34,19 @@ const Shop = () => {
             </div>
 
             <div className="w-[80%] grid grid-cols-3 gap-5">
-                {selector.products.length != 0 ? selector.products.map((item, index) => <div key={index} className='flex flex-col justify-between'>
-                    <div>
-                        <img src={item.images[0]} alt="Error!" />
+                {selector.products.length != 0 ? selector.products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
+                    <div className='flex flex-col justify-between'>
+                        <div>
+                            <img src={item.images[0]} alt="Error!" />
+                        </div>
+                        <div className='flex flex-col gap-y-1'>
+                            <h2 className='font-medium text-xl'>{item.title}</h2>
+                            <div className='flex gap-1 text-lg'>{item.categories.map((item, index) => <p key={index} className='text-gray-600'>{item}/</p>)}</div>
+                            <p className='text-lg text-gray-600'>{item.colors.length} Colors</p>
+                            <p className='font-medium text-base'>Price: ${item.price}</p>
+                        </div>
                     </div>
-                    <div className='flex flex-col gap-y-1'>
-                        <h2 className='font-medium text-xl'>{item.title}</h2>
-                        <div className='flex gap-1 text-lg'>{item.categories.map((item, index) => <p key={index} className='text-gray-600'>{item}/</p>)}</div>
-                        <p className='text-lg text-gray-600'>{item.colors.length} Colors</p>
-                        <p className='font-medium text-base'>Price: ${item.price}</p>
-                    </div>
-                </div>) : <h1 className='font-semibold text-3xl'>Loading...</h1>}
+                </Link>) : <h1 className='font-semibold text-3xl'>Loading...</h1>}
             </div>
         </div>
     </div>

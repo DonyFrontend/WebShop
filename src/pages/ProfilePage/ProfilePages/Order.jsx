@@ -43,7 +43,7 @@ const Order = () => {
                         </div>
                     </div>
                     <div>
-                        <button className='bg-[#8A33FD] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</button>
+                        <button className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</button>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ const Order = () => {
                         </div>
                     </div>
                     <div>
-                        <button className='bg-[#8A33FD] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</button>
+                        <button className='bg-[#8A33FD] text-white p-2 rounded-md hover:bg-[#6620C1] active:bg-[#4c2185] transition-all'>View Detail</button>
                     </div>
                 </div>
             </div>
