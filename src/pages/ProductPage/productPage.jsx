@@ -25,27 +25,33 @@ import {
 } from "@chakra-ui/react";
 import { addBasketProduct } from "../../Slices/addBasketProductTC";
 import { addWishlistProduct } from "../../Slices/addWishlistProductTC";
+import {useParams} from 'react-router-dom';
+import {productTC} from "../../Slices/productPageTC";
 
 function Product() {
   const dispatch = useDispatch();
+  const id = useParams();
+  console.log(id.id);
 
   useEffect(() => {
-    scrollToZero()
-  }, [])
+    scrollToZero(),
+    dispatch(productTC({id: id.id}));
+  }, [id, dispatch])
   
-  const { product } = useSelector(state => state.productPageTC);
+  const { product, isProductFetch } = useSelector(state => state.productPageTC);
   console.log(product);
-
   const [size, setSize] = useState(undefined);
   const [color, setColor] = useState('');
-  console.log(size, color);
-
+  
+  if(isProductFetch){ 
+    return <h1 className="text-4xl p-10">Load...</h1>
+  }
   //selects and categories
   const categories = product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)
   const colors = product?.colors?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)
   const selectSize = product?.sizes?.map((item, index) => <Radio onClick={() => setSize(item)} key={index} value={String(index)}>{item}</Radio>)
   const selectColor = product?.colors?.map((item, index) => <Radio onClick={() => setColor(item)} key={index} value={String(index)}>{item}</Radio>)
-  const images = product.images.map((item, index) => <SwiperSlide key={index} className="flex items-center">
+  const images = product?.images?.map((item, index) => <SwiperSlide key={index} className="flex items-center">
     <img style={{ width: "100%" }} src={item} alt="Error!" />
   </SwiperSlide>)
 

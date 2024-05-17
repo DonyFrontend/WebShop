@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { scrollToZero } from '../utils/CustomFC';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { productTC } from '../../Slices/productPageTC'; 
+// import { useDispatch } from 'react-redux';
+// import { productTC } from '../../Slices/productPageTC'; 
 
 const Shop = () => {
     useEffect(() => {
@@ -15,7 +15,7 @@ const Shop = () => {
     const selector = useSelector(state => state.getProductsSlice);
     console.log(selector);
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     
 
     return <div className="flex w-[100%] justify-center mt-20">
@@ -35,7 +35,7 @@ const Shop = () => {
 
             <div className="w-[80%] grid grid-cols-3 gap-5">
                 {selector.products.length != 0 ? selector.products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
-                    <div className='flex flex-col justify-between' onClick={() => dispatch(productTC({id: item.id}))}>
+                    <div className='flex flex-col justify-between'>
                         <div>
                             <img src={item.images[0]} alt="Error!" />
                         </div>

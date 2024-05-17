@@ -5,35 +5,33 @@ import { productsCollectionRef } from "../FirebaseConfig";
 export const productTC = createAsyncThunk(
     'webShop/productData',
     async ({id}, {dispatch}) => {
-        console.log(id);
+        console.log('red',id); 
+        dispatch(toggleFetch(true))
         const productData = doc(productsCollectionRef, id);
         const findDoc = await getDoc(productData);
         const data = findDoc.data();
-        console.log(data);
+        console.log('red',data);
         dispatch(setProductData(data));
+        dispatch(toggleFetch(false))
     }
 )
 
 const productSlice = createSlice({
     name: 'webShop/productSlice',
     initialState: {
-        product: [{
-            title: null,
-            colors: null,
-            images: null,
-            description: null,
-            price: null,
-            sizes: null,
-            categories: null
-        }]
+        product: [],
+        isProductFetch: false
     },
     reducers: {
         setProductData(state, action) {
             state.product = action.payload;
             console.log(state.product, 'HI');
+        }, 
+        toggleFetch(state,action){ 
+            state.isProductFetch = action.payload
         }
     }
 })
 
-export const {setProductData} = productSlice.actions;
+export const {setProductData,toggleFetch} = productSlice.actions;
 export default productSlice.reducer;
