@@ -4,8 +4,6 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import stars from "./productImages/stars.png";
-import Icon from "./productImages/Icon.png";
-import cart from "./productImages/cart.png";
 import credit from "./productImages/credit.png";
 import truck from "./productImages/truck.png";
 import Size from "./productImages/Size.png";
@@ -25,26 +23,29 @@ import {
 } from "@chakra-ui/react";
 import { addBasketProduct } from "../../Slices/addBasketProductTC";
 import { addWishlistProduct } from "../../Slices/addWishlistProductTC";
-import {useParams} from 'react-router-dom';
-import {productTC} from "../../Slices/productPageTC";
+import { useParams } from 'react-router-dom';
+import { productTC } from "../../Slices/productPageTC";
+import { useToast, Button } from "@chakra-ui/react";
 
 function Product() {
   const dispatch = useDispatch();
+  const toast = useToast();
   const id = useParams();
   console.log(id.id);
 
   useEffect(() => {
     scrollToZero(),
-    dispatch(productTC({id: id.id}));
+      dispatch(productTC({ id: id.id }));
   }, [id, dispatch])
-  
+
   const { product, isProductFetch } = useSelector(state => state.productPageTC);
   console.log(product);
   const [size, setSize] = useState(undefined);
   const [color, setColor] = useState('');
-  
-  if(isProductFetch){ 
-    return <h1 className="text-4xl p-10">Load...</h1>
+
+
+  if (isProductFetch) {
+    return <h1 className="text-4xl p-10">Loading...</h1>
   }
   //selects and categories
   const categories = product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)
@@ -55,17 +56,18 @@ function Product() {
     <img style={{ width: "100%" }} src={item} alt="Error!" />
   </SwiperSlide>)
 
-  const postBasketProduct = () => {    
-    if (size == false | color == false) alert('Please select size and color!');
-    else {
-      dispatch(addBasketProduct({product, newSize: size, newColor: color}))
+
+  const postBasketProduct = (e) => {
+    e.preventDefault();
+    if (!(size == false | color == false)) {
+      dispatch(addBasketProduct({ product, newSize: size, newColor: color }));
     }
   }
 
-  const postWishlistProduct = () => {    
-    if (size == false | color == false) alert('Please select size and color!');
-    else {
-      dispatch(addWishlistProduct({product, newSize: size, newColor: color}))
+  const postWishlistProduct = (e) => {
+    e.preventDefault();
+    if (!(size == false | color == false)) {
+      dispatch(addWishlistProduct({ product, newSize: size, newColor: color }));
     }
   }
 
@@ -96,8 +98,6 @@ function Product() {
                 <div className="flex mt-10 items-start gap-x-4">
                   <img src={stars} alt="Error!" />
                   <p>3.5</p>
-                  <img className="gap-x-2" src={Icon} alt="Error!" />
-                  <p>120 comment</p>
                 </div>
 
                 <div>
@@ -137,28 +137,56 @@ function Product() {
                     </Accordion>
                   </div>
                   <div className="my-10 flex gap-10">
-                    <button onClick={postBasketProduct} className="bg-[#8A33FD] border-[1px] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors border-black text-white flex rounded-lg gap-x-2 py-3 px-10">
-                      <img src={cart} alt='Error' />
-                      <p>Add to cart</p>
-                    </button>
-                    <button onClick={postWishlistProduct} className="bg-[#8A33FD] border-[1px] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors border-black text-white flex rounded-lg gap-x-2 py-3 px-10">
-                      <p>Add to wishlist</p>
-                    </button>
-                    {postBasketProduct}
-                    <div className="border-[1px] border-black py-3 px-5 font-medium rounded-lg">
+                    <div onClick={postBasketProduct}>
+                      <Button
+                        onClick={() =>
+                          toast({
+                            position: 'bottom-left',
+                            render: () => (
+                              <Box color='white' p={3} bg={'darkviolet'}>
+                                {size == false | color == false ? 'Please select size and color !' : 'Add product to basket'}
+                              </Box>
+                            ),
+                          })
+                        }
+                        colorScheme="purple"
+                      >
+                        Add to basket
+                      </Button>
+                    </div>
+
+                    <div onClick={postWishlistProduct}>
+                      <Button
+                        onClick={() =>
+                          toast({
+                            position: 'bottom-left',
+                            render: () => (
+                              <Box color='white' p={3} bg='darkviolet'>
+                                {size == false | color == false ? 'Please select size and color !' : 'Add product to wishlist'}
+                              </Box>
+                            ),
+                          })
+                        }
+                        colorScheme="purple"
+                      >
+                        Add to wishlist
+                      </Button>
+                    </div>
+
+                    <div className="border-[1px] border-black py-1.5 px-5 font-medium rounded-lg">
                       <p>${product.price}</p>
                     </div>
                   </div>
                   <div className="w-full mt-5 border-y-[1px] border-gray-300"></div>
                   <div className="flex mt-16 text-xl flex-col">
                     <div className="flex gap-10">
-                      <img className="w-5 h-5 mt-1" src={credit} alt="" />{" "}
+                      <img className="w-5 h-5 mt-1" src={credit} alt="" />
                       <p>Secure payment</p>
-                      <img className="w-5 h-5 mt-1" src={truck} alt="" />{" "}
+                      <img className="w-5 h-5 mt-1" src={truck} alt="" />
                       <p>Free shipping</p>
                     </div>
                     <div className="flex mt-5 gap-10">
-                      <img className="w-5 h-5 mt-1" src={Size} alt="" />{" "}
+                      <img className="w-5 h-5 mt-1" src={Size} alt="" />
                       <p>Size & Fit</p>
                       <img
                         className="h-5 ml-14 w-5 mt-1"
@@ -200,7 +228,7 @@ function Product() {
                   {colors}
                 </div>
               </div>
-           
+
               <div className="flex flex-col gap-y-1">
                 <h2 className="text-xl text-gray-500">Price</h2>
                 <p className="text-xl">${product.price}</p>
@@ -218,6 +246,6 @@ function Product() {
         </div>
       </div>
     </>
-  );
+  )
 }
 export default Product;
