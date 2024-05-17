@@ -31,7 +31,6 @@ function Product() {
   const dispatch = useDispatch();
   const toast = useToast();
   const id = useParams();
-  const toast = useToast();
   console.log(id.id);
 
   useEffect(() => {
