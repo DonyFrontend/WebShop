@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
+import { useState } from "react"
 function SignUp(){
+    const [password, setPassword] = useState('')
+        const [message, setMessage] = useState("")
+        const OnHandleChange = (e) =>{
+            const newPassword = e.target.value;
+            setPassword(newPassword)
+            if(newPassword.length <= 8 ){
+                setMessage('Пароль недостаточно надёжен')
+            } else{
+                setMessage('')
+            }
+        }
+
     return(
         <div className="flex  w-full items-center justify-center">
             <form className="flex items-center lg:items-stretch flex-col">
@@ -37,7 +50,15 @@ function SignUp(){
                     <option value='option3'>Osh</option>
                     <option value="option 4">Talas</option>
                     <option value="option 5">Karakol</option>
-                </select>   
+                </select>
+
+                <div className="text-left">
+                    <h2 className=" my-[10px] text-2xl lg:text-xl">Your name</h2>
+                </div>
+                <div>
+                    <input required type="text" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                </div>
+
                 <div>
                     <h2 className="my-[3%] mt-[5%] text-2xl lg:text-xl">Email Address</h2>
                 </div>
@@ -47,7 +68,8 @@ function SignUp(){
                     <h2 className="text-2xl lg:text-xl">Password</h2>
                 </div>
             </div>
-                    <input  required  type="password" className="p-2 w-80  lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                    <input  required  type="password" value={password} onChange={OnHandleChange} className="p-2 w-80  lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                    <p className="text-red-500">{message} </p>
                 <div className="flex w-80 lg:w-full"> 
                     <h2 >Use 8 or more characters with a mix of letters, numbers & symbols</h2>
                 </div>
@@ -59,9 +81,9 @@ function SignUp(){
                             <input type="checkbox" /> <p>Subscribe to our monthly newsletter</p>
                         </div>
                     </div>
-                    <button className="w-80 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing up</button>
-                    <div className="mb-16 flex">
-                    <h1>Already have an  account?</h1><Link to='/profile/*' className="text-[#8A33FD]"> Log in</Link>  
+                    <button disabled={password.length <= 8} className="w-80 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign up</button>
+                    <div className="mb-16 gap-x-2 md:text-2xl lg:text-base justify-center lg:justify-start flex">
+                    <h1>Already have an  account?</h1><Link to='/SignIn' className="text-[#8A33FD]"> Log in</Link> 
                     </div>
            </form>
         </div>

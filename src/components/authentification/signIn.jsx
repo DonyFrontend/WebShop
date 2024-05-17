@@ -1,7 +1,20 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
+import { useState } from "react"
 function SignIn(){
+    const [password, setPassword] = useState('')
+    const [message, setMessage] = useState("")
+    const OnHandleChange = (e) =>{
+        const newPassword = e.target.value;
+        setPassword(newPassword)
+        if(newPassword.length <= 8 ){
+            setMessage('Пароль недостаточно надёжен')
+        } else{
+            setMessage('')
+        }
+    }
+
     return(
         <div className="flex  w-full items-center justify-center">
             <form className="flex items-center lg:items-stretch flex-col">
@@ -48,9 +61,17 @@ function SignIn(){
                     <option value='option3'>Osh</option>
                     <option value="option 4">Talas</option>
                     <option value="option 5">Karakol</option>
-                </select>   
+                </select>
+
                 <div className="text-left">
-                <h2 className=" my-[10px] text-2xl lg:text-xl">User name or email address</h2>
+                    <h2 className=" my-[10px] text-2xl lg:text-xl">Your name</h2>
+                </div>
+                <div>
+                    <input required type="text" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                </div>
+
+                <div className="text-left">
+                    <h2 className=" my-[10px] text-2xl lg:text-xl">User name or email address</h2>
                 </div>
                 <div>
                     <input required type="email" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
@@ -58,18 +79,19 @@ function SignIn(){
               
 
                 <div className="text-left">
-                 <h2 className="my-[10px] text-2xl lg:text-xl">Password</h2>
+                    <h2 className="my-[10px] text-2xl lg:text-xl">Password</h2>
                 </div>
 
                 <div>
-                    <input required type="password" className="p-2 w-80  lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                    <input required type="password" value={password} onChange={OnHandleChange} className="p-2 w-80  lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                    <p className="text-red-500">{message}</p>
                 </div>
 
 
                     <Link className="pt-2 text-left lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
-                    <button className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing in</button>
-                    <div className="mb-16 justify-center lg:justify-start flex">
-                    <h1>Don’t have an account?</h1><Link to='/signup' className="text-[#8A33FD]">Sign up</Link>  
+                    <button disabled={password.length <= 8} className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing in</button>
+                    <div className="mb-16 gap-x-2 md:text-2xl lg:text-base  justify-center lg:justify-start flex">
+                    <h1>Don’t have an account?</h1><Link to='/SignUp' className="text-[#8A33FD]">Sign up</Link>  
                     </div>
                 </div>
            </form>
