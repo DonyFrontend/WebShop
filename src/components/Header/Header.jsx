@@ -24,7 +24,7 @@ const Header = () => {
             <CustomLink to={'/shoe'} text={'Shoe'}/>
         </div>
 
-        { click ?<div className='flex rounded-lg text-xl text-center flex-col fixed top-0 right-0 gap-3 p-5 bg-white border border-black'>
+        { click ?<div className='flex rounded-lg text-xl text-center flex-col fixed top-0 right-0 gap-3 p-5 md:p-12 bg-white border border-black'>
             <div className='border-b-2 border-gray-300'>
                 <h1>MENU</h1>
             </div>
@@ -34,7 +34,7 @@ const Header = () => {
             <CustomLink to={'/women'} text={'Women'}/>
             <CustomLink to={'/shoe'} text={'Shoe'}/>
 
-           <button className='border border-gray-500 rounded-lg px-5' onClick={onHandleClick}>Close</button>
+           <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
         </div> : ""} 
         <div>
             <label htmlFor="search">

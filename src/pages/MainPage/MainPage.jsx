@@ -41,26 +41,9 @@ const MainPage = () => {
                 <div className='flex flex-col gap-y-4'>
                     <div className='flex gap-x-2'>
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semibold text-3xl'>New Arrial</h1>
+                        <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>New Arrial</h1>
                     </div>
-                    <div className='grid grid-rows-1 grid-cols-4 gap-5'>
-                        <MainCard />
-                        <MainCard />
-                        <MainCard />
-                        <MainCard />
-                    </div>
-                </div>
-
-                <div className='flex flex-col gap-y-4'>
-                    <div className='flex gap-x-2'>
-                        <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semibold text-3xl'>Categories For Men</h1>
-                    </div>
-                    <div className='grid grid-rows-2 grid-cols-4 gap-5'>
-                        <MainCard />
-                        <MainCard />
-                        <MainCard />
-                        <MainCard />
+                    <div className='grid grid-cols-1 md:grid-cols-2 grid-rows-4 lg:grid-rows-2 lg:grid-cols-4 gap-5'>
                         <MainCard />
                         <MainCard />
                         <MainCard />
@@ -71,9 +54,26 @@ const MainPage = () => {
                 <div className='flex flex-col gap-y-4'>
                     <div className='flex gap-x-2'>
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semibold text-3xl'>Categories For Women</h1>
+                        <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>Categories For Men</h1>
                     </div>
-                    <div className='grid grid-rows-2 grid-cols-4 gap-5'>
+                    <div className='grid md:grid-cols-2 grid-cols-1 grid-rows-4 lg:grid-rows-2 lg:grid-cols-4 gap-5'>
+                        <MainCard />
+                        <MainCard />
+                        <MainCard />
+                        <MainCard />
+                        <MainCard />
+                        <MainCard />
+                        <MainCard />
+                        <MainCard />
+                    </div>
+                </div>
+
+                <div className='flex flex-col gap-y-4'>
+                    <div className='flex gap-x-2'>
+                        <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+                        <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>Categories For Women</h1>
+                    </div>
+                    <div className='grid md:grid-cols-2 grid-cols-1 grid-rows-4 lg:grid-rows-2 lg:grid-cols-4 gap-5'>
                         <MainCard />
                         <MainCard />
                         <MainCard />
@@ -92,7 +92,7 @@ const MainPage = () => {
                     <div>
                         <h5 className='text-white text-lg'>Up To <span className='text-yellow-400'>60%</span> off on brands</h5>
                     </div>
-                    <div className='grid grid-cols-5 grid-rows-1 gap-x-5'>
+                    <div className='grid grid-col-1 md:grid-cols-5 gap-y-10 lg:gap-y-0 lg:grid-cols-5 lg:grid-rows-1 gap-x-5'>
                         <img src={NikeImage} alt="Error!" />
                         <img src={HMImage} alt="Error!" />
                         <img src={LevisImage} alt="Error!" />
@@ -104,9 +104,9 @@ const MainPage = () => {
                 <div className='flex flex-col gap-y-4'>
                     <div className='flex gap-x-2'>
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semibold text-3xl'>FeedBack</h1>
+                        <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBack</h1>
                     </div>
-                    <div className='grid grid-rows-1 grid-cols-3 gap-5'>
+                    <div className='grid md:grid-cols-2 grid-cols-1 grid-rows-4 lg:grid-rows-2 lg:grid-cols-4 gap-5'>
                         <MainCard />
                         <MainCard />
                         <MainCard />
