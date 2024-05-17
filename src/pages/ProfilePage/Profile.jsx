@@ -52,7 +52,7 @@ const Profile = () => {
                 </Routes>
             </div>
         </div>
-    </div> : <SingIn/>}
+    </div> : <SignIn/>}
         </>
     )
 }
