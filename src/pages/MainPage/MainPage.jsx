@@ -43,7 +43,7 @@ const MainPage = () => {
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
                         <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>New Arrial</h1>
                     </div>
-                    <div className='grid grid-cols-1 md:grid-cols-2 grid-rows-4 lg:grid-rows-2 lg:grid-cols-4 gap-5'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 auto-grid-row:auto2 lg:grid-cols-4 gap-5'>
                         <MainCard />
                         <MainCard />
                         <MainCard />
@@ -106,7 +106,7 @@ const MainPage = () => {
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
                         <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBack</h1>
                     </div>
-                    <div className='grid md:grid-cols-2 grid-cols-1 grid-rows-4 lg:grid-rows-2 lg:grid-cols-4 gap-5'>
+                    <div className='grid md:grid-cols-2 grid-cols-1 auto-grid-row:auto lg:grid-cols-4 gap-5'>
                         <MainCard />
                         <MainCard />
                         <MainCard />
