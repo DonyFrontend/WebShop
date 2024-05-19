@@ -4,10 +4,12 @@ import { scrollToZero } from '../utils/CustomFC';
 import { useSelector, useDispatch } from 'react-redux';
 import { basketProductsTC } from '../../Slices/getBasketProductSlice';
 import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
+import { useToast, Button, Box } from '@chakra-ui/react';
 
 const Basket = () => {
     const { products } = useSelector(state => state.getBasketProductSlice);
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch();
+    const toast = useToast();
 
     useEffect(() => {
         scrollToZero()
@@ -15,7 +17,7 @@ const Basket = () => {
     }, [])
 
     function deleteProduct(id) {
-        dispatch(deleteBasketProductTC({id}))
+        dispatch(deleteBasketProductTC({ id }))
         dispatch(basketProductsTC());
     }
 
@@ -40,7 +42,23 @@ const Basket = () => {
             <h5>1</h5>
             <h5>FREE</h5>
             <h5>$29</h5>
-            <img onClick={() => deleteProduct(item.id)} src={bag} alt="Error!" style={{ marginRight: 12 , cursor: 'pointer'}}/>
+            <div onClick={() => deleteProduct(item.id)}>
+                <Button
+                    onClick={() =>
+                        {toast({
+                            position: 'bottom-left',
+                            render: () => (
+                                <Box color='white' p={3} bg='darkviolet'>
+                                    Delete product from basket
+                                </Box>
+                            ),
+                        }),
+                        deleteProduct(item.id)}
+                    }
+                >
+                    <img src={bag} alt="" />
+                </Button>
+            </div>
         </div>
     </div>)
 

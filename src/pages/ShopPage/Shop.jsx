@@ -35,9 +35,9 @@ const Shop = () => {
 
             <div className="w-[80%] grid grid-cols-3 gap-5">
                 {selector.products.length != 0 ? selector.products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
-                    <div className='flex flex-col justify-between'>
+                    <div className='flex flex-col h-[100%] justify-between'>
                         <div>
-                            <img src={item.images[0]} alt="Error!" />
+                            <img src={item.images[0]} alt="Error!"/>
                         </div>
                         <div className='flex flex-col gap-y-1'>
                             <h2 className='font-medium text-xl'>{item.title}</h2>
