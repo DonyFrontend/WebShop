@@ -20,8 +20,8 @@ const Shop = () => {
 
     return <div className="flex w-[100%] justify-center mt-20">
         <div className="flex w-[95%] justify-between">
-            <div className="w-[15%] p-4 flex flex-col gap-y-3" style={{ borderRight: '1px solid gray' }}>
-                {/* <div className='fixed left-10 flex flex-col gap-y-5 p-3'> */}
+            <div className="w-[15%] p-4 gap-y-3" style={{ borderRight: '1px solid gray' }}>
+                <div className='sticky left-0 top-12 flex flex-col gap-y-5 p-3'>
                     <div className='flex justify-between'>
                         <h1 className='text-[#807D7E] font-medium text-2xl'>Filter</h1>
                         <img src={filter} alt="Error!" />
@@ -30,7 +30,7 @@ const Shop = () => {
                     <div>
                         <AccordionFilter />
                     </div>
-                {/* </div> */}
+                </div>
             </div>
 
             <div className="w-[80%] grid grid-cols-1 lg:grid-cols-3 gap-5">
