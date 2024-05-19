@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
+import {useDispatch} from 'react-redux'
+import { SignInTC } from "../../Slices/SignInTC"
+import { useState } from "react"
+
 function SignIn(){
+    const dispatch = useDispatch();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function postUser(e) {
+        e.preventDefault();
+        dispatch(SignInTC({email, password}));
+    }
+
     return(
         <div className="flex  w-full items-center justify-center">
             <form className="flex items-center lg:items-stretch flex-col">
@@ -26,7 +40,6 @@ function SignIn(){
                     </div>
                 </div>
             </div>
-
 
                 <div className="flex my-0 lg:my-[6%] span-origin items-center justify-between">
                 <div className=" lg:w-[200px] border-y-[1px] border-gray-300">
@@ -53,7 +66,7 @@ function SignIn(){
                 <h2 className=" my-[10px] text-2xl lg:text-xl">User name or email address</h2>
                 </div>
                 <div>
-                    <input required type="email" className="p-2 w-80 md:w-full lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                    <input value={email} onChange={e => setEmail(e.target.value)} required type="email" className="p-2 w-80   lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
                 </div>
               
 
@@ -62,14 +75,14 @@ function SignIn(){
                 </div>
 
                 <div>
-                    <input required type="password" className="p-2 w-80 md:w-full lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                    <input value={password} onChange={e => setPassword(e.target.value)} required type="password" className="p-2 w-80  lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
                 </div>
 
 
-                    <Link className="pt-2 text-left md:text-xl lg:text-base  lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
-                    <button className="w-80 text-xl mt-3 md:w-full lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign in</button>
-                    <div className="mb-16 gap-x-2 md:text-2xl lg:text-base  justify-center lg:justify-start flex">
-                    <h1>Don’t have an account?</h1><Link to='/SignUp' className="text-[#8A33FD]">Sign up</Link>  
+                    <Link className="pt-2 text-left lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
+                    <button onClick={postUser} className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing in</button>
+                    <div className="mb-16 justify-center lg:justify-start flex">
+                    <h1>Don’t have an account?</h1><Link to='/signup' className="text-[#8A33FD]">Sign up</Link>  
                     </div>
                 </div>
            </form>
