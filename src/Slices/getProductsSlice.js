@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { productsCollectionRef } from "../FirebaseConfig";
-import { getDocs, onSnapshot, where } from "firebase/firestore";
+import { getDocs, limit, onSnapshot, where } from "firebase/firestore";
 import { query } from "firebase/firestore";
 
 export const shopTC = createAsyncThunk(
@@ -13,6 +13,51 @@ export const shopTC = createAsyncThunk(
             ...doc.data()
         }))
         dispatch(setData(data))
+    }
+)
+
+export const mensProductsTC = createAsyncThunk(
+    'webShoop/menProducts',
+    async (props, {dispatch}) => {
+        const p = query(productsCollectionRef, where('categories', 'array-contains', 'Men'), limit(8));
+        onSnapshot(p, (snapshot) => {
+            let newProducts = [];
+            snapshot.docs.forEach((doc) => {
+                newProducts.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+            })
+            dispatch(setMenData(newProducts));            
+        })
+    }
+)
+export const womensProductsTC = createAsyncThunk(
+    'webShoop/menProducts',
+    async (props, {dispatch}) => {
+        const p = query(productsCollectionRef, where('categories', 'array-contains', 'Women'), limit(8));
+        onSnapshot(p, (snapshot) => {
+            let newProducts = [];
+            snapshot.docs.forEach((doc) => {
+                newProducts.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+            })
+            dispatch(setWomenData(newProducts));            
+        })
+    }
+)
+export const newsProductsTC = createAsyncThunk(
+    'webShoop/menProducts',
+    async (props, {dispatch}) => {
+        const productsData = await getDocs(productsCollectionRef);
+
+        const data = productsData.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }))
+        dispatch(setNewData(data));
     }
 )
 
@@ -36,14 +81,26 @@ export const sortProductsTC = createAsyncThunk(
 const productsSlice = createSlice({
     name: 'products',
     initialState: {
-        products: []
+        products: [],
+        men: [],
+        women: [],
+        new: []
     },
     reducers: {
         setData(state, action) {
             state.products = action.payload;
-        }
+        },
+        setMenData(state, action) {
+            state.men = action.payload;
+        },
+        setWomenData(state, action) {
+            state.women = action.payload;
+        },
+        setNewData(state, action) {
+            state.new = action.payload;
+        },
     }
 })
 
-export const {setData} = productsSlice.actions;
+export const {setData, setMenData, setNewData, setWomenData} = productsSlice.actions;
 export default productsSlice.reducer; 

@@ -21,10 +21,16 @@ const Basket = () => {
         dispatch(basketProductsTC());
     }
 
+    let totalPrice = 0;
+    products.forEach(element => {
+        totalPrice += element.price;
+    }); 
+    console.log(totalPrice);
+
     const basketProducts = products.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
         <div className="flex gap-x-[40px] justify-center">
             <div>
-                <img src={item.images} alt="" width={200} />
+                <img src={item.images} alt="Error" width={200} />
             </div>
             <div className="flex flex-col gap-y-4">
                 <div>
@@ -40,7 +46,7 @@ const Basket = () => {
         <div className="w-[65%] flex justify-around text-lg gap-x-16">
             <h5>${item.price}</h5>
             <h5>Shipping: FREE</h5>
-            <h5>Total: $29</h5>
+            <h5>Total: ${item.price}</h5>
             <div onClick={() => deleteProduct(item.id)}>
                 <Button
                     onClick={() =>
@@ -85,9 +91,9 @@ const Basket = () => {
 
                 <div className="flex flex-col gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
-                        <p>Sub Total: $29</p>
+                        <p>Sub Total: {totalPrice}</p>
                         <p>Shipping: FREE</p>
-                        <h1 className="font-medium">Grand Total: $29</h1>
+                        <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
                         <button className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</button>
