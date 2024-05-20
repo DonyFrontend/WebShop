@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import bag from './images/bag.svg';
 import { scrollToZero } from '../utils/CustomFC';
 import { useSelector, useDispatch } from 'react-redux';
@@ -39,9 +39,8 @@ const Basket = () => {
 
         <div className="w-[65%] flex justify-around text-lg gap-x-16">
             <h5>${item.price}</h5>
-            <h5>1</h5>
-            <h5>FREE</h5>
-            <h5>$29</h5>
+            <h5>Shipping: FREE</h5>
+            <h5>Total: $29</h5>
             <div onClick={() => deleteProduct(item.id)}>
                 <Button
                     onClick={() =>
@@ -64,16 +63,7 @@ const Basket = () => {
 
     return <div className="flex flex-col">
         <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">
-            <div className="w-[20%] flex justify-center text-white text-lg">
-                <h5>Product Details</h5>
-            </div>
-            <div className="flex justify-around text-white w-[66%] text-lg gap-x-1">
-                <h5>Price</h5>
-                <h5>Quantity</h5>
-                <h5>Shipping</h5>
-                <h5>Subtotal</h5>
-                <h5>Action</h5>
-            </div>
+                <h5 className='text-white text-xl'>Your products:</h5>
         </div>
 
         <div className="w-[100%] flex flex-col gap-y-5">
