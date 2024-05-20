@@ -11,6 +11,7 @@ import { deleteBasketProductTC } from '../Slices/deleteBasketProductTC';
 import { addWishlistProduct } from '../Slices/addWishlistProductTC';
 import getWishlistProductSlice from '../Slices/getWishlistProductSlice';
 import { deleteWishlistProductTC } from '../Slices/deleteWishlistProductTC';
+import { newsProductsTC, mensProductsTC, womensProductsTC } from '../Slices/getProductsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -25,6 +26,9 @@ export const store = configureStore({
         deleteBasketProductTC,
         addWishlistProduct,
         getWishlistProductSlice,
-        deleteWishlistProductTC
+        deleteWishlistProductTC,
+        newsProductsTC,
+        mensProductsTC,
+        womensProductsTC
     }
 })

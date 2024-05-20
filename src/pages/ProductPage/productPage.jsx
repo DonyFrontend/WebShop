@@ -40,22 +40,12 @@ function Product() {
 
   const { product, isProductFetch } = useSelector(state => state.productPageTC);
   console.log(product);
-  const [size, setSize] = useState(undefined);
+  const [size, setSize] = useState(0);
   const [color, setColor] = useState('');
-
 
   if (isProductFetch) {
     return <h1 className="text-4xl p-10">Loading...</h1>
   }
-  //selects and categories
-  const categories = product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)
-  const colors = product?.colors?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)
-  const selectSize = product?.sizes?.map((item, index) => <Radio onClick={() => setSize(item)} key={index} value={String(index)}>{item}</Radio>)
-  const selectColor = product?.colors?.map((item, index) => <Radio onClick={() => setColor(item)} key={index} value={String(index)}>{item}</Radio>)
-  const images = product?.images?.map((item, index) => <SwiperSlide key={index} className="flex items-center">
-    <img style={{ width: "100%" }} src={item} alt="Error!" />
-  </SwiperSlide>)
-
 
   const postBasketProduct = (e) => {
     e.preventDefault();
@@ -85,7 +75,9 @@ function Product() {
                 slidesPerView={1}
                 pagination={{ clickable: true }}
               >
-                {images}
+                {product?.images?.map((item, index) => <SwiperSlide key={index} className="flex items-center">
+                  <img style={{ width: "100%" }} src={item} alt="Error!" />
+                </SwiperSlide>)}
               </Swiper>
             </div>
 
@@ -114,7 +106,7 @@ function Product() {
                         </h1>
                         <AccordionPanel className='flex flex-col'>
                           <RadioGroup className='grid grid-cols-3 auto-rows-auto gap-y-2'>
-                            {selectSize}
+                            {product?.sizes?.map((item, index) => <Radio onClick={() => setSize(item)} key={index} value={String(index)}>{item}</Radio>)}
                           </RadioGroup>
                         </AccordionPanel>
                       </AccordionItem>
@@ -130,7 +122,7 @@ function Product() {
                         </h1>
                         <AccordionPanel className='flex flex-col'>
                           <RadioGroup className='grid grid-cols-3 auto-rows-auto gap-y-2'>
-                            {selectColor}
+                            {product?.colors?.map((item, index) => <Radio onClick={() => setColor(item)} key={index} value={String(index)}>{item}</Radio>)}
                           </RadioGroup>
                         </AccordionPanel>
                       </AccordionItem>
@@ -218,14 +210,14 @@ function Product() {
                 <div>
                   <h2 className="text-xl text-gray-500">Categories</h2>
                 </div>
-                <div className="flex gap-x-1">{categories}</div>
+                <div className="flex gap-x-1">{product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}</div>
               </div>
               <div className="flex flex-col">
                 <div>
                   <h2 className="text-xl text-gray-500">Colors</h2>
                 </div>
                 <div className="flex">
-                  {colors}
+                  {product?.colors?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}
                 </div>
               </div>
 

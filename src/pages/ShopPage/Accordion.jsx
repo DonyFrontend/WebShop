@@ -10,22 +10,33 @@ import {
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { sortProductsTC } from '../../Slices/getProductsSlice';
-import { sortData } from './utils/data';
-import { NavLink } from 'react-router-dom';
 import navBarIcon from './images/navBarIcon.svg';
 import { shopTC } from '../../Slices/getProductsSlice';
 
 const AccordionFilter = () => {
     const dispatch = useDispatch();
-    const navBar = sortData.map((item, index) => <div key={index}>
-        <NavLink className='flex justify-between'>
-            <p className='text-[#807D7E] font-semibold'>{item}</p>
-            <img src={navBarIcon} alt="Error!" />
-        </NavLink>
-    </div>)
 
     return <div className='flex flex-col gap-y-5'>
-        <div className='flex flex-col gap-y-4'>{navBar}</div>
+        <div className='flex flex-col gap-y-4'>
+            <div>
+                <div onClick={() => dispatch(sortProductsTC('Shoe'))} className='flex justify-between cursor-pointer'>
+                    <p className='text-[#807D7E] font-semibold'>Shoes</p>
+                    <img src={navBarIcon} alt="Error!" />
+                </div>
+            </div>
+            <div>
+                <div onClick={() => dispatch(sortProductsTC('Shorts'))} className='flex justify-between cursor-pointer'>
+                    <p className='text-[#807D7E] font-semibold'>Shorts</p>
+                    <img src={navBarIcon} alt="Error!" />
+                </div>
+            </div>
+            <div>
+                <div onClick={() => dispatch(sortProductsTC('Socks'))} className='flex justify-between cursor-pointer'>
+                    <p className='text-[#807D7E] font-semibold'>Socks</p>
+                    <img src={navBarIcon} alt="Error!" />
+                </div>
+            </div>
+        </div>
 
         <Accordion allowMultiple>
             <AccordionItem>
