@@ -49,15 +49,20 @@ export const womensProductsTC = createAsyncThunk(
     }
 )
 export const newsProductsTC = createAsyncThunk(
-    'webShoop/menProducts',
+    'webShop/menProducts',
     async (props, {dispatch}) => {
-        const productsData = await getDocs(productsCollectionRef);
+        const productsData = query(productsCollectionRef, limit(4));
 
-        const data = productsData.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }))
-        dispatch(setNewData(data));
+        onSnapshot(productsData, (snapshot) => {
+            let newProducts = [];
+            snapshot.docs.forEach((doc) => {
+                newProducts.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+            })
+            dispatch(setNewData(newProducts));            
+        })
     }
 )
 
