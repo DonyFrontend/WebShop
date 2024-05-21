@@ -4,10 +4,12 @@ import { wishlistProductsTC } from '../../../Slices/getWishlistProductSlice';
 import { useEffect } from 'react';
 import { addBasketProduct } from '../../../Slices/addBasketProductTC';
 import { deleteWishlistProductTC } from '../../../Slices/deleteWishlistProductTC';
+import { useToast, Button, Box } from '@chakra-ui/react';
 
 const WishList = () => {
     const { products } = useSelector(state => state.getWishlistProductSlice)
     const disptach = useDispatch()
+    const toast = useToast();
 
     useEffect(() => {
         disptach(wishlistProductsTC())
@@ -25,7 +27,22 @@ const WishList = () => {
             {products.map((item, index) => <div key={index} className='w-[100%] flex justify-between'>
                 <div className='flex items-center gap-x-10'>
                     <div onClick={() => deleteProduct(item.id)}>
-                        <img className='cursor-pointer' src={image} alt="Error" />
+                        <Button
+                            onClick={() => {
+                                toast({
+                                    position: 'bottom-left',
+                                    render: () => (
+                                        <Box color='white' p={3} bg='darkviolet'>
+                                            Delete product from wishlist
+                                        </Box>
+                                    ),
+                                }),
+                                deleteProduct(item.id);
+                            }
+                            }
+                        >
+                            <img src={image} alt="Error!" />
+                        </Button>
                     </div>
                     <div>
                         <img src={item.images} alt="Error!" style={{ width: 200 }} />
@@ -49,14 +66,30 @@ const WishList = () => {
 
                 <div className='flex items-center gap-x-12'>
                     <p className='text-lg text-gray-600'>$29.00</p>
-                    <button onClick={() => disptach(addBasketProduct({
+                    <div onClick={() => disptach(addBasketProduct({
                         product: {
                             title: item.title,
                             description: item.description,
                             images: [item.images],
                             price: item.price,
                         }, newSize: item.size, newColor: item.color
-                    }))} className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>Add to cart</button>
+                    }))}>
+                        <Button
+                            onClick={() =>
+                                toast({
+                                    position: 'bottom-left',
+                                    render: () => (
+                                        <Box color='white' p={3} bg='darkviolet'>
+                                            Add product to basket
+                                        </Box>
+                                    ),
+                                })
+                            }
+                            colorScheme='purple'
+                        >
+                            Add to basket
+                        </Button>
+                    </div>
                 </div>
             </div>)}
         </div>

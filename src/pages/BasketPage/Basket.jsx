@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 import bag from './images/bag.svg';
 import { scrollToZero } from '../utils/CustomFC';
 import { useSelector, useDispatch } from 'react-redux';
 import { basketProductsTC } from '../../Slices/getBasketProductSlice';
 import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
+import { useToast, Button, Box } from '@chakra-ui/react';
 
 const Basket = () => {
     const { products } = useSelector(state => state.getBasketProductSlice);
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch();
+    const toast = useToast();
 
     useEffect(() => {
         scrollToZero()
@@ -15,14 +17,20 @@ const Basket = () => {
     }, [])
 
     function deleteProduct(id) {
-        dispatch(deleteBasketProductTC({id}))
+        dispatch(deleteBasketProductTC({ id }))
         dispatch(basketProductsTC());
     }
+
+    let totalPrice = 0;
+    products.forEach(element => {
+        totalPrice += element.price;
+    }); 
+    console.log(totalPrice);
 
     const basketProducts = products.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
         <div className="flex gap-x-[40px] justify-center">
             <div>
-                <img src={item.images} alt="" width={200} />
+                <img src={item.images} alt="Error" width={200} />
             </div>
             <div className="flex flex-col gap-y-4">
                 <div>
@@ -37,25 +45,31 @@ const Basket = () => {
 
         <div className="w-[65%] flex justify-around text-lg gap-x-16">
             <h5>${item.price}</h5>
-            <h5>1</h5>
-            <h5>FREE</h5>
-            <h5>$29</h5>
-            <img onClick={() => deleteProduct(item.id)} src={bag} alt="Error!" style={{ marginRight: 12 , cursor: 'pointer'}}/>
+            <h5>Shipping: FREE</h5>
+            <h5>Total: ${item.price}</h5>
+            <div onClick={() => deleteProduct(item.id)}>
+                <Button
+                    onClick={() =>
+                        {toast({
+                            position: 'bottom-left',
+                            render: () => (
+                                <Box color='white' p={3} bg='darkviolet'>
+                                    Delete product from basket
+                                </Box>
+                            ),
+                        }),
+                        deleteProduct(item.id)}
+                    }
+                >
+                    <img src={bag} alt="" />
+                </Button>
+            </div>
         </div>
     </div>)
 
     return <div className="flex flex-col">
         <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">
-            <div className="w-[20%] flex justify-center text-white text-lg">
-                <h5>Product Details</h5>
-            </div>
-            <div className="flex justify-around text-white w-[66%] text-lg gap-x-1">
-                <h5>Price</h5>
-                <h5>Quantity</h5>
-                <h5>Shipping</h5>
-                <h5>Subtotal</h5>
-                <h5>Action</h5>
-            </div>
+                <h5 className='text-white text-xl'>Your products:</h5>
         </div>
 
         <div className="w-[100%] flex flex-col gap-y-5">
@@ -77,9 +91,9 @@ const Basket = () => {
 
                 <div className="flex flex-col gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
-                        <p>Sub Total: $29</p>
+                        <p>Sub Total: {totalPrice}</p>
                         <p>Shipping: FREE</p>
-                        <h1 className="font-medium">Grand Total: $29</h1>
+                        <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
                         <button className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</button>
