@@ -89,7 +89,7 @@ function SignIn(){
 
 
                     <Link className="pt-2 text-left lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
-                    <button disabled={password.length <= 8} className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sing in</button>
+                    <button disabled={password.length <= 8} className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign in</button>
                     <div className="mb-16 gap-x-2 md:text-2xl lg:text-base  justify-center lg:justify-start flex">
                     <h1>Don’t have an account?</h1><Link to='/SignUp' className="text-[#8A33FD]">Sign up</Link>  
                     </div>
