@@ -67,8 +67,8 @@ function Product() {
     <>
       <div className="w-full flex justify-center">
         <div className="w-[90%] flex flex-col justify-center mt-10">
-          <div className="flex gap-40">
-            <div className="w-[35%]">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-40">
+            <div className="lg:w-[35%] w-full">
               <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={{ clickable: true }}
@@ -81,13 +81,13 @@ function Product() {
               </Swiper>
             </div>
 
-            <div className="w-[65%] mt-5 flex">
+            <div className="w-[65%] mt-5 ml-16 lg:ml-0 flex">
               <div className="">
-                <h1 className="text-4xl">
+                <h1 className="text-4xl text-center lg:text-left">
                   {product.title}
                 </h1>
 
-                <div className="flex mt-10 items-start gap-x-4">
+                <div className="flex mt-10 justify-center gap-y-5 lg:gap-y-0 lg:justify-start flex-col lg:flex-row items-center lg:items-start gap-x-4">
                   <img src={stars} alt="Error!" />
                   <p>3.5</p>
                 </div>
@@ -128,7 +128,7 @@ function Product() {
                       </AccordionItem>
                     </Accordion>
                   </div>
-                  <div className="my-10 flex gap-10">
+                  <div className="my-10 flex flex-col items-center lg:flex-row gap-10">
                     <div onClick={postBasketProduct}>
                       <Button
                         onClick={() =>
@@ -165,23 +165,23 @@ function Product() {
                       </Button>
                     </div>
 
-                    <div className="border-[1px] border-black py-1.5 px-5 font-medium rounded-lg">
+                    <div className="border-[1px] w-36 lg:w-1/6 text-center border-gray-500 lg:border-black py-2 lg:py-1.5 px-5 font-medium rounded-lg">
                       <p>${product.price}</p>
                     </div>
                   </div>
                   <div className="w-full mt-5 border-y-[1px] border-gray-300"></div>
                   <div className="flex mt-16 text-xl flex-col">
-                    <div className="flex gap-10">
-                      <img className="w-5 h-5 mt-1" src={credit} alt="" />
+                    <div className="flex flex-col items-center lg:flex-row gap-10">
+                      <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={credit} alt="" />
                       <p>Secure payment</p>
-                      <img className="w-5 h-5 mt-1" src={truck} alt="" />
+                      <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={truck} alt="" />
                       <p>Free shipping</p>
                     </div>
-                    <div className="flex mt-5 gap-10">
-                      <img className="w-5 h-5 mt-1" src={Size} alt="" />
+                    <div className="flex flex-col items-center lg:flex-row mt-5 gap-10">
+                      <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={Size} alt="" />
                       <p>Size & Fit</p>
                       <img
-                        className="h-5 ml-14 w-5 mt-1"
+                        className="lg:w-5 w-10 h-10 lg:h-5 lg:ml-14 mt-1"
                         src={Free}
                         alt=""
                       />{" "}
@@ -193,19 +193,19 @@ function Product() {
             </div>
           </div>
 
-          <div className="w-[80%] my-20 gap-y-10 flex flex-col">
+          <div className="w-[80%] ml-16 lg:ml-0 my-20 gap-y-10 flex flex-col">
             <div className="flex gap-x-2">
               <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-              <h1 className="text-4xl">Product Description</h1>
+              <h1 className="text-3xl lg:text-4xl">Product Description</h1>
             </div>
 
-            <div className="flex w-[50%]">
-              <p>
+            <div className="flex w-full lg:w-[50%]">
+              <p className="text-xl lg:text-base">
                 {product.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-2 grid-rows-2 mt-10 gap-0.5 gap-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
               <div className="flex flex-col gap-y-1">
                 <div>
                   <h2 className="text-xl text-gray-500">Categories</h2>
@@ -229,7 +229,7 @@ function Product() {
           </div>
 
 
-          <div className="flex gap-x-2">
+          <div className="flex ml-16 lg:ml-0 gap-x-2">
             <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
 
             <h1 className="text-4xl">Similar Products</h1>
