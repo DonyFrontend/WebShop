@@ -90,7 +90,7 @@ const Header = () => {
                             <h1 className='font-semibold text-2xl'>{item.title}</h1>
                             <div className='flex gap-x-3'>
                                 <p className='font-semibold text-lg'>Color:</p>
-                                <p className='text-lg'>{item.colors}</p>
+                                <div className='flex text-lg'>{item.colors.map((item, index) => <p key={index}>{item}/ </p>)}</div>
                             </div>
 
                             <div className='flex gap-x-3'>
