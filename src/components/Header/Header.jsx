@@ -104,7 +104,7 @@ const Header = () => {
                     <div onClick={closeDiv}>
                         <Link to={`/shop/${item.id}`} className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</Link>
                     </div>
-                </div>) : <h1>Not found</h1>}
+                </div>) : <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>Not found</h1>}
         </div> : ''}
     </header>
 }
