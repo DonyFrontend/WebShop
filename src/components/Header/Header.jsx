@@ -21,7 +21,7 @@ const Header = () => {
     console.log(title);
 
     const dispatch = useDispatch();
-    const { products } = useSelector(state => state.findProductTC);
+    const products = useSelector(state => state.findProductTC);
 
     function onHandleTitle(e) {
         e.preventDefault();
@@ -80,7 +80,7 @@ const Header = () => {
                         <img src={inputImage} alt="Error!" />
                     </Button>
                 </div>
-                {title.length == 0 ? '' : products.length != 0 ? products.map((item, index) => <div key={index} className="flex justify-between items-center">
+                {title.length == 0 ? '' : products.products.length != 0 ? products.products.map((item, index) => <div key={index} className="flex justify-between items-center">
                     <div className="flex items-center justify-around gap-x-4">
                         <div>
                             <img src={item.images[0]} alt="Error!" style={{ width: 200 }} />
@@ -104,7 +104,7 @@ const Header = () => {
                     <div onClick={closeDiv}>
                         <Link to={`/shop/${item.id}`} className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</Link>
                     </div>
-                </div>) : <h1>Not found</h1>}
+                </div>) : <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>{products.isFetch == false ? 'Type name of product and click on button' : 'Not found'}  </h1>}
         </div> : ''}
     </header>
 }
