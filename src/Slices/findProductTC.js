@@ -13,20 +13,25 @@ export const findProductsTC = createAsyncThunk(
         const newData = data.filter((item) => item.title.toUpperCase().includes(title.toUpperCase()));
         console.log('newproduct', newData);
         dispatch(setData(newData));
+        dispatch(setFetch());
     }
 )
 
 const findProductSlice = createSlice({
     name: 'webShop/findProduct',
     initialState: {
-        products: []
+        products: [],
+        isFetch: false
     },
     reducers: {
         setData(state, action) {
             state.products = action.payload;
+        },
+        setFetch(state) {
+            state.isFetch = true;
         }
     }
 })
 
-export const {setData} = findProductSlice.actions;
+export const {setData, setFetch} = findProductSlice.actions;
 export default findProductSlice.reducer;
