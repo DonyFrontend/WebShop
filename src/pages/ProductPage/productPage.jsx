@@ -67,8 +67,8 @@ function Product() {
     <>
       <div className="w-full flex justify-center">
         <div className="w-[90%] flex flex-col justify-center mt-10">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-40">
-            <div className="lg:w-[35%] w-full">
+          <div className="flex items-center md:ml-16 md:items-start lg:ml-0 flex-col lg:flex-row gap-10 lg:gap-40">
+            <div className="lg:w-[35%] w-full md:w-[85%]">
               <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={{ clickable: true }}
@@ -81,15 +81,15 @@ function Product() {
               </Swiper>
             </div>
 
-            <div className="w-[65%] mt-5 ml-16 lg:ml-0 flex">
+            <div className="w-[65%] mt-5 flex">
               <div className="">
                 <h1 className="text-4xl text-center lg:text-left">
                   {product.title}
                 </h1>
 
-                <div className="flex mt-10 justify-center gap-y-5 lg:gap-y-0 lg:justify-start flex-col lg:flex-row items-center lg:items-start gap-x-4">
-                  <img src={stars} alt="Error!" />
-                  <p>3.5</p>
+                <div className="flex mt-10 justify-center gap-y-5 lg:gap-y-0 md:justify-start  lg:justify-start flex-col lg:flex-row items-center lg:items-start gap-x-4">
+                  <img className="md:w-52 lg:w-40" src={stars} alt="Error!" />
+                  <p className="md:text-2xl lg:text-base">3.5</p>
                 </div>
 
                 <div>
@@ -128,7 +128,7 @@ function Product() {
                       </AccordionItem>
                     </Accordion>
                   </div>
-                  <div className="my-10 flex flex-col items-center lg:flex-row gap-10">
+                  <div className="my-10 flex flex-col items-center md:flex-row lg:flex-row gap-10">
                     <div onClick={postBasketProduct}>
                       <Button
                         onClick={() =>
@@ -170,18 +170,18 @@ function Product() {
                     </div>
                   </div>
                   <div className="w-full mt-5 border-y-[1px] border-gray-300"></div>
-                  <div className="flex mt-16 text-xl flex-col">
-                    <div className="flex flex-col items-center lg:flex-row gap-10">
+                  <div className="flex mt-16 text-xl lg:text-xl md:text-2xl flex-col">
+                    <div className="flex flex-col items-center md:flex-row  lg:flex-row gap-10">
                       <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={credit} alt="" />
                       <p>Secure payment</p>
                       <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={truck} alt="" />
                       <p>Free shipping</p>
                     </div>
-                    <div className="flex flex-col items-center lg:flex-row mt-5 gap-10">
+                    <div className="flex flex-col items-center md:flex-row lg:flex-row mt-5 gap-10">
                       <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={Size} alt="" />
                       <p>Size & Fit</p>
                       <img
-                        className="lg:w-5 w-10 h-10 lg:h-5 lg:ml-14 mt-1"
+                        className="lg:w-5 w-10 h-10 lg:h-5 lg:ml-14 md:ml-16 mt-1"
                         src={Free}
                         alt=""
                       />{" "}
@@ -205,7 +205,7 @@ function Product() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
               <div className="flex flex-col gap-y-1">
                 <div>
                   <h2 className="text-xl text-gray-500">Categories</h2>
@@ -216,7 +216,7 @@ function Product() {
                 <div>
                   <h2 className="text-xl text-gray-500">Colors</h2>
                 </div>
-                <div className="flex">
+                <div className="flex flex-col md:flex-row lg:flex-row">
                   {product?.colors?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}
                 </div>
               </div>
@@ -229,7 +229,7 @@ function Product() {
           </div>
 
 
-          <div className="flex ml-16 lg:ml-0 gap-x-2">
+          <div className="flex justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
             <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
 
             <h1 className="text-4xl">Similar Products</h1>
