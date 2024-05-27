@@ -1,21 +1,22 @@
 import filter from './images/filter.svg';
 import AccordionFilter from './Accordion';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { scrollToZero } from '../utils/CustomFC';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { productTC } from '../../Slices/productPageTC'; 
+import { shopTC } from '../../Slices/getProductsSlice';
 
 const Shop = () => {
+    const dispatch = useDispatch();
+
     useEffect(() => {
         scrollToZero()
-    }, [])
+        dispatch(shopTC());
+    }, [dispatch])
 
     const selector = useSelector(state => state.getProductsSlice);
     console.log(selector);
 
-    // const dispatch = useDispatch();
     
 
     return <div className="flex w-[100%] justify-center mt-20">
@@ -28,7 +29,7 @@ const Shop = () => {
                     </div>
 
                     <div>
-                        <AccordionFilter />
+                        <AccordionFilter/>
                     </div>
                 </div>
             </div>

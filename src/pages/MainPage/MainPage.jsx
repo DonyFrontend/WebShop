@@ -26,7 +26,7 @@ const MainPage = () => {
         dispatch(newsProductsTC());
         dispatch(mensProductsTC());
         dispatch(womensProductsTC());
-    }, [])
+    }, [dispatch])
 
 
 
