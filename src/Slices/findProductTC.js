@@ -10,10 +10,7 @@ export const findProductsTC = createAsyncThunk(
             id: doc.id,
             ...doc.data()
         }))
-
-        console.log(data);
-        console.log('title', title);
-        const newData = data.filter((item) => item.title.toUpperCase() <= title.toUpperCase());
+        const newData = data.filter((item) => item.title.toUpperCase().includes(title.toUpperCase()));
         console.log('newproduct', newData);
         dispatch(setData(newData));
     }
