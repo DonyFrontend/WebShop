@@ -2,17 +2,28 @@ import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
 import { useState } from "react"
+import { SignInTC } from "../../Slices/SignInTC";
+import {useDispatch} from 'react-redux';
+
 function SignIn(){
+    const dispatch = useDispatch();
+
     const [password, setPassword] = useState('')
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState("")
+
     const OnHandleChange = (e) =>{
         const newPassword = e.target.value;
         setPassword(newPassword)
-        if(newPassword.length <= 8 ){
-            setEmail('Пароль недостаточно надёжен')
+        if(newPassword.length < 8 | newPassword == 12345678 | newPassword == 87654321 ){
+            setMessage('Пароль недостаточно надёжен')
         } else{
-            setEmail('')
+            setMessage('')
         }
+    }
+
+    function postUser() {
+        dispatch(SignInTC({email, password}));
     }
 
     return(
@@ -70,7 +81,7 @@ function SignIn(){
                 </div>
 
                 <div className="text-left">
-                    <h2 className=" my-[10px] text-2xl lg:text-xl">User name or email address</h2>
+                    <h2 className=" my-[10px] text-2xl lg:text-xl">Email</h2>
                 </div>
                 <div>
                     <input value={email} onChange={e => setEmail(e.target.value)} required type="email" className="p-2 w-80   lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
@@ -83,12 +94,12 @@ function SignIn(){
 
                 <div>
                     <input required type="password" value={password} onChange={OnHandleChange} className="p-2 w-80  lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
-                    <p className="text-red-500">{email}</p>
+                    <p className="text-red-500">{message}</p>
                 </div>
 
 
                     <Link className="pt-2 text-left lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
-                    <button disabled={password.length <= 8} className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign in</button>
+                    <button disabled={password.length <= 8} onClick={postUser} className="w-80 mt-3 lg:mt-0 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign in</button>
                     <div className="mb-16 gap-x-2 md:text-2xl lg:text-base  justify-center lg:justify-start flex">
                     <h1>Don’t have an account?</h1><Link to='/SignUp' className="text-[#8A33FD]">Sign up</Link>  
                     </div>

@@ -8,17 +8,11 @@ import Footer from './components/Footer';
 import SignUp from './components/authentification/signup';
 import SignIn from './components/authentification/signIn';
 import Shop from './pages/ShopPage/Shop';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { shopTC } from './Slices/getProductsSlice'; 
 
 import Product from './pages/ProductPage/productPage';
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(shopTC());
-}, [])
+
   return (
     <>
     <Header/>

@@ -2,18 +2,29 @@ import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
 import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { SignUpUserTC } from "../../Slices/SignUpUserTC"
+
 function SignUp(){
+    const dispatch = useDispatch();
+
     const [password, setPassword] = useState('')
-        const [message, setMessage] = useState("")
-        const OnHandleChange = (e) =>{
-            const newPassword = e.target.value;
-            setPassword(newPassword)
-            if(newPassword.length <= 8 ){
-                setMessage('Пароль недостаточно надёжен')
-            } else{
-                setMessage('')
-            }
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState("")
+
+    const OnHandleChange = (e) =>{
+        const newPassword = e.target.value;
+        setPassword(newPassword)
+        if(newPassword.length <= 8 ){
+            setMessage('Пароль недостаточно надёжен')
+        } else{
+            setMessage('')
         }
+    }
+
+    function postUser() {
+        dispatch(SignUpUserTC({email, password}));
+    }
 
     return(
         <div className="flex  w-full items-center justify-center">
@@ -62,7 +73,7 @@ function SignUp(){
                 <div>
                     <h2 className="my-[3%] mt-[5%] text-2xl lg:text-xl">Email Address</h2>
                 </div>
-                    <input  required  type="email" className="p-2 w-80   lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                    <input  required  value={email} onChange={e => setEmail(e.target.value)} type="email" className="p-2 w-80   lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
 
                 <div className="my-[2%] mt-[5%]">
                     <h2 className="text-2xl lg:text-xl">Password</h2>
@@ -81,7 +92,9 @@ function SignUp(){
                             <input type="checkbox" /> <p>Subscribe to our monthly newsletter</p>
                         </div>
                     </div>
-                    <button disabled={password.length <= 8} className="w-80 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign up</button>
+                    <Link to={'/profile/user'}>
+                        <button disabled={password.length <= 8} onClick={postUser} className="w-80 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white">Sign up</button>
+                    </Link>
                     <div className="mb-16 gap-x-2 md:text-2xl lg:text-base justify-center lg:justify-start flex">
                     <h1>Already have an  account?</h1><Link to='/SignIn' className="text-[#8A33FD]"> Log in</Link> 
                     </div>
