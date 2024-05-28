@@ -31,6 +31,18 @@ const AccordionFilter = () => {
                 </div>
             </div>
             <div>
+                <div onClick={() => dispatch(sortProductsTC('Pants'))} className='flex justify-between cursor-pointer'>
+                    <p className='text-[#807D7E] font-semibold'>Pants</p>
+                    <img src={navBarIcon} alt="Error!" />
+                </div>
+            </div>
+            <div>
+                <div onClick={() => dispatch(sortProductsTC('Jacket'))} className='flex justify-between cursor-pointer'>
+                    <p className='text-[#807D7E] font-semibold'>Jackets</p>
+                    <img src={navBarIcon} alt="Error!" />
+                </div>
+            </div>
+            <div>
                 <div onClick={() => dispatch(sortProductsTC('Socks'))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Socks</p>
                     <img src={navBarIcon} alt="Error!" />

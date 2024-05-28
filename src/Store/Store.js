@@ -12,6 +12,8 @@ import { addWishlistProduct } from '../Slices/addWishlistProductTC';
 import getWishlistProductSlice from '../Slices/getWishlistProductSlice';
 import { deleteWishlistProductTC } from '../Slices/deleteWishlistProductTC';
 import { newsProductsTC, mensProductsTC, womensProductsTC } from '../Slices/getProductsSlice';
+import { findProductsTC } from '../Slices/findProductTC'; '../Slices/findProductTC';
+import findProductTC from '../Slices/findProductTC';
 
 export const store = configureStore({
     reducer: {
@@ -29,6 +31,8 @@ export const store = configureStore({
         deleteWishlistProductTC,
         newsProductsTC,
         mensProductsTC,
-        womensProductsTC
+        womensProductsTC,
+        findProductsTC,
+        findProductTC
     }
 })
