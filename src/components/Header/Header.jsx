@@ -24,7 +24,7 @@ const Header = () => {
     const products = useSelector(state => state.findProductTC);
 
     function onHandleTitle(e) {
-        e.preventDefault();
+        setTitle(e.target.value);        
         dispatch(findProductsTC({title}));
     }
 
@@ -55,11 +55,11 @@ const Header = () => {
 
             <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
         </div> : ""}
-        <form className='flex gap-x-3' onSubmit={onHandleTitle}>
+        <form className='flex gap-x-3'>
             <label htmlFor="search">
-                <input value={title} onChange={e => setTitle(e.target.value)} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
+                <input value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
             </label>
-            <button className='px-3 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]'>Find</button>
+            {/* <button className='px-3 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]'>Find</button> */}
         </form>
         <div className='flex gap-x-1'>
             <CustomImagesLink to={'/profile/wishlist'} image={Select} />
@@ -95,7 +95,7 @@ const Header = () => {
 
                             <div className='flex gap-x-3'>
                                 <p className='font-semibold text-lg'>Price:</p>
-                                <p className='text-lg'>{item.price}</p>
+                                <p className='text-lg'>${item.price}</p>
                             </div>
                         </div>
 
@@ -104,7 +104,7 @@ const Header = () => {
                     <div onClick={closeDiv}>
                         <Link to={`/shop/${item.id}`} className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</Link>
                     </div>
-                </div>) : <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>{products.isFetch == false ? 'Type name of product and click on button' : 'Not found'}  </h1>}
+                </div>) : <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>{products.isFetch == false ? 'Type name of product and click on button' : "Apparently, we don't have such a product :("}  </h1>}
         </div> : ''}
     </header>
 }
