@@ -95,7 +95,7 @@ const Header = () => {
 
                             <div className='flex gap-x-3'>
                                 <p className='font-semibold text-lg'>Price:</p>
-                                <p className='text-lg'>{item.price}</p>
+                                <p className='text-lg'>${item.price}</p>
                             </div>
                         </div>
 
