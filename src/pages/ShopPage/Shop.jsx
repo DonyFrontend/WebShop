@@ -50,7 +50,7 @@ const Shop = () => {
                         <AccordionFilter />
                     </div>
                 </div>
-                    <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
+                    <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Clos</button>
                 </div> : ''}
             <div  className='inline-block lg:hidden'>
             <button className='' onClick={onHandleClick}>
