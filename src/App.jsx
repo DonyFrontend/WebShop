@@ -13,8 +13,14 @@ import Product from './pages/ProductPage/productPage';
 import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { shopTC } from './Slices/getProductsSlice';
 function App() {
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(shopTC());
+}, [dispatch])
   return (
     <>
     <Header/>
