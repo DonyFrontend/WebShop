@@ -16,6 +16,7 @@ import Product from './pages/ProductPage/productPage';
 import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
+import Wish from './components/Wishlist/Wish';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,9 +35,10 @@ function App() {
         <Route path='/SignIn' element={<SignIn/>}/>
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/shop/:id' element={<Product/>}/>
-        <Route path='/error' element={<Error/>}/>
+        <Route path='/*' element={<Error/>}/>
         <Route path='/orderpage' element={<OrderPage/>}/>
         <Route path='/cardpage' element={<CardPage/>}/>
+        <Route path='/wish' element={<Wish/>}/>
       </Routes>
     </div>
 
