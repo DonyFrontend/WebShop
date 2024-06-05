@@ -199,30 +199,30 @@ function Product() {
               <h1 className="text-3xl lg:text-4xl">Product Description</h1>
             </div>
 
-            <div className="flex w-full lg:w-[50%]">
+            <div className="flex text-center lg:text-left md:text-left w-full lg:w-[50%]">
               <p className="text-xl lg:text-base">
                 {product.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
+            <div className="grid text-center lg:text-left md:text-left grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
               <div className="flex flex-col gap-y-1">
                 <div>
-                  <h2 className="text-xl text-gray-500">Categories</h2>
+                  <h2 className="text-2xl font-bold text-gray-500">Categories</h2>
                 </div>
-                <div className="flex gap-x-1">{product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}</div>
+                <div className="flex flex-col lg:flex-row gap-x-1">{product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}</div>
               </div>
               <div className="flex flex-col">
                 <div>
-                  <h2 className="text-xl text-gray-500">Colors</h2>
+                  <h2 className="text-2xl font-bold text-gray-500">Colors</h2>
                 </div>
-                <div className="flex flex-col md:flex-row lg:flex-row">
+                <div className="flex flex-col md:flex-col lg:flex-row">
                   {product?.colors?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}
                 </div>
               </div>
 
               <div className="flex flex-col gap-y-1">
-                <h2 className="text-xl text-gray-500">Price</h2>
+                <h2 className="text-2xl font-bold text-gray-500">Price</h2>
                 <p className="text-xl">${product.price}</p>
               </div>
             </div>
