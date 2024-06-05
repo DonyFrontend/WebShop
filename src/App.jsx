@@ -14,7 +14,10 @@ import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
 
 function App() {
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(shopTC());
+}, [dispatch])
   return (
     <>
     <Header/>
@@ -28,7 +31,7 @@ function App() {
         <Route path='/SignIn' element={<SignIn/>}/>
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/shop/:id' element={<Product/>}/>
-        <Route path='/error' element={<Error/>}/>
+        <Route path='/*' element={<Error/>}/>
         <Route path='/orderpage' element={<OrderPage/>}/>
         <Route path='/cardpage' element={<CardPage/>}/>
       </Routes>
