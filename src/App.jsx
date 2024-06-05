@@ -12,12 +12,8 @@ import Product from './pages/ProductPage/productPage';
 import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
-
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(shopTC());
-}, [dispatch])
+
   return (
     <>
     <Header/>
