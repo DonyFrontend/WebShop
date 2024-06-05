@@ -1,33 +1,38 @@
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import bag from './images/bag.svg';
 import { scrollToZero } from '../utils/CustomFC';
 import { useSelector, useDispatch } from 'react-redux';
-import { basketProductsTC } from '../../Slices/getBasketProductSlice';
 import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react';
+import { getUserTC } from '../../Slices/getThisUserTC';
+import CardPage from '../../components/emptyCardPage/CardPage';
 
 const Basket = () => {
-    const { products } = useSelector(state => state.getBasketProductSlice);
+
+
+    const { user, isFetch } = useSelector(state => state.getThisUserTC);
     const dispatch = useDispatch();
     const toast = useToast();
 
     useEffect(() => {
         scrollToZero()
-        dispatch(basketProductsTC());
-    }, [])
+        dispatch(getUserTC());
+    }, [dispatch])
 
-    function deleteProduct(id) {
-        dispatch(deleteBasketProductTC({ id }))
-        dispatch(basketProductsTC());
+    function deleteProduct(product) {
+        dispatch(deleteBasketProductTC(product))
+        dispatch(getUserTC());
     }
 
     let totalPrice = 0;
-    products.forEach(element => {
-        totalPrice += element.price;
-    }); 
+    if (user.basket?.length != 0 & !isFetch) {
+        user.basket.forEach(element => {
+            totalPrice += element.price;
+        });
+    }
     console.log(totalPrice);
 
-    const basketProducts = products.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
+    const basketProducts = isFetch ? <h1 className='font-semibold text-3xl'>Loading...</h1> : user.basket.length == 0 ? <CardPage /> : user.basket.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
         <div className="flex gap-x-[40px] justify-center">
             <div>
                 <img src={item.images} alt="Error" width={200} />
@@ -47,10 +52,10 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Shipping: FREE</h5>
             <h5>Total: ${item.price}</h5>
-            <div onClick={() => deleteProduct(item.id)}>
+            <div onClick={() => deleteProduct(item)}>
                 <Button
-                    onClick={() =>
-                        {toast({
+                    onClick={() => {
+                        toast({
                             position: 'bottom-left',
                             render: () => (
                                 <Box color='white' p={3} bg='darkviolet'>
@@ -58,7 +63,8 @@ const Basket = () => {
                                 </Box>
                             ),
                         }),
-                        deleteProduct(item.id)}
+                            deleteProduct(item)
+                    }
                     }
                 >
                     <img src={bag} alt="" />
@@ -69,7 +75,7 @@ const Basket = () => {
 
     return <div className="flex flex-col">
         <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">
-                <h5 className='text-white text-xl'>Your products:</h5>
+            <h5 className='text-white text-xl'>Your products:</h5>
         </div>
 
         <div className="w-[100%] flex flex-col gap-y-5">

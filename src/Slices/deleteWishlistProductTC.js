@@ -1,14 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { wishlistCollectionRef } from "../FirebaseConfig";
-import { doc, deleteDoc } from "firebase/firestore";
+import { auth, usersCollectionRef } from "../FirebaseConfig";
+import { doc, updateDoc, arrayRemove } from "firebase/firestore";
 
 export const deleteWishlistProductTC = createAsyncThunk(
     'webShop/deleteBasketProduct',
-    async (id) => {
+    async (product) => {
         try {
-            console.log(id);
-            const document = doc(wishlistCollectionRef, id);
-            await deleteDoc(document);   
+            const newUser = doc(usersCollectionRef, auth.currentUser.uid);
+            await updateDoc(newUser, {
+                basket: arrayRemove(product),
+                capital: true
+            }, { merge: true })  
         } catch (error) {
             console.log(error);
         }

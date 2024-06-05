@@ -5,12 +5,16 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { SignUpUserTC } from "../../Slices/SignUpUserTC"
 
-function SignUp(){
+function SignUp(path){
     const dispatch = useDispatch();
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState("")
+    const [name, setName] = useState('');
+    const [town, setTown] = useState('');
+
+    console.log(town);
 
     const OnHandleChange = (e) =>{
         const newPassword = e.target.value;
@@ -23,7 +27,7 @@ function SignUp(){
     }
 
     function postUser() {
-        dispatch(SignUpUserTC({email, password}));
+        dispatch(SignUpUserTC({email, password, name, town}));
     }
 
     return(
@@ -55,19 +59,19 @@ function SignUp(){
                 <div className="text-left">
                     <h2 className="my-[10px] text-2xl lg:text-xl">Select town</h2>
                 </div>
-            <select className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
-                    <option value='option1'>Bishkek</option>
-                    <option value='option2'>Kara-Balta</option>
-                    <option value='option3'>Osh</option>
-                    <option value="option 4">Talas</option>
-                    <option value="option 5">Karakol</option>
+            <select onChange={e => setTown(e.target.value)} className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
+                    <option value='Bishkek'>Bishkek</option>
+                    <option value='Kara-Balta'>Kara-Balta</option>
+                    <option value='Osh'>Osh</option>
+                    <option value="Talas">Talas</option>
+                    <option value="Karakol">Karakol</option>
                 </select>
 
                 <div className="text-left">
                     <h2 className=" my-[10px] text-2xl lg:text-xl">Your name</h2>
                 </div>
                 <div>
-                    <input required type="text" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                    <input required value={name} onChange={e => setName(e.target.value)} type="text" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
                 </div>
 
                 <div>
@@ -92,7 +96,7 @@ function SignUp(){
                             <input type="checkbox" /> <p>Subscribe to our monthly newsletter</p>
                         </div>
                     </div>
-                    <Link to={'/profile/user'}>
+                    <Link to={path}>
                         <button disabled={password.length <= 8} onClick={postUser} className="w-80 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white">Sign up</button>
                     </Link>
                     <div className="mb-16 gap-x-2 md:text-2xl lg:text-base justify-center lg:justify-start flex">
