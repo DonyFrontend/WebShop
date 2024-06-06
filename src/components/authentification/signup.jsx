@@ -12,7 +12,7 @@ function SignUp(path){
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState("")
     const [name, setName] = useState('');
-    const [town, setTown] = useState('');
+    const [town, setTown] = useState('Bishkek');
 
     console.log(town);
 
