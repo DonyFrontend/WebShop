@@ -27,8 +27,8 @@ const Shop = () => {
     
 
     return <div className="flex w-[100%] justify-center mt-20">
-        <div className="flex w-[95%] justify-between">
-            <div className="w-[15%] p-4 gap-y-3" style={{ borderRight: '1px solid gray' }}>
+        <div className="flex flex-col lg:flex-row  w-[95%] justify-between">
+            <div className="hidden lg:flex w-[15%] p-4 gap-y-3" style={{ borderRight: '1px solid gray' }}>
                 <div className='sticky left-0 top-16 flex flex-col gap-y-5 p-3'>
                     <div className='flex justify-between'>
                         <h1 className='text-[#807D7E] font-medium text-2xl'>Filter</h1>
@@ -39,6 +39,9 @@ const Shop = () => {
                         <AccordionFilter />
                     </div>
                 </div>
+            
+        
+            </div>
             { click ?<div className='flex rounded-lg text-xl text-center flex-col fixed top-0 left-0 gap-3 p-5 md:p-12 bg-white border border-black'>
                 <div className='sticky left-0 top-12 flex flex-col gap-y-5 p-3'>
                     <div className='flex justify-between'>
@@ -60,8 +63,6 @@ const Shop = () => {
                 </svg>
             </button>
         </div>
-        
-            </div>
 
             <div className="w-full lg:w-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {selector.products.length != 0 ? selector.products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>

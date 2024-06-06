@@ -93,8 +93,7 @@ const Basket = () => {
                         </label>
                     </div>
                 </div>
-
-                <div className="flex flex-col gap-y-11">
+<div className="flex flex-col gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
                         <p>Sub Total: {totalPrice}</p>
                         <p>Shipping: FREE</p>
