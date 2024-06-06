@@ -1,4 +1,3 @@
-import React from "react"
 import { Link } from "react-router-dom";
 import {
     Accordion,
@@ -57,8 +56,8 @@ const sections = [
 const Footer = () =>{
     return(
         <>
-   <div className="w-full mt-24  bg-[rgba(60,66,66,1)] text-white py-y px-2">
-    <div className=" md:grid-cols-2 text-center lg:text-left max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-4 py-16 ">
+   <div className="w-full  bg-[rgba(60,66,66,1)] text-white py-y px-2">
+    <div className=" md:grid-cols-2 max-w-[1240px] mx-auto grid grid-cols-2 lg:grid-cols-4 py-16 ">
         {
             sections.map((section,index)=>(
                 <div key={index}>

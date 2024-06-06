@@ -25,7 +25,7 @@ const Basket = () => {
     }
 
     let totalPrice = 0;
-    if (user.basket?.length != 0 & !isFetch) {
+    if (user?.basket?.length != 0 & !isFetch) {
         user.basket.forEach(element => {
             totalPrice += element.price;
         });
@@ -52,7 +52,7 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Shipping: FREE</h5>
             <h5>Total: ${item.price}</h5>
-            <div onClick={() => deleteProduct(item)}>
+            <div onClick={() => dispatch(deleteProduct(item))}>
                 <Button
                     onClick={() => {
                         toast({
@@ -62,12 +62,11 @@ const Basket = () => {
                                     Delete product from basket
                                 </Box>
                             ),
-                        }),
-                            deleteProduct(item)
+                        })
                     }
                     }
                 >
-                    <img src={bag} alt="" />
+                    <img src={bag} alt="Error!" />
                 </Button>
             </div>
         </div>
@@ -82,7 +81,7 @@ const Basket = () => {
             {basketProducts}
         </div>
 
-        <div className="w-[100%] flex justify-center p-5  pt-16 bg-[#e7e5e5]">
+        <div className="w-[100%] flex justify-center p-5 bg-[#e7e5e5]">
             <div className="w-[80%] flex justify-between">
                 <div className="flex flex-col gap-y-3">
                     <h1 className="font-medium text-xl">Discount  Codes</h1>
