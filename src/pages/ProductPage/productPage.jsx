@@ -26,26 +26,31 @@ import { addWishlistProduct } from "../../Slices/addWishlistProductTC";
 import { useParams } from 'react-router-dom';
 import { productTC } from "../../Slices/productPageTC";
 import { useToast, Button } from "@chakra-ui/react";
+import { similarProductsTC } from "../../Slices/similarProductsSlice";
+import SimilarProducts from "./similarProducts";
 
 function Product() {
   const dispatch = useDispatch();
   const toast = useToast();
   const id = useParams();
-  console.log(id.id);
 
   useEffect(() => {
     scrollToZero(),
       dispatch(productTC({ id: id.id }));
+      dispatch(similarProductsTC({ id: id.id }));
   }, [id, dispatch])
 
   const { product, isProductFetch } = useSelector(state => state.productPageTC);
-  console.log(product);
+  const {products, isFetch} = useSelector(state => state.similarProductsSlice); 
+  console.log(products);
+
   const [size, setSize] = useState(0);
   const [color, setColor] = useState('');
 
   if (isProductFetch) {
     return <h1 className="text-4xl p-10">Loading...</h1>
-  }
+  } 
+
 
   const postBasketProduct = (e) => {
     e.preventDefault();
@@ -229,10 +234,14 @@ function Product() {
           </div>
 
 
-          <div className="flex justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
-            <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-
-            <h1 className="text-4xl">Similar Products</h1>
+          <div className="flex flex-col gap-y-10 justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
+            <div className="flex gap-x-1">
+              <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+              <h1 className="text-4xl">Similar Products</h1>
+            </div>     
+            {isFetch ? <h1 className="text-4xl p-10">Loading...</h1> : <div className="grid grid-cols-4 row-auto gap-4">
+              <SimilarProducts products={products}/>
+            </div>}
           </div>
 
         </div>

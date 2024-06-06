@@ -78,6 +78,7 @@ export const sortProductsTC = createAsyncThunk(
                     ...doc.data()
                 })
             })
+            
             dispatch(setData(newProducts));            
         })
     }
