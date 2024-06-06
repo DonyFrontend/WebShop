@@ -37,6 +37,6 @@ export const store = configureStore({
         findProductsTC,
         findProductTC,
         getUserTC,
-        getThisUserTC
+        getThisUserTC,
     }
 })

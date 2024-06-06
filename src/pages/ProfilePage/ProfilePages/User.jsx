@@ -1,7 +1,12 @@
 import UserModal from "./UserModal";
-import { auth } from "../../../FirebaseConfig";
+import { useSelector } from "react-redux";
 
-const User = () => {
+const User = (user) => {
+    console.log(user);
+    const {isFetch} = useSelector(state => state.getThisUserTC);
+    if (isFetch) {
+        return <h1>Loading...</h1>
+    }
 
     return <div className="w-[70%] flex flex-col gap-y-10">
         <div>
@@ -11,14 +16,14 @@ const User = () => {
             <div>
                 <h1 className="font-semibold">Name</h1>
                 <div className="bg-[#f1f0f0] rounded-md p-1">
-                    <p>{auth.name}</p>
+                    <p>{user.user.name}</p>
                 </div>
             </div>
 
             <div>
                 <h1 className="font-semibold">Email</h1>
                 <div className="bg-[#f1f0f0] rounded-md p-1">
-                    <p>{auth.currentUser.email}</p>
+                    <p>{user.user.email}</p>
                 </div>
             </div>
 
@@ -32,7 +37,7 @@ const User = () => {
             <div>
                 <h1 className="font-semibold">City</h1>
                 <div className="bg-[#f1f0f0] rounded-md p-1">
-                    <p>Kara-Balta</p>
+                    <p>{user.user.town}</p>
                 </div>
             </div>
         </div>
