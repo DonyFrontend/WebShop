@@ -12,6 +12,12 @@ import { addWishlistProduct } from '../Slices/addWishlistProductTC';
 import getWishlistProductSlice from '../Slices/getWishlistProductSlice';
 import { deleteWishlistProductTC } from '../Slices/deleteWishlistProductTC';
 import { newsProductsTC, mensProductsTC, womensProductsTC } from '../Slices/getProductsSlice';
+import { findProductsTC } from '../Slices/findProductTC'; '../Slices/findProductTC';
+import findProductTC from '../Slices/findProductTC';
+import { getUserTC } from '../Slices/getThisUserTC';
+import getThisUserTC from '../Slices/getThisUserTC';
+import { similarProductsTC } from '../Slices/similarProductsSlice';
+import similarProductsSlice from '../Slices/similarProductsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -29,6 +35,12 @@ export const store = configureStore({
         deleteWishlistProductTC,
         newsProductsTC,
         mensProductsTC,
-        womensProductsTC
+        womensProductsTC,
+        findProductsTC,
+        findProductTC,
+        getUserTC,
+        getThisUserTC,
+        similarProductsSlice,
+        similarProductsTC,
     }
 })

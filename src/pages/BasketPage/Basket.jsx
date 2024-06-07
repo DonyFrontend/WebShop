@@ -1,33 +1,38 @@
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import bag from './images/bag.svg';
 import { scrollToZero } from '../utils/CustomFC';
 import { useSelector, useDispatch } from 'react-redux';
-import { basketProductsTC } from '../../Slices/getBasketProductSlice';
 import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react';
+import { getUserTC } from '../../Slices/getThisUserTC';
+import CardPage from '../../components/emptyCardPage/CardPage';
 
 const Basket = () => {
-    const { products } = useSelector(state => state.getBasketProductSlice);
+
+
+    const { user, isFetch } = useSelector(state => state.getThisUserTC);
     const dispatch = useDispatch();
     const toast = useToast();
 
     useEffect(() => {
         scrollToZero()
-        dispatch(basketProductsTC());
-    }, [])
+        dispatch(getUserTC());
+    }, [dispatch])
 
-    function deleteProduct(id) {
-        dispatch(deleteBasketProductTC({ id }))
-        dispatch(basketProductsTC());
+    function deleteProduct(product) {
+        dispatch(deleteBasketProductTC(product))
+        dispatch(getUserTC());
     }
 
     let totalPrice = 0;
-    products.forEach(element => {
-        totalPrice += element.price;
-    }); 
+    if (user?.basket?.length != 0 & !isFetch) {
+        user.basket.forEach(element => {
+            totalPrice += element.price;
+        });
+    }
     console.log(totalPrice);
 
-    const basketProducts = products.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
+    const basketProducts = isFetch ? <h1 className='font-semibold text-3xl'>Loading...</h1> : user.basket.length == 0 ? <CardPage /> : user.basket.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
         <div className="flex gap-x-[40px] justify-center">
             <div>
                 <img src={item.images} alt="Error" width={200} />
@@ -47,39 +52,39 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Shipping: FREE</h5>
             <h5>Total: ${item.price}</h5>
-            <div onClick={() => deleteProduct(item.id)}>
+            <div onClick={() => dispatch(deleteProduct(item))}>
                 <Button
-                    onClick={() =>
-                        {toast({
+                    onClick={() => {
+                        toast({
                             position: 'bottom-left',
                             render: () => (
                                 <Box color='white' p={3} bg='darkviolet'>
                                     Delete product from basket
                                 </Box>
                             ),
-                        }),
-                        deleteProduct(item.id)}
+                        })
+                    }
                     }
                 >
-                    <img src={bag} alt="" />
+                    <img src={bag} alt="Error!" />
                 </Button>
             </div>
         </div>
     </div>)
 
     return <div className="flex flex-col">
-        <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">
-                <h5 className='text-white text-xl'>Your products:</h5>
+        <div className="w-[100%] flex items-center text-center justify-center lg:text-left lg:justify-between bg-[#3C4242] p-3">
+            <h5 className='text-white text-xl'>Your products:</h5>
         </div>
 
         <div className="w-[100%] flex flex-col gap-y-5">
             {basketProducts}
         </div>
 
-        <div className="w-[100%] flex justify-center p-5  pt-16 bg-[#e7e5e5]">
-            <div className="w-[80%] flex justify-between">
-                <div className="flex flex-col gap-y-3">
-                    <h1 className="font-medium text-xl">Discount  Codes</h1>
+        <div className="w-[100%] flex justify-center p-5 bg-[#e7e5e5]">
+            <div className="w-[80%] flex flex-col lg:flex-row md:flex-row justify-between gap-y-20 lg:gap-y-0">
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-y-3">
+                    <h1 className="flex font-medium text-xl">Discount  Codes</h1>
                     <p>Enter your coupon code if you have one</p>
                     <div className="flex">
                         <label htmlFor="coupon" className="shadow-md">
@@ -88,8 +93,7 @@ const Basket = () => {
                         </label>
                     </div>
                 </div>
-
-                <div className="flex flex-col gap-y-11">
+            <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
                         <p>Sub Total: {totalPrice}</p>
                         <p>Shipping: FREE</p>
