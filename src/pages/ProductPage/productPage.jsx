@@ -198,7 +198,7 @@ function Product() {
             </div>
           </div>
 
-          <div className="w-[80%] ml-16 lg:ml-0 my-20 gap-y-10 flex flex-col">
+          <div className="w-[80%] ml-10 md:ml-16 lg:ml-0 my-20 gap-y-10 flex flex-col">
             <div className="flex gap-x-2">
               <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
               <h1 className="text-3xl lg:text-4xl">Product Description</h1>
@@ -234,12 +234,12 @@ function Product() {
           </div>
 
 
-          <div className="flex flex-col gap-y-10 justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
+          <div className="flex ml-10 flex-col gap-y-10 justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
             <div className="flex gap-x-1">
               <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
               <h1 className="text-4xl">Similar Products</h1>
             </div>     
-            {isFetch ? <h1 className="text-4xl p-10">Loading...</h1> : <div className="grid grid-cols-4 row-auto gap-4">
+            {isFetch ? <h1 className="text-4xl p-10">Loading...</h1> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 row-auto gap-4">
               <SimilarProducts products={products}/>
             </div>}
           </div>
