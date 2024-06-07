@@ -8,7 +8,7 @@ export const deleteWishlistProductTC = createAsyncThunk(
         try {
             const newUser = doc(usersCollectionRef, auth.currentUser.uid);
             await updateDoc(newUser, {
-                basket: arrayRemove(product),
+                wishlist: arrayRemove(product),
                 capital: true
             }, { merge: true })  
         } catch (error) {

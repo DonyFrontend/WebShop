@@ -29,7 +29,6 @@ const Header = () => {
 
 
     const [title, setTitle] = useState('');
-    console.log(title);
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.findProductTC);
