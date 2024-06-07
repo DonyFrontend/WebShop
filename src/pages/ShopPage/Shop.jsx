@@ -28,7 +28,7 @@ const Shop = () => {
     return <div className="flex  w-[100%] justify-center mt-20">
         <div className="flex flex-col md:flex-col lg:flex-row w-[95%] justify-between">
             <div className="lg:w-[15%] p-4 gap-y-3 lg:border-r-[1px] lg:border-r-gray-500">
-            <div className='sticky left-0 top-12 hidden lg:flex flex-col gap-y-5 p-3'>
+            <div className="hidden lg:flex w-[15%] p-4 gap-y-3" style={{ borderRight: '1px solid gray' }}>
                     <div className='flex justify-between'>
                         <h1 className='text-[#807D7E] font-medium text-2xl'>Filter</h1>
                         <img src={filter} alt="Error!" />
