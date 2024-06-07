@@ -59,7 +59,7 @@ function SignUp(path){
                 <div className="text-left">
                     <h2 className="my-[10px] text-2xl lg:text-xl">Select town</h2>
                 </div>
-            <select onChange={e => setTown(e.target.value)} className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
+            <select onChange={e => setTown(e.target.value)} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
                     <option value='Bishkek'>Bishkek</option>
                     <option value='Kara-Balta'>Kara-Balta</option>
                     <option value='Osh'>Osh</option>
@@ -71,7 +71,7 @@ function SignUp(path){
                     <h2 className=" my-[10px] text-2xl lg:text-xl">Your name</h2>
                 </div>
                 <div>
-                    <input required value={name} onChange={e => setName(e.target.value)} type="text" className="p-2 w-80 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
+                    <input required value={name} onChange={e => setName(e.target.value)} type="text" className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]"/>
                 </div>
 
                 <div>
@@ -97,7 +97,7 @@ function SignUp(path){
                         </div>
                     </div>
                     <Link to={path}>
-                        <button disabled={password.length <= 8} onClick={postUser} className="w-80 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white">Sign up</button>
+                        <button disabled={password.length <= 8} onClick={postUser} className="w-80 md:w-96 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white">Sign up</button>
                     </Link>
                     <div className="mb-16 gap-x-2 md:text-2xl lg:text-base justify-center lg:justify-start flex">
                     <h1>Already have an  account?</h1><Link to='/SignIn' className="text-[#8A33FD]"> Log in</Link> 

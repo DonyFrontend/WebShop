@@ -73,7 +73,7 @@ const Basket = () => {
     </div>)
 
     return <div className="flex flex-col">
-        <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">
+        <div className="w-[100%] flex items-center text-center justify-center lg:text-left lg:justify-between bg-[#3C4242] p-3">
             <h5 className='text-white text-xl'>Your products:</h5>
         </div>
 
@@ -82,9 +82,9 @@ const Basket = () => {
         </div>
 
         <div className="w-[100%] flex justify-center p-5 bg-[#e7e5e5]">
-            <div className="w-[80%] flex justify-between">
-                <div className="flex flex-col gap-y-3">
-                    <h1 className="font-medium text-xl">Discount  Codes</h1>
+            <div className="w-[80%] flex flex-col lg:flex-row md:flex-row justify-between gap-y-20 lg:gap-y-0">
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-y-3">
+                    <h1 className="flex font-medium text-xl">Discount  Codes</h1>
                     <p>Enter your coupon code if you have one</p>
                     <div className="flex">
                         <label htmlFor="coupon" className="shadow-md">
@@ -93,7 +93,7 @@ const Basket = () => {
                         </label>
                     </div>
                 </div>
-<div className="flex flex-col gap-y-11">
+            <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
                         <p>Sub Total: {totalPrice}</p>
                         <p>Shipping: FREE</p>
