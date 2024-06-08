@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 function Error() {
 
@@ -6,7 +5,7 @@ function Error() {
         <>
         
  <div className="w-screen h-screen flex flex-col justify-center items-center space-y-5">
-<div className="max-w-md w-[181px] h-64 relative top-4"> 
+<div className="max-w-md w-[181px] h-64 relative top-4">
 
 <img className="rounded-bl-[100px]" src="https://s3-alpha-sig.figma.com/img/4e73/508f/b488c3c60f5c67b4707e9372e6fb9e67?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SlYsnDfA4w85MelG9JvE1I-9zXp6Aa9zNEoNF8ZhxUUgbBix3fw7l2HgDsjieINibFtkjN4l3Uy6DrRi8uV1nJT9LG678B7Jshld~nS1vY9Jtk5UOgbiWGLq~cy5eSxej3nQOzyJZbXdO0rLPX-kZJxGaIc4mRmbyM4ocVGJXSENDJh6RRL5he5~Jk8S9RfzmL6qfCS9NX~X3QgbOfx~Oja7exfpm9ZYm-gIB5D3wrK48haDAGc3DmNqZxQbuCtInBilrLCQTMY6s2yx0xlVaVGILlWVGJMc8iLFUQ~AbJWWVEmD-kEwzCaJ078cfEmIs7ZZPdkBRoyP2zl5VAJfXg__" alt="404"/>
  <h1 className="font-mono text-[rgba(42,47,47,1)] absolute pb-60 pr-14 transform -translate-x-1/2 -translate-y-1/2 font-bold text-[200px]">4</h1>
