@@ -19,6 +19,11 @@ const Header = () => {
         setClick(!click)
     }
 
+    const [move, setMove] = useState(false);
+    function onHandleMove() {
+        setMove(!move)
+    }
+
     const [thisUser, setUser] = useState(false);
 
     useEffect(() => {
@@ -78,11 +83,31 @@ const Header = () => {
                 <CustomImagesLink to={'/profile/wishlist'} image={Select} />
                 <CustomImagesLink to={'/profile/user'} image={Profile} />
                 <CustomImagesLink to={'/basket'} image={Bag} />
-            </div> : <div className='flex gap-x-1'>
+            </div> : <div className='hidden lg:flex gap-x-1'>
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>                
                 <Button colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></Button>                
             </div>
+            
             }
+
+        {move ? <div className='flex flex-col fixed top-0 right-14 gap-y-10 p-5 md:p-12 bg-white border border-black'>
+            <div className='border-b-2 text-xl text-center border-gray-300'>
+                <h1 className='md:text-2xl text-xl'>MENU</h1>
+            </div>
+        <div className='flex flex-col gap-y-5'>
+            <button className='bg-violet-800 text-white px-5 py-3 rounded-lg text-xl font-thin' colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></button>                
+            <button className='bg-violet-800 text-white px-5 py-3 rounded-lg text-xl font-thin' colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></button>                
+        </div>
+                <button className='border md:text-2xl text-xl border-gray-500 rounded-lg px-5 py-1.5 mt-0 md:mt-5 md:py-2.5' onClick={onHandleMove}>Close</button>
+            </div> : "" } 
+
+            {thisUser ?  "" : <div className='inline-block lg:hidden'>
+            <button onClick={onHandleMove}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            </button>
+            </div> }
         
         <div className='inline-block lg:hidden'>
             <button onClick={onHandleClick}>
