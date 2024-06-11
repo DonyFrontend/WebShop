@@ -4,7 +4,6 @@ import CustomImagesLink from './CustomImagesLink';
 import Select from './images/Select.png';
 import Profile from './images/Profile.png';
 import Bag from './images/Bag.png';
-import Message from './images/message.svg';
 import adminIcon from './images/adminPage.svg';
 import { useEffect, useState } from 'react';
 import { findProductsTC } from '../../Slices/findProductTC';
@@ -91,8 +90,7 @@ const Header = () => {
                 </div>
 
                 {user.isAdmin ? <div className='flex gap-x-1'>
-                    <CustomImagesLink to={'/admin/productsPanel'} image={adminIcon}/>
-                    <CustomImagesLink to={'/admin/chat'} image={Message}/>
+                    <CustomImagesLink to={'/adminPanel'} image={adminIcon}/>
                 </div> : ''}
             </div> : <div className='flex gap-x-1'>
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>                
