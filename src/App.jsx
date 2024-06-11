@@ -8,7 +8,6 @@ import Footer from './components/Footer';
 import SignUp from './components/authentification/signup';
 import SignIn from './components/authentification/signIn';
 import Shop from './pages/ShopPage/Shop';
-
 import Product from './pages/ProductPage/productPage';
 import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';

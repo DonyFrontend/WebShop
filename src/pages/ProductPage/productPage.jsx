@@ -26,26 +26,31 @@ import { addWishlistProduct } from "../../Slices/addWishlistProductTC";
 import { useParams } from 'react-router-dom';
 import { productTC } from "../../Slices/productPageTC";
 import { useToast, Button } from "@chakra-ui/react";
+import { similarProductsTC } from "../../Slices/similarProductsSlice";
+import SimilarProducts from "./similarProducts";
 
 function Product() {
   const dispatch = useDispatch();
   const toast = useToast();
   const id = useParams();
-  console.log(id.id);
 
   useEffect(() => {
     scrollToZero(),
       dispatch(productTC({ id: id.id }));
+      dispatch(similarProductsTC({ id: id.id }));
   }, [id, dispatch])
 
   const { product, isProductFetch } = useSelector(state => state.productPageTC);
-  console.log(product);
+  const {products, isFetch} = useSelector(state => state.similarProductsSlice); 
+  console.log(products);
+
   const [size, setSize] = useState(0);
   const [color, setColor] = useState('');
 
   if (isProductFetch) {
     return <h1 className="text-4xl p-10">Loading...</h1>
-  }
+  } 
+
 
   const postBasketProduct = (e) => {
     e.preventDefault();
@@ -193,46 +198,50 @@ function Product() {
             </div>
           </div>
 
-          <div className="w-[80%] ml-16 lg:ml-0 my-20 gap-y-10 flex flex-col">
+          <div className="w-[80%] ml-10 md:ml-16 lg:ml-0 my-20 gap-y-10 flex flex-col">
             <div className="flex gap-x-2">
               <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
               <h1 className="text-3xl lg:text-4xl">Product Description</h1>
             </div>
 
-            <div className="flex w-full lg:w-[50%]">
+            <div className="flex text-center lg:text-left md:text-left w-full lg:w-[50%]">
               <p className="text-xl lg:text-base">
                 {product.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
+            <div className="grid text-center lg:text-left md:text-left grid-cols-1 md:grid-cols-2 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-2 mt-10 gap-0.5 gap-y-10 lg:gap-y-4">
               <div className="flex flex-col gap-y-1">
                 <div>
-                  <h2 className="text-xl text-gray-500">Categories</h2>
+                  <h2 className="text-2xl font-bold text-gray-500">Categories</h2>
                 </div>
-                <div className="flex gap-x-1">{product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}</div>
+                <div className="flex flex-col lg:flex-row gap-x-1">{product?.categories?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}</div>
               </div>
               <div className="flex flex-col">
                 <div>
-                  <h2 className="text-xl text-gray-500">Colors</h2>
+                  <h2 className="text-2xl font-bold text-gray-500">Colors</h2>
                 </div>
-                <div className="flex flex-col md:flex-row lg:flex-row">
+                <div className="flex flex-col md:flex-col lg:flex-row">
                   {product?.colors?.map((item, index) => <p key={index} className="text-xl">{item}/  </p>)}
                 </div>
               </div>
 
               <div className="flex flex-col gap-y-1">
-                <h2 className="text-xl text-gray-500">Price</h2>
+                <h2 className="text-2xl font-bold text-gray-500">Price</h2>
                 <p className="text-xl">${product.price}</p>
               </div>
             </div>
           </div>
 
 
-          <div className="flex justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
-            <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-
-            <h1 className="text-4xl">Similar Products</h1>
+          <div className="flex ml-10 flex-col gap-y-10 justify-center md:ml-16 md:justify-start lg:ml-0 lg:justify-start gap-x-2">
+            <div className="flex gap-x-1">
+              <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+              <h1 className="text-4xl">Similar Products</h1>
+            </div>     
+            {isFetch ? <h1 className="text-4xl p-10">Loading...</h1> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 row-auto gap-4">
+              <SimilarProducts products={products}/>
+            </div>}
           </div>
 
         </div>

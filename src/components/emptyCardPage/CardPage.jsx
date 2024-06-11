@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function CardPage() {
     return (
         <>
-            <div className="flex justify-center pt-20">
+            <div className="flex justify-center pt-5">
                 <svg width="448" height="328" viewBox="0 0 448 328" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M329.631 243.902C289.942 243.902 254.858 246.841 233.408 251.36C213.675 244.264 187.456 239.943 158.672 239.943C97.3196 239.943 47.583 259.589 47.583 283.829C47.583 308.068 97.3196 327.714 158.672 327.714C220.024 327.714 269.761 308.068 269.761 283.829C269.761 281.476 269.275 279.173 268.379 276.919C286.244 278.55 307.21 279.496 329.631 279.496C394.955 279.496 447.891 271.528 447.891 261.706C447.904 251.858 394.955 243.902 329.631 243.902Z" fill="#EDEEF2" />
                     <path d="M254.287 259.738C250.651 259.738 247.277 256.178 246.767 251.808L232.4 130.174C231.877 125.804 235.002 122.256 239.359 122.256H419.93C424.275 122.256 427.4 125.804 426.889 130.174L412.522 251.808C412 256.178 408.626 259.738 405.003 259.738H254.287Z" fill="#F6F6F6" />
@@ -56,11 +56,11 @@ function CardPage() {
                 </svg>
 
             </div>
-            <div>
-                <p className="font-bold text-black text-[30px] pl-[570px] pt-10">Your cart is empty and sad :( </p>
-                <p className="text-[rgba(128,125,126,1)] pl-[650px] font-normal">Add something to make it happy! </p>
+            <div className="flex flex-col text-center lg:text-left">
+                <p className="flex justify-center lg:justify-start ont-bold text-black text-[30px] lg:pl-[570px] pt-10">Your cart is empty and sad :( </p>
+                <p className="text-[rgba(128,125,126,1)] lg:pl-[650px] font-normal">Add something to make it happy! </p>
             </div>
-            <div className="justify-center pl-[640px] pt-12">
+            <div className="flex justify-center pt-12 pb-5">
                 <Link to={'/shop'} className=" flex font-bold text-white justify-center items-center w-[246px] h-[46px] rounded-[8px] bg-[rgba(138,51,253,1)]">
                     Continue Shopping
                 </Link>

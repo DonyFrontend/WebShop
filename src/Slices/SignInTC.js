@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../FirebaseConfig";
 import {createAsyncThunk} from '@reduxjs/toolkit';
 
@@ -7,7 +7,7 @@ export const SignInTC = createAsyncThunk(
     async ({email, password}) => {
         try {
             console.log(email, password);
-            const user = await createUserWithEmailAndPassword(auth, email, password)
+            const user = await signInWithEmailAndPassword(auth, email, password)
             console.log(user);
         }   catch(err) {
             console.log(err);

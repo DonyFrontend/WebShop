@@ -6,7 +6,7 @@ export const productTC = createAsyncThunk(
     'webShop/productData',
     async ({id}, {dispatch}) => {
         console.log('red',id); 
-        dispatch(toggleFetch(true))
+        dispatch(toggleFetch(true));
         const productData = doc(productsCollectionRef, id);
         const findDoc = await getDoc(productData);
         const data = findDoc.data();
@@ -33,5 +33,5 @@ const productSlice = createSlice({
     }
 })
 
-export const {setProductData,toggleFetch} = productSlice.actions;
+export const {setProductData, toggleFetch} = productSlice.actions;
 export default productSlice.reducer;
