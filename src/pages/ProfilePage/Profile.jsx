@@ -5,13 +5,10 @@ import CustomLink from './CustomLink';
 import { Routes, Route } from 'react-router-dom';
 import UserPage from './ProfilePages/User';
 import WishList from './ProfilePages/WishList';
-import { auth } from '../../FirebaseConfig';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Order from './ProfilePages/Order';
 import ProfileModal from './ProfileModal';
 import { scrollToZero } from '../utils/CustomFC';
-import SignUp from '../../components/authentification/signup';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserTC } from '../../Slices/getThisUserTC';
 
@@ -20,22 +17,17 @@ const Profile = () => {
     useEffect(() => {
         scrollToZero();
         dispatch(getUserTC());
-    }, [])
-
-    const [isUser, setUser] = useState(null);
-    onAuthStateChanged(auth, user => {
-        user ? setUser(true) : setUser(false);
-    })
+    }, [dispatch])
 
     const {user, isFetch} = useSelector(state => state.getThisUserTC);
-    console.log(isUser);
+
     if (isFetch) {
         return <h1 className='font-semibold text-3xl'>Loading...</h1>
     }
 
     return (
         <>
-            {isUser ? <div className="flex w-[100%] justify-center mt-32">
+            <div className="flex w-[100%] justify-center mt-32">
                 <div className="w-[90%] flex justify-between">
                     <div className='w-[20%] flex flex-col gap-y-12 p-5' style={{ borderRight: '1px solid black' }}>
                         <div className='flex flex-col gap-y-2'>
@@ -62,7 +54,7 @@ const Profile = () => {
                         </Routes>
                     </div>
                 </div>
-            </div> : <SignUp path={'/profile/user'} />}
+            </div>
         </>
     )
 }

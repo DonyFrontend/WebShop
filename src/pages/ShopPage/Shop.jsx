@@ -16,7 +16,6 @@ const Shop = () => {
     }, [dispatch])
 
     const selector = useSelector(state => state.getProductsSlice);
-    console.log(selector);
 
     // const dispatch = useDispatch();
 

@@ -12,7 +12,7 @@ import Product from './pages/ProductPage/productPage';
 import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
-import Wish from './components/Wishlist/Wish';
+import Admin from './pages/AdminPage/Admin';
 function App() {
 
   return (
@@ -31,7 +31,7 @@ function App() {
         <Route path='/*' element={<Error/>}/>
         <Route path='/orderpage' element={<OrderPage/>}/>
         <Route path='/cardpage' element={<CardPage/>}/>
-        <Route path='/wish' element={<Wish/>}/>
+        <Route path='/adminPanel' element={<Admin/>}/>
       </Routes>
     </div>
 

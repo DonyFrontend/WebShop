@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 function Error() {
 
@@ -6,7 +5,7 @@ function Error() {
         <>
 
  <div className="w-screen h-screen flex flex-col justify-center items-center space-y-5">
-<div className="max-w-md w-[181px] h-64 relative top-4"> 
+<div className="max-w-md w-[181px] h-64 relative top-4">
 
 <img className="rounded-bl-[100px]" src="https://atriumshop.cz/wp-content/uploads/2018/12/jon-ly-Xn7GvimQrk8-unsplash-768x1024.jpg" alt="404"/>
  <h1 className="font-mono text-[rgba(42,47,47,1)] absolute pb-60 pr-14 transform -translate-x-1/2 -translate-y-1/2 font-bold text-[200px]">4</h1>
