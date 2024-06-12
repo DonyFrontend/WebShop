@@ -19,6 +19,7 @@ const SendFB = () => {
     const toast = useToast();
     const {onOpen, onClose, isOpen} = useDisclosure();
     const [message, setMessage] = useState('');
+    const [count, setCount] = useState(message.length);
     const dispatch = useDispatch();
     const {user} = useSelector(state => state.getThisUserTC);
 
@@ -26,6 +27,11 @@ const SendFB = () => {
         if (message != '') {
             dispatch(FeedBackTC({message}));
         }
+    }
+
+    function changeInput(e) {
+        setMessage(e.target.value);
+        setCount(e.target.value.length);
     }
 
     return <div>
@@ -39,7 +45,8 @@ const SendFB = () => {
                 <ModalBody>
                     <div className="flex flex-col gap-y-5">
                         <h1>You can write a review about the convenience of using our site.</h1>
-                        <Input value={message} onChange={e => setMessage(e.target.value)} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
+                        <div>{count}/150</div>
+                        <Input maxLength={150} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
                     </div>
                 </ModalBody>
 
