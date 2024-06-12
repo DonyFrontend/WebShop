@@ -74,7 +74,9 @@ const Header = () => {
             <CustomLink to={'/men'} text={'Men'} />
             <CustomLink to={'/women'} text={'Women'} />
             <CustomLink to={'/shoe'} text={'Shoe'} />
+            {thisUser ? "" : 
             <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>             
+        }
             
             <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
         </div> : ""}
