@@ -6,6 +6,7 @@ import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react';
 import { getUserTC } from '../../Slices/getThisUserTC';
 import CardPage from '../../components/emptyCardPage/CardPage';
+import { Link } from 'react-router-dom';
 
 const Basket = () => {
 
@@ -100,8 +101,7 @@ const Basket = () => {
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
-                        <button className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</button>
-                    </div>
+                    <Link to={'/profile/orders'} className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</Link>                    </div>
                 </div>
             </div>
         </div>
