@@ -4,7 +4,6 @@ import CustomImagesLink from './CustomImagesLink';
 import Select from './images/Select.png';
 import Profile from './images/Profile.png';
 import Bag from './images/Bag.png';
-import adminIcon from './images/adminPage.svg';
 import { useEffect, useState } from 'react';
 import { findProductsTC } from '../../Slices/findProductTC';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +13,7 @@ import inputImage from './images/inputImage.svg';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
 import { getUserTC } from '../../Slices/getThisUserTC';
+
 
 const Header = () => {
     const [click, setClick] = useState(false);
@@ -27,7 +27,7 @@ const Header = () => {
         onAuthStateChanged(auth, thisUser => {
             thisUser ? setUser(true) : setUser(false);
         })
-    }, [])
+    })
 
 
     const [title, setTitle] = useState('');
@@ -48,7 +48,7 @@ const Header = () => {
     function closeDiv() {
         setTitle('');
     }
-
+    
     
     return <header className="fixed top-0 w-full z-10 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
         <div>
@@ -96,7 +96,27 @@ const Header = () => {
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>                
                 <Button colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></Button>                
             </div>
+            
             }
+
+        {click ? <div className='flex flex-col fixed top-0 right-14 gap-y-10 p-5 md:p-12 bg-white border border-black'>
+            <div className='border-b-2 text-xl text-center border-gray-300'>
+                <h1 className='md:text-2xl text-xl'>MENU</h1>
+            </div>
+        <div className='flex flex-col gap-y-5'>
+            <button className='bg-violet-800 text-white px-5 py-3 rounded-lg text-xl font-thin' colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></button>                
+            <button className='bg-violet-800 text-white px-5 py-3 rounded-lg text-xl font-thin' colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></button>                
+        </div>
+                <button className='border md:text-2xl text-xl border-gray-500 rounded-lg px-5 py-1.5 mt-0 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
+            </div> : "" } 
+
+            {thisUser ?  "" : <div className='inline-block lg:hidden'>
+            <button onClick={onHandleClick}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            </button>
+            </div> }
         
         <div className='inline-block lg:hidden'>
             <button onClick={onHandleClick}>
