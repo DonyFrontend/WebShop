@@ -41,7 +41,7 @@ const SendFB = () => {
                     <Button colorScheme='purple' mr={3} onClick={sendFeedBack} onClickCapture={onClose}>
                         Send
                     </Button>
-                    <Button variant='ghost'>Close</Button>
+                    <Button variant='ghost' onClick={onClose}>Close</Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

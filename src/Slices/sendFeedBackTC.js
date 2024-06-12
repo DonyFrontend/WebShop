@@ -11,9 +11,11 @@ export const FeedBackTC = createAsyncThunk(
         }))
         const newData2 = newdata.find(item => item.id == auth.currentUser.uid);
 
+
         addDoc(feedBackCollectionRef, {
             name: newData2.name,
-            feedBack: message 
+            feedBack: message,
+            date: new Date(Date.now())
         })
     }    
 )
