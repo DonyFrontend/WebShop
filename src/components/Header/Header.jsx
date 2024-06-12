@@ -4,6 +4,7 @@ import CustomImagesLink from './CustomImagesLink';
 import Select from './images/Select.png';
 import Profile from './images/Profile.png';
 import Bag from './images/Bag.png';
+import adminIcon from './images/adminPage.svg';
 import { useEffect, useState } from 'react';
 import { findProductsTC } from '../../Slices/findProductTC';
 import { useDispatch, useSelector } from 'react-redux';
