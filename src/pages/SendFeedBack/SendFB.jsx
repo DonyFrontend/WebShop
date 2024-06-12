@@ -23,7 +23,9 @@ const SendFB = () => {
     const {user} = useSelector(state => state.getThisUserTC);
 
     function sendFeedBack() {
-        dispatch(FeedBackTC({message}));
+        if (message != '') {
+            dispatch(FeedBackTC({message}));
+        }
     }
 
     return <div>
@@ -49,7 +51,7 @@ const SendFB = () => {
                                 position: 'bottom-left',
                                 render: () => (
                                     <Box color='white' p={3} bg='darkviolet'>
-                                    {user.name ? 'Thanks for leaving a review!' : 'Please log in or sign up!'}
+                                    {user.name ? message == 0 ?  'The review cannot be empty' :  'Thanks for leaving a review!' :  'Please log in or sign up!'}
                                     </Box>
                                 ),
                                 })
