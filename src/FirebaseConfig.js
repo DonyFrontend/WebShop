@@ -28,7 +28,7 @@ export const basketCollectionRef = collection(db, 'basket');
 export const wishlistCollectionRef = collection(db, 'wishlist');
 export const usersCollectionRef = collection(db, 'users');
 export const sortProductsCollectionRef = collection(db, 'sortProducts');
-export const chatProductsCollectionRef = collection(db, 'chat');
+export const feedBackCollectionRef = collection(db, 'feedBacks');
 
 //auth
 export const auth = getAuth(app);

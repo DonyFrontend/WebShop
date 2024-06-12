@@ -28,7 +28,7 @@ const Admin = () => {
         <div className='w-[10%] flex flex-col gap-y-12' style={{ borderRight: '1px solid black' }}>
             <div className='flex flex-col gap-y-4'>
                 <CustomLink image={ProductsImage} text={'Products'} to={'/adminPanel/products'} />
-                <CustomLink image={ChatImage} text={'FeedBack'} to={'/adminPanel/chat'} />
+                <CustomLink image={ChatImage} text={'Chat'} to={'/adminPanel/chat'} />
             </div>
         </div>
 

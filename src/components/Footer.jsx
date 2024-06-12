@@ -10,7 +10,7 @@ import { Box } from "@chakra-ui/react";
 const sections = [
     {
         title:'Need Help',
-        items:['Contact Us','Track Order','Returns & Refunds','FAQ.s','Career']
+        items:['Contact Us','Track Order','Returns & Refunds','Chat with us','Career']
     },
     {
         title:'Company',
