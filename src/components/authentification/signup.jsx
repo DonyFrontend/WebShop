@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { SignUpUserTC } from "../../Slices/SignUpUserTC"
+import { scrollToZero } from "../../pages/utils/CustomFC"
 
 function SignUp(path){
+    useEffect(() => {
+        scrollToZero();
+    }, [])
+
     const dispatch = useDispatch();
 
     const [password, setPassword] = useState('')
