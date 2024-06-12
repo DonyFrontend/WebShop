@@ -19,7 +19,7 @@ function App() {
     <>
     <Header/>
 
-    <div className='mt-[55px]'>
+    <div>
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/basket' element={<Basket/>}/>
