@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Box, Button, Input } from "@chakra-ui/react";
 import {
     Modal,
     ModalOverlay,
@@ -7,19 +7,31 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    useDisclosure
+    useDisclosure,
+    useToast
   } from '@chakra-ui/react'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FeedBackTC } from "../../Slices/sendFeedBackTC";
+import { useSelector } from "react-redux";
 
 const SendFB = () => {
+    const toast = useToast();
     const {onOpen, onClose, isOpen} = useDisclosure();
     const [message, setMessage] = useState('');
+    const [count, setCount] = useState(message.length);
     const dispatch = useDispatch();
+    const {user} = useSelector(state => state.getThisUserTC);
 
     function sendFeedBack() {
-        dispatch(FeedBackTC({message}));
+        if (message != '') {
+            dispatch(FeedBackTC({message}));
+        }
+    }
+
+    function changeInput(e) {
+        setMessage(e.target.value);
+        setCount(e.target.value.length);
     }
 
     return <div>
@@ -33,14 +45,28 @@ const SendFB = () => {
                 <ModalBody>
                     <div className="flex flex-col gap-y-5">
                         <h1>You can write a review about the convenience of using our site.</h1>
-                        <Input value={message} onChange={e => setMessage(e.target.value)} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
+                        <div>{count}/150</div>
+                        <Input maxLength={150} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
                     </div>
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button colorScheme='purple' mr={3} onClick={sendFeedBack} onClickCapture={onClose}>
-                        Send
-                    </Button>
+                    <div onClick={sendFeedBack}>
+                        <Button colorScheme='purple' mr={3}
+                            onClick={() => 
+                                toast({
+                                position: 'bottom-left',
+                                render: () => (
+                                    <Box color='white' p={3} bg='darkviolet'>
+                                    {user.name ? message == 0 ?  'The review cannot be empty' :  'Thanks for leaving a review!' :  'Please log in or sign up!'}
+                                    </Box>
+                                ),
+                                })
+                            }
+                            onClickCapture={onClose}>
+                            Send
+                        </Button>
+                    </div>
                     <Button variant='ghost' onClick={onClose}>Close</Button>
                 </ModalFooter>
             </ModalContent>
