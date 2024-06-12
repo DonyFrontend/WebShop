@@ -29,6 +29,7 @@ const Admin = () => {
             <div className='flex flex-col gap-y-4'>
                 <CustomLink image={ProductsImage} text={'Products'} to={'/adminPanel/products'} />
                 <CustomLink image={ChatImage} text={'Chat'} to={'/adminPanel/chat'} />
+                <CustomLink image={ChatImage} text={'FeedBacks'} to={'/adminPanel/feedBacks'} />
             </div>
         </div>
 
