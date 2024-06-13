@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 import { newsProductsTC, mensProductsTC, womensProductsTC } from '../../Slices/getProductsSlice';
+import SendFB from '../SendFeedBack/SendFB';
 
 const MainPage = () => {
     const products = useSelector(state => state.getProductsSlice);
@@ -27,9 +28,6 @@ const MainPage = () => {
         dispatch(mensProductsTC());
         dispatch(womensProductsTC());
     }, [dispatch])
-
-
-
 
     return <div>
         <div>
@@ -142,6 +140,10 @@ const MainPage = () => {
                         <MainCard />
                         <MainCard />
                     </div>
+                </div>
+
+                <div>
+                    <SendFB/>
                 </div>
             </div>
         </div>

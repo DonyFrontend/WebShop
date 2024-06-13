@@ -1,32 +1,36 @@
 import image from './wishlistIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { wishlistProductsTC } from '../../../Slices/getWishlistProductSlice';
 import { useEffect } from 'react';
 import { addBasketProduct } from '../../../Slices/addBasketProductTC';
 import { deleteWishlistProductTC } from '../../../Slices/deleteWishlistProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react';
+import { getUserTC } from '../../../Slices/getThisUserTC';
 
 const WishList = () => {
-    const { products } = useSelector(state => state.getWishlistProductSlice)
-    const disptach = useDispatch()
+    const { user, isFetch } = useSelector(state => state.getThisUserTC);
+    const dispatch = useDispatch()
     const toast = useToast();
 
     useEffect(() => {
-        disptach(wishlistProductsTC())
-    }, [])
+        dispatch(getUserTC());
+    }, [dispatch])
 
-    function deleteProduct(id) {
-        disptach(deleteWishlistProductTC(id));
-        disptach(wishlistProductsTC());
+    if (isFetch) {
+        return <h1>Loading...</h1>
+    }
+
+    function deleteProduct(product) {
+        dispatch(deleteWishlistProductTC(product));
+        dispatch(getUserTC());
     }
     return <div className='flex flex-col gap-y-11'>
         <div>
             <h1 className='font-semibold text-3xl'>Wishlist</h1>
         </div>
         <div className='flex flex-col gap-y-10'>
-            {products.map((item, index) => <div key={index} className='w-[100%] flex justify-between'>
+            {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex justify-between'>
                 <div className='flex items-center gap-x-10'>
-                    <div onClick={() => deleteProduct(item.id)}>
+                    <div onClick={() => deleteProduct(item)}>
                         <Button
                             onClick={() => {
                                 toast({
@@ -36,8 +40,7 @@ const WishList = () => {
                                             Delete product from wishlist
                                         </Box>
                                     ),
-                                }),
-                                deleteProduct(item.id);
+                                })
                             }
                             }
                         >
@@ -66,7 +69,7 @@ const WishList = () => {
 
                 <div className='flex items-center gap-x-12'>
                     <p className='text-lg text-gray-600'>$29.00</p>
-                    <div onClick={() => disptach(addBasketProduct({
+                    <div onClick={() => dispatch(addBasketProduct({
                         product: {
                             title: item.title,
                             description: item.description,
@@ -91,7 +94,7 @@ const WishList = () => {
                         </Button>
                     </div>
                 </div>
-            </div>)}
+            </div>) : <h1>Dont have</h1>}
         </div>
     </div>
 }

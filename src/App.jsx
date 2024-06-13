@@ -12,13 +12,14 @@ import Product from './pages/ProductPage/productPage';
 import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
+import Admin from './pages/AdminPage/Admin';
 function App() {
 
   return (
     <>
     <Header/>
 
-    <div className='mt-[55px]'>
+    <div>
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/basket' element={<Basket/>}/>
@@ -30,6 +31,7 @@ function App() {
         <Route path='/*' element={<Error/>}/>
         <Route path='/orderpage' element={<OrderPage/>}/>
         <Route path='/cardpage' element={<CardPage/>}/>
+        <Route path='/adminPanel/*' element={<Admin/>}/>
       </Routes>
     </div>
 

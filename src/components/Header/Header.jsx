@@ -4,6 +4,7 @@ import CustomImagesLink from './CustomImagesLink';
 import Select from './images/Select.png';
 import Profile from './images/Profile.png';
 import Bag from './images/Bag.png';
+import adminIcon from './images/adminPage.svg';
 import { useEffect, useState } from 'react';
 import { findProductsTC } from '../../Slices/findProductTC';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,12 +13,16 @@ import { Button } from '@chakra-ui/react';
 import inputImage from './images/inputImage.svg';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
+import { getUserTC } from '../../Slices/getThisUserTC';
+
 
 const Header = () => {
     const [click, setClick] = useState(false);
     function onHandleClick() {
         setClick(!click)
     }
+
+    
 
     const [thisUser, setUser] = useState(false);
 
@@ -29,10 +34,14 @@ const Header = () => {
 
 
     const [title, setTitle] = useState('');
-    console.log(title);
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.findProductTC);
+    const {user} = useSelector(state => state.getThisUserTC);
+
+    useEffect(() => {
+        dispatch(getUserTC());
+    }, [])
 
     function onHandleTitle(e) {
         setTitle(e.target.value);
@@ -42,6 +51,8 @@ const Header = () => {
     function closeDiv() {
         setTitle('');
     }
+    
+    
     return <header className="fixed top-0 w-full z-10 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
         <div>
             <img src={logo} width={120} alt="Error!" />
@@ -63,7 +74,10 @@ const Header = () => {
             <CustomLink to={'/men'} text={'Men'} />
             <CustomLink to={'/women'} text={'Women'} />
             <CustomLink to={'/shoe'} text={'Shoe'} />
-
+            {thisUser ? "" : 
+            <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>             
+        }
+            
             <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
         </div> : ""}
         <form className='flex gap-x-3'>
@@ -74,15 +88,24 @@ const Header = () => {
         </form>
 
         {thisUser ?
-            <div className='flex gap-x-1'>
-                <CustomImagesLink to={'/profile/wishlist'} image={Select} />
-                <CustomImagesLink to={'/profile/user'} image={Profile} />
-                <CustomImagesLink to={'/basket'} image={Bag} />
-            </div> : <div className='flex gap-x-1'>
+            <div className='flex gap-x-6'>
+                <div className='flex gap-x-1'>
+                    <CustomImagesLink to={'/profile/wishlist'} image={Select} />
+                    <CustomImagesLink to={'/profile/user'} image={Profile} />
+                    <CustomImagesLink to={'/basket'} image={Bag} />
+                </div>
+
+                {user.isAdmin ? <div className='flex pr-2 lg:mr-0 gap-x-1'>
+                    <CustomImagesLink to={'/adminPanel'} image={adminIcon}/>
+                </div> : ''}
+            </div> : <div className='hidden lg:flex gap-x-1'>
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>                
                 <Button colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></Button>                
             </div>
+            
             }
+
+        
         
         <div className='inline-block lg:hidden'>
             <button onClick={onHandleClick}>

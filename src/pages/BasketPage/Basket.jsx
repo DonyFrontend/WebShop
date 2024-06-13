@@ -6,6 +6,7 @@ import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react';
 import { getUserTC } from '../../Slices/getThisUserTC';
 import CardPage from '../../components/emptyCardPage/CardPage';
+import { Link } from 'react-router-dom';
 
 const Basket = () => {
 
@@ -25,7 +26,7 @@ const Basket = () => {
     }
 
     let totalPrice = 0;
-    if (user.basket?.length != 0 & !isFetch) {
+    if (user?.basket?.length != 0 & !isFetch) {
         user.basket.forEach(element => {
             totalPrice += element.price;
         });
@@ -52,7 +53,7 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Shipping: FREE</h5>
             <h5>Total: ${item.price}</h5>
-            <div onClick={() => deleteProduct(item)}>
+            <div onClick={() => dispatch(deleteProduct(item))}>
                 <Button
                     onClick={() => {
                         toast({
@@ -62,19 +63,18 @@ const Basket = () => {
                                     Delete product from basket
                                 </Box>
                             ),
-                        }),
-                            deleteProduct(item)
+                        })
                     }
                     }
                 >
-                    <img src={bag} alt="" />
+                    <img src={bag} alt="Error!" />
                 </Button>
             </div>
         </div>
     </div>)
 
-    return <div className="flex flex-col">
-        <div className="w-[100%] flex items-center justify-between bg-[#3C4242] p-3">
+    return <div className="flex flex-col mt-14">
+        <div className="w-[100%] flex items-center text-center justify-center lg:text-left lg:justify-between bg-[#3C4242] p-3">
             <h5 className='text-white text-xl'>Your products:</h5>
         </div>
 
@@ -82,28 +82,26 @@ const Basket = () => {
             {basketProducts}
         </div>
 
-        <div className="w-[100%] flex justify-center p-5  pt-16 bg-[#e7e5e5]">
-            <div className="w-[80%] flex justify-between">
-                <div className="flex flex-col gap-y-3">
-                    <h1 className="font-medium text-xl">Discount  Codes</h1>
+        <div className="w-[100%] flex justify-center p-5 bg-[#e7e5e5]">
+            <div className="w-[80%] flex flex-col lg:flex-row md:flex-row justify-between gap-y-20 lg:gap-y-0">
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-y-3">
+                    <h1 className="flex font-medium text-xl">Discount  Codes</h1>
                     <p>Enter your coupon code if you have one</p>
                     <div className="flex">
                         <label htmlFor="coupon" className="shadow-md">
                             <input type="text" style={{ border: '1px solid #BEBCBD', borderBottomLeftRadius: '7px', borderTopLeftRadius: '7px', padding: 3 }} />
-                            <button className="bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius: '7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button>
+                            <button className="bg-[#8A33FD] mt-5 md:mt-0 lg:mt-0 hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius: '7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button>
                         </label>
                     </div>
                 </div>
-
-                <div className="flex flex-col gap-y-11">
+            <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
                         <p>Sub Total: {totalPrice}</p>
                         <p>Shipping: FREE</p>
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
-                        <button className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</button>
-                    </div>
+                    <Link to={'/profile/orders'} className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</Link>                    </div>
                 </div>
             </div>
         </div>

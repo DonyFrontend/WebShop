@@ -5,20 +5,14 @@ import { auth } from "../FirebaseConfig";
 
 export const getUserTC = createAsyncThunk(
     'webShop/getUserTC',
-    async (props, {dispatch}) => {
-            const data = await getDocs(usersCollectionRef);
-            const newdata = data.docs.map(doc => ({
-                ...doc.data()  
-              }))
-            if (auth.currentUser.uid) {
-                const newData2 = newdata.find(item => item.id == auth.currentUser.uid); 
-                dispatch(setUser(newData2));
-            } else {
-                dispatch(setUser({error: 'Not'}));
-            } 
-
-
-    }   
+    async (props, { dispatch }) => {
+        const data = await getDocs(usersCollectionRef);
+        const newdata = data.docs.map(doc => ({
+            ...doc.data()
+        }))
+        const newData2 = newdata.find(item => item.id == auth.currentUser.uid);
+        dispatch(setUser(newData2));
+    }
 )
 
 const userSLice = createSlice({
@@ -35,5 +29,5 @@ const userSLice = createSlice({
         }
     }
 })
-export const {setUser} = userSLice.actions;
+export const { setUser } = userSLice.actions;
 export default userSLice.reducer;
