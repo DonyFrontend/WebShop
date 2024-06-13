@@ -23,13 +23,14 @@ const UserModal = () => {
 
     return (
         <>
-            <Button onClick={onOpen}>Change Data</Button>
+            <Button onClick={onOpen} colorScheme='purple'>Change Data</Button>
 
             <Modal
                 initialFocusRef={initialRef}
                 finalFocusRef={finalRef}
                 isOpen={isOpen}
                 onClose={onClose}
+                isCentered
             >
                 <ModalOverlay />
                 <ModalContent>
@@ -47,18 +48,19 @@ const UserModal = () => {
                         </FormControl>
 
                         <FormControl mt={4}>
-                            <FormLabel>Country</FormLabel>
-                            <Input placeholder='Country' />
-                        </FormControl>
-
-                        <FormControl mt={4}>
                             <FormLabel>City</FormLabel>
-                            <Input placeholder='City' />
+                            <select className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
+                                <option value='option1'>Bishkek</option>
+                                <option value='option2'>Kara-Balta</option>
+                                <option value='option3'>Osh</option>
+                                <option value="option 4">Talas</option>
+                                <option value="option 5">Karakol</option>
+                            </select>
                         </FormControl>
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onClose}>
+                        <Button colorScheme='purple' mr={3} onClick={onClose}>
                             Save
                         </Button>
                         <Button onClick={onClose}>Cancel</Button>

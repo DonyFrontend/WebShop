@@ -45,8 +45,8 @@ const SendFB = () => {
                 <ModalBody>
                     <div className="flex flex-col gap-y-5">
                         <h1>You can write a review about the convenience of using our site.</h1>
-                        <div>{count}/150</div>
-                        <Input maxLength={150} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
+                        <div>{count}/200</div>
+                        <Input maxLength={200} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
                     </div>
                 </ModalBody>
 
