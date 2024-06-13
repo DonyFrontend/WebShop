@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {configureStore, current} from '@reduxjs/toolkit';
 import getProductsSlice from '../Slices/getProductsSlice';
 import { SignInTC } from '../Slices/SignInTC';
 import { SignOutUserTC } from '../Slices/SignOutUserTC';
@@ -22,6 +22,8 @@ import { FeedBackTC } from '../Slices/sendFeedBackTC';
 import getFeedBacksTC from '../Slices/getFeedBacksTC';
 import { getFeedBacks } from '../Slices/getFeedBacksTC';
 import { DFeedBackTC } from '../Slices/deleteFeedBackTC';
+import { CurrentFeedbacksTC } from '../Slices/getCurrentFeedBacksTС';
+import getCurrentFeedBacksTС from '../Slices/getCurrentFeedBacksTС';
 
 export const store = configureStore({
     reducer: {
