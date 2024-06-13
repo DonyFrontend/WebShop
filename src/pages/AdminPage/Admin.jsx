@@ -7,6 +7,8 @@ import ChatImage from './images/chat.svg';
 import ProductsImage from './images/products.svg';
 import CustomLink from "../ProfilePage/CustomLink";
 import Products from "./AdminPages/Products";
+import FeedBacks from "./AdminPages/FeedBacks";
+import { getFeedBacks } from "../../Slices/getFeedBacksTC";
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -15,6 +17,7 @@ const Admin = () => {
     useEffect(() => {
         scrollToZero();
         dispatch(getUserTC());
+        dispatch(getFeedBacks());
     }, [dispatch])
 
     const {isFetch} = useSelector(state => state.getThisUserTC);
@@ -25,7 +28,7 @@ const Admin = () => {
     
     return <div className="flex min-h-[300px] w-[100%] justify-center mt-32">
     <div className="w-[98%] flex justify-between">
-        <div className='w-[10%] flex flex-col gap-y-12' style={{ borderRight: '1px solid black' }}>
+        <div className='w-[10%] flex flex-col gap-y-12 p-1' style={{ borderRight: '1px solid black' }}>
             <div className='flex flex-col gap-y-4'>
                 <CustomLink image={ProductsImage} text={'Products'} to={'/adminPanel/products'} />
                 <CustomLink image={ChatImage} text={'Chat'} to={'/adminPanel/chat'} />
@@ -33,9 +36,10 @@ const Admin = () => {
             </div>
         </div>
 
-        <div className='w-[75%]'>
+        <div className='w-[87%]'>
             <Routes>
                 <Route path="/*" element={<Products/>}/>
+                <Route path="feedBacks" element={<FeedBacks/>}/>
             </Routes>
         </div>
     </div>
