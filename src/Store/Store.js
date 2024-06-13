@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {configureStore, current} from '@reduxjs/toolkit';
 import getProductsSlice from '../Slices/getProductsSlice';
 import { SignInTC } from '../Slices/SignInTC';
 import { SignOutUserTC } from '../Slices/SignOutUserTC';
@@ -19,6 +19,8 @@ import getThisUserTC from '../Slices/getThisUserTC';
 import { similarProductsTC } from '../Slices/similarProductsSlice';
 import similarProductsSlice from '../Slices/similarProductsSlice';
 import { FeedBackTC } from '../Slices/sendFeedBackTC';
+import { CurrentFeedbacksTC } from '../Slices/getCurrentFeedBacksTС';
+import getCurrentFeedBacksTС from '../Slices/getCurrentFeedBacksTС';
 
 export const store = configureStore({
     reducer: {
@@ -43,6 +45,8 @@ export const store = configureStore({
         getThisUserTC,
         similarProductsSlice,
         similarProductsTC,
-        FeedBackTC
+        FeedBackTC,
+        CurrentFeedbacksTC,
+        getCurrentFeedBacksTС
     }
 })
