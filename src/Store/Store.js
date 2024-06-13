@@ -19,6 +19,9 @@ import getThisUserTC from '../Slices/getThisUserTC';
 import { similarProductsTC } from '../Slices/similarProductsSlice';
 import similarProductsSlice from '../Slices/similarProductsSlice';
 import { FeedBackTC } from '../Slices/sendFeedBackTC';
+import getFeedBacksTC from '../Slices/getFeedBacksTC';
+import { getFeedBacks } from '../Slices/getFeedBacksTC';
+import { DFeedBackTC } from '../Slices/deleteFeedBackTC';
 
 export const store = configureStore({
     reducer: {
@@ -43,6 +46,9 @@ export const store = configureStore({
         getThisUserTC,
         similarProductsSlice,
         similarProductsTC,
-        FeedBackTC
+        FeedBackTC,
+        getFeedBacks,
+        getFeedBacksTC,
+        DFeedBackTC
     }
 })
