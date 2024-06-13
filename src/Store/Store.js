@@ -51,6 +51,8 @@ export const store = configureStore({
         FeedBackTC,
         getFeedBacks,
         getFeedBacksTC,
-        DFeedBackTC
+        DFeedBackTC,
+        CurrentFeedbacksTC,
+        getCurrentFeedBacksTС
     }
 })

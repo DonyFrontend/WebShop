@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CurrentFeedbacksCollectionRef } from "../FirebaseConfig";
 import { getDocs } from "firebase/firestore";
-import { setData } from "./similarProductsSlice";
 
 export const CurrentFeedbacksTC = createAsyncThunk(
     'webshop/CurrentFeedbacks',
