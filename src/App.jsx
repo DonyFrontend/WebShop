@@ -31,7 +31,7 @@ function App() {
         <Route path='/*' element={<Error/>}/>
         <Route path='/orderpage' element={<OrderPage/>}/>
         <Route path='/cardpage' element={<CardPage/>}/>
-        <Route path='/adminPanel' element={<Admin/>}/>
+        <Route path='/adminPanel/*' element={<Admin/>}/>
       </Routes>
     </div>
 
