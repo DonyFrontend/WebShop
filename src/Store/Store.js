@@ -24,6 +24,7 @@ import { getFeedBacks } from '../Slices/getFeedBacksTC';
 import { DFeedBackTC } from '../Slices/deleteFeedBackTC';
 import { CurrentFeedbacksTC } from '../Slices/getCurrentFeedBacksTС';
 import getCurrentFeedBacksTС from '../Slices/getCurrentFeedBacksTС';
+import { addCurrentFeedBackTC } from '../Slices/addCurrentFeedBackTC';
 
 export const store = configureStore({
     reducer: {
@@ -53,6 +54,7 @@ export const store = configureStore({
         getFeedBacksTC,
         DFeedBackTC,
         CurrentFeedbacksTC,
-        getCurrentFeedBacksTС
+        getCurrentFeedBacksTС,
+        addCurrentFeedBackTC
     }
 })
