@@ -9,6 +9,7 @@ import CustomLink from "../ProfilePage/CustomLink";
 import Products from "./AdminPages/Products";
 import FeedBacks from "./AdminPages/FeedBacks";
 import { getFeedBacks } from "../../Slices/getFeedBacksTC";
+import Chat from "./AdminPages/Chat";
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const Admin = () => {
             <Routes>
                 <Route path="/*" element={<Products/>}/>
                 <Route path="feedBacks" element={<FeedBacks/>}/>
+                <Route path="chat" element={<Chat/>}/>
             </Routes>
         </div>
     </div>
