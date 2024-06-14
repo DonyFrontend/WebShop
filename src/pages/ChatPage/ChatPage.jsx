@@ -12,6 +12,8 @@ const ChatPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [count, setCount] = useState(0);
     const [message, setMessage] = useState('');
+    const [customMessage, setCustomMessage] = useState(false);
+
     const {user} = useSelector(state => state.getThisUserTC);
 
     const dispatch = useDispatch();
@@ -31,6 +33,7 @@ const ChatPage = () => {
         dispatch(addChatTC({message}));
         dispatch(getUserTC());
         setMessage('');
+        setCustomMessage(true);
     }
 
     return <div className='fixed right-7 bottom-14'>
@@ -48,6 +51,10 @@ const ChatPage = () => {
                 <div className='bg-gray-200 rounded-md p-2'>
                     <p>Hello! How i can help you ?</p>
                 </div>
+
+                { customMessage ? <div className='bg-gray-200 rounded-md p-2'>
+                    <p>Your question is being processed, and it may take some time. Thank you for understanding!</p>
+                </div> : ''}
 
                 {user.chat ?  user.chat.map((item, index) => <div key={index} className='bg-gray-200 rounded-md p-2'>
                     <p>{item}</p>
