@@ -3,19 +3,36 @@ import buttonImage from './images/button.svg';
 import { useState } from 'react';
 import closeButton from './images/closeButton.svg';
 import sendButton from './images/sendButton.svg';
+import { useSelector } from 'react-redux';
+import { addChatTC } from '../../Slices/addChatTC';
+import { useDispatch } from 'react-redux';
+import { getUserTC } from '../../Slices/getThisUserTC';
 
 const ChatPage = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [count, setCount] = useState(0);
     const [message, setMessage] = useState('');
+    const {user} = useSelector(state => state.getThisUserTC);
+
+    const dispatch = useDispatch();
+
+    if(!user.email) return '';
 
     function onChangeStateIsOpen() {
         setIsOpen(!isOpen);
     }
+
     function onChangeStateInput(e) {
         setMessage(e.target.value);
         setCount(e.target.value.length);
     }
+
+    function addMessage() {
+        dispatch(addChatTC({message}));
+        dispatch(getUserTC());
+        setMessage('');
+    }
+
     return <div className='fixed right-7 bottom-14'>
         <Button height={'52px'} width={'52px'} borderRadius={'100%'} onClick={onChangeStateIsOpen} colorScheme='purple'>
             {isOpen ? <img src={closeButton} alt='Error!'/> : <img src={buttonImage} alt="Error!" />}
@@ -27,14 +44,18 @@ const ChatPage = () => {
                 <h1 className='text-white text-lg font-semibold'>Clothe Net Support</h1>
                 <Button colorScheme='purple.500' onClick={onChangeStateIsOpen}><img src={closeButton} alt="Error!" /></Button>
             </div>
-            <div className='h-[290px] p-2'>
+            <div className='h-[290px] p-2 flex flex-col gap-y-2 overflow-y-scroll'>
                 <div className='bg-gray-200 rounded-md p-2'>
                     <p>Hello! How i can help you ?</p>
                 </div>
+
+                {user.chat ?  user.chat.map((item, index) => <div key={index} className='bg-gray-200 rounded-md p-2'>
+                    <p>{item}</p>
+                </div>) : ''}
             </div>
             <div className='flex gap-x-1 p-2'>
                 <Input maxLength={200} value={message} onChange={e => onChangeStateInput(e)} placeholder='Type message...' focusBorderColor='purple.500'></Input>
-                <Button colorScheme='purple'><img src={sendButton} alt="Error!" /></Button>
+                <Button colorScheme='purple' onClick={addMessage}><img src={sendButton} alt="Error!" /></Button>
             </div>
             <div className='px-2'>{count}/200</div>
         </div> : ''}
