@@ -2,6 +2,7 @@ import {Button, Input} from '@chakra-ui/react'
 import buttonImage from './images/button.svg';
 import { useState } from 'react';
 import closeButton from './images/closeButton.svg';
+import sendButton from './images/sendButton.svg';
 
 const ChatPage = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -33,7 +34,7 @@ const ChatPage = () => {
             </div>
             <div className='flex gap-x-1 p-2'>
                 <Input maxLength={200} value={message} onChange={e => onChangeStateInput(e)} placeholder='Type message...' focusBorderColor='purple.500'></Input>
-                <Button><img src={closeButton} alt="Error!" /></Button>
+                <Button colorScheme='purple'><img src={sendButton} alt="Error!" /></Button>
             </div>
             <div className='px-2'>{count}/200</div>
         </div> : ''}
