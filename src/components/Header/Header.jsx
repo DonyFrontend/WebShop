@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { findProductsTC } from '../../Slices/findProductTC';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
 import inputImage from './images/inputImage.svg';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
@@ -82,7 +82,7 @@ const Header = () => {
         </div> : ""}
         <form className='flex gap-x-3'>
             <label htmlFor="search">
-                <input value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
+                <Input focusBorderColor='purple.500' value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
             </label>
             {/* <button className='px-3 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]'>Find</button> */}
         </form>
