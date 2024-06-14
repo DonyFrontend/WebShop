@@ -34,7 +34,7 @@ const Shop = () => {
                         <img src={filter} alt="Error!" />
                     </div>
 
-                    <div>
+                    <div className='sticky top-20'>
                         <AccordionFilter />
                     </div>
                 </div>

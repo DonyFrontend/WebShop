@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Card, CardHeader, CardBody, Text, Heading, Box, Button } from '@chakra-ui/react';
 import { DFeedBackTC } from '../../../Slices/deleteFeedBackTC';
 import { getFeedBacks } from '../../../Slices/getFeedBacksTC';
+import { addCurrentFeedBackTC } from '../../../Slices/addCurrentFeedBackTC';
 
 const FeedBacks = () => {
     const { feedBacks, isFetch } = useSelector(state => state.getFeedBacksTC);
@@ -16,8 +17,15 @@ const FeedBacks = () => {
         dispatch(getFeedBacks());
     }
 
-    return <div>
-        {feedBacks.length != 0 ? feedBacks.map((item, index) => <Card key={index}>
+    function addFeedBack(doc) {
+        console.log(doc);
+        dispatch(addCurrentFeedBackTC(doc));
+        dispatch(DFeedBackTC({id: doc.id}))
+        dispatch(getFeedBacks());
+    }
+
+    return <div className='flex flex-col gap-y-5'>
+        {feedBacks.length != 0 ? feedBacks.map((item, index) => <Card key={index} >
             <CardHeader>
                 <Heading size='md'>{item.name}</Heading>
             </CardHeader>
@@ -33,8 +41,8 @@ const FeedBacks = () => {
                     </Text>
 
                     <Box className='flex gap-x-3'>
-                        <Button colorScheme='green'>add</Button>
-                        <Button colorScheme='red' onClick={() => deleteFeedBack({ id: item.id })}>delete</Button>
+                        <Button colorScheme='green' onClick={() => addFeedBack(item)}>Add</Button>
+                        <Button colorScheme='red' onClick={() => deleteFeedBack({ id: item.id })}>Delete</Button>
                     </Box>
                 </Box>
             </CardBody>

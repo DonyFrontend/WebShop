@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import { findProductsTC } from '../../Slices/findProductTC';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
 import inputImage from './images/inputImage.svg';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
@@ -30,7 +30,7 @@ const Header = () => {
         onAuthStateChanged(auth, thisUser => {
             thisUser ? setUser(true) : setUser(false);
         })
-    })
+    }, [])
 
 
     const [title, setTitle] = useState('');
@@ -41,7 +41,7 @@ const Header = () => {
 
     useEffect(() => {
         dispatch(getUserTC());
-    }, [])
+    }, [dispatch])
 
     function onHandleTitle(e) {
         setTitle(e.target.value);
@@ -53,7 +53,7 @@ const Header = () => {
     }
     
     
-    return <header className="fixed top-0 w-full z-10 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
+    return <header className="fixed top-0 w-full z-20 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
         <div>
             <img src={logo} width={120} alt="Error!" />
         </div>
@@ -82,7 +82,7 @@ const Header = () => {
         </div> : ""}
         <form className='flex gap-x-3'>
             <label htmlFor="search">
-                <input value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
+                <Input focusBorderColor='purple.500' value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
             </label>
             {/* <button className='px-3 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]'>Find</button> */}
         </form>
@@ -96,7 +96,7 @@ const Header = () => {
                 </div>
 
                 {user.isAdmin ? <div className='flex pr-2 lg:mr-0 gap-x-1'>
-                    <CustomImagesLink to={'/adminPanel'} image={adminIcon}/>
+                    <CustomImagesLink to={'/adminPanel/products'} image={adminIcon}/>
                 </div> : ''}
             </div> : <div className='hidden lg:flex gap-x-1'>
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>                
