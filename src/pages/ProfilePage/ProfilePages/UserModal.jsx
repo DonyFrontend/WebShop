@@ -43,11 +43,6 @@ const UserModal = () => {
                         </FormControl>
 
                         <FormControl mt={4}>
-                            <FormLabel>Email</FormLabel>
-                            <Input placeholder='Email' />
-                        </FormControl>
-
-                        <FormControl mt={4}>
                             <FormLabel>City</FormLabel>
                             <select className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
                                 <option value='option1'>Bishkek</option>

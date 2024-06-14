@@ -13,6 +13,8 @@ import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
 import Admin from './pages/AdminPage/Admin';
+import ChatPage from './pages/ChatPage/ChatPage';
+
 function App() {
 
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path='/cardpage' element={<CardPage/>}/>
         <Route path='/adminPanel/*' element={<Admin/>}/>
       </Routes>
+
+      <ChatPage/>
     </div>
 
     <Footer/>
