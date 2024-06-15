@@ -12,7 +12,7 @@ const Chat = () => {
     }, [dispatch])
 
     if (isFetch) {
-        return <h1>Loading...</h1>
+        return <h1 className='font-semibold text-3xl'>Loading...</h1>
     }
 
     const findChats = users.filter(item => item.chat[0]);

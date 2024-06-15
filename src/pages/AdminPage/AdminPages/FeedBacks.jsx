@@ -23,6 +23,7 @@ const FeedBacks = () => {
         dispatch(DFeedBackTC({id: doc.id}))
         dispatch(getFeedBacks());
     }
+    
 
     return <div className='flex flex-col gap-y-5'>
         {feedBacks.length != 0 ? feedBacks.map((item, index) => <Card key={index} >
@@ -37,7 +38,7 @@ const FeedBacks = () => {
                     </Text>
 
                     <Text fontSize='sm'>
-                        {/* Date: {item.date} */}
+                        Date: {item.date}
                     </Text>
 
                     <Box className='flex gap-x-3'>
