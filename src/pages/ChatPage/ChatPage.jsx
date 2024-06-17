@@ -1,4 +1,4 @@
-import { Box, Button, Input } from '@chakra-ui/react'
+import { Box, Button, Input } from '@chakra-ui/react';
 import buttonImage from './images/button.svg';
 import { useState } from 'react';
 import closeButton from './images/closeButton.svg';
@@ -24,6 +24,7 @@ const ChatPage = () => {
 
     function onChangeStateIsOpen() {
         setIsOpen(!isOpen);
+        dispatch(getUserTC());
     }
 
     function onChangeStateInput(e) {
@@ -33,7 +34,7 @@ const ChatPage = () => {
 
     function addMessage() {
         if (message != 0) {
-            dispatch(addChatTC({ message }));
+            dispatch(addChatTC({ message, name: 'You' }));
             dispatch(getUserTC());
             setMessage('');
             setCustomMessage(true);
@@ -61,8 +62,9 @@ const ChatPage = () => {
                     <p>Your question is being processed, and it may take some time. Thank you for understanding!</p>
                 </div> : ''}
 
-                {user.chat ? user.chat.map((item, index) => <div key={index} className='bg-gray-200 rounded-md p-2'>
-                    <p>{item}</p>
+                {user.chat ? user.chat.map((item, index) => <div key={index} className='bg-gray-200 rounded-md p-2 flex flex-col gap-y-2'>
+                    <h1 className='font-medium'>{item.name}:</h1>
+                    <p>{item.message}</p>
                 </div>) : ''}
             </div>
             <div className='flex gap-x-1 p-2'>

@@ -4,11 +4,14 @@ import { auth, usersCollectionRef } from '../FirebaseConfig';
 
 export const addChatTC = createAsyncThunk(
     'webShop/addChatTC',
-    async ({message}) => {
+    async ({message, name}) => {
         try {
             const newUser = doc(usersCollectionRef, auth.currentUser.uid);
             await updateDoc(newUser, {
-                chat: arrayUnion(message),
+                chat: arrayUnion({
+                    name,
+                    message
+                }),
                 capital: true
             }, { merge: true },)
         } catch (err) {
