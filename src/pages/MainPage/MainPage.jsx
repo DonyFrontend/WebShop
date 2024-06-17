@@ -13,20 +13,25 @@ import PoloImage from './BrandsImages/Polo.png';
 import PumaImage from './BrandsImages/Puma.png';
 import { scrollToZero } from '../utils/CustomFC';
 import { useEffect } from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { newsProductsTC, mensProductsTC, womensProductsTC } from '../../Slices/getProductsSlice';
 import SendFB from '../SendFeedBack/SendFB';
+import { getLimitCurrentFeedBacksTC } from '../../Slices/getLimitCurrentFeedBacksSlice';
+import { Button } from '@chakra-ui/react';
 
 const MainPage = () => {
     const products = useSelector(state => state.getProductsSlice);
+    const {limitFeedBacks, isFetch} = useSelector(state => state.getLimitCurrentFeedBacksSlice);
     const dispatch = useDispatch();
+    console.log(limitFeedBacks);
 
     useEffect(() => {
         scrollToZero()
         dispatch(newsProductsTC());
         dispatch(mensProductsTC());
         dispatch(womensProductsTC());
+        dispatch(getLimitCurrentFeedBacksTC());
     }, [dispatch])
 
     return <div>
@@ -136,13 +141,13 @@ const MainPage = () => {
                         <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBack</h1>
                     </div>
                     <div className='grid md:grid-cols-2 grid-cols-1 auto-grid-row:auto lg:grid-cols-4 gap-5'>
-                        <MainCard />
-                        <MainCard />
-                        <MainCard />
+                       {isFetch ? <h1 className='font-semibold text-3xl'>Loading</h1> : limitFeedBacks.map((item, index) => <MainCard key={index} name={item.name} feedBack={item.feedBack} date={item.date}/>)}
                     </div>
                 </div>
 
-                <div>
+                <div className='flex gap-x-2 mb-4'>
+                    <Button colorScheme='purple'>Show all FeedBacks</Button>
+                    
                     <SendFB/>
                 </div>
             </div>

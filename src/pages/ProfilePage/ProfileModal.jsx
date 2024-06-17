@@ -38,7 +38,7 @@ const ProfileModal = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={() => {onClose, postData()}}>
+                        <Button colorScheme='purple' mr={3} onClick={() => {onClose, postData()}}>
                             Exit
                         </Button>
                         <Button variant='ghost' onClick={onClose}>Close</Button>

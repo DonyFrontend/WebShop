@@ -29,8 +29,8 @@ const Admin = () => {
     
     return <div className="flex min-h-[300px] w-[100%] justify-center mt-32">
     <div className="w-[98%] flex justify-between">
-        <div className='w-[10%] flex flex-col gap-y-12 p-1' style={{ borderRight: '1px solid black' }}>
-            <div className='flex flex-col gap-y-4'>
+        <div className='w-[10%]flex flex-col gap-y-12 p-1' style={{ borderRight: '1px solid black' }}>
+            <div className='flex flex-col gap-y-4 sticky top-16'>
                 <CustomLink image={ProductsImage} text={'Products'} to={'/adminPanel/products'} />
                 <CustomLink image={ChatImage} text={'Chat'} to={'/adminPanel/chat'} />
                 <CustomLink image={ChatImage} text={'FeedBacks'} to={'/adminPanel/feedBacks'} />

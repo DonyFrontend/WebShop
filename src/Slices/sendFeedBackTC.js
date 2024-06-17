@@ -10,12 +10,31 @@ export const FeedBackTC = createAsyncThunk(
             ...doc.data()
         }))
         const newData2 = newdata.find(item => item.id == auth.currentUser.uid);
+        
+        const allMonths = [
+            'января',
+            'февраля',
+            'марта',
+            'апреля',
+            'мая',
+            'июня',
+            'июля',
+            'августа',
+            'сентября',
+            'октября',
+            'ноября',
+            'декабря',
+        ]
+
+        const month = new Date().getDay();
+
+        const date = `${new Date().getDate()} ${allMonths[month - 1]} ${new Date().getFullYear()} год.`;
 
 
         addDoc(feedBackCollectionRef, {
             name: newData2.name,
             feedBack: message,
-            date: new Date(Date.now())
+            date
         })
     }    
 )
