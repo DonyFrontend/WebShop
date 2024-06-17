@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { getAllUsersTC } from '../../../Slices/getAllUsersSlice';
 import { Box, Button, Card, CardBody, CardHeader, Heading, Text } from '@chakra-ui/react';
 import { deleteChatTC } from '../../../Slices/deleteChatTC';
+import { Link } from 'react-router-dom';
 
 const Chat = () => {
     const { users, isFetch } = useSelector(state => state.getAllUsersSlice);
@@ -37,13 +38,15 @@ const Chat = () => {
             </CardHeader>
 
             <CardBody>
-                <Box className='flex flex-col gap-y-7'>
-                    {item.chat ? item.chat.map((item, index) => <Text key={index} fontSize='md'>
-                        {item}
+                <Box className='flex flex-col gap-y-3'>
+                    {item.chat ? item.chat.map((chatItem, index) => <Text key={index} fontSize='md'>
+                        {chatItem.message}
                     </Text>) : ''}
 
                     <Box className='flex gap-x-3'>
-                        <Button colorScheme='green'>Go to chat</Button>
+                        <Link to={item.id}>
+                            <Button colorScheme='green'>Go to chat</Button>
+                        </Link>
                         <Button colorScheme='red' onClick={() => deleteChat(item.id)}>Delete chat</Button>
                     </Box>
                 </Box>

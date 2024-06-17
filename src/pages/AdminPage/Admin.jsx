@@ -10,6 +10,7 @@ import Products from "./AdminPages/Products";
 import FeedBacks from "./AdminPages/FeedBacks";
 import { getFeedBacks } from "../../Slices/getFeedBacksTC";
 import Chat from "./AdminPages/Chat";
+import ChatWithUser from "./AdminPages/ChatWithUser";
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const Admin = () => {
                 <Route path="/*" element={<Products/>}/>
                 <Route path="feedBacks" element={<FeedBacks/>}/>
                 <Route path="chat" element={<Chat/>}/>
+                <Route path="chat/:id" element={<ChatWithUser/>}/>
             </Routes>
         </div>
     </div>
