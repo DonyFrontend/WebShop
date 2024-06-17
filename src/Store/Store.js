@@ -28,6 +28,9 @@ import { addCurrentFeedBackTC } from '../Slices/addCurrentFeedBackTC';
 import { addChatTC } from '../Slices/addChatTC';
 import getAllUsersSlice from '../Slices/getAllUsersSlice';
 import { getAllUsersTC } from '../Slices/getAllUsersSlice';
+import getLimitCurrentFeedBacksSlice from '../Slices/getLimitCurrentFeedBacksSlice';
+import { getLimitCurrentFeedBacksTC } from '../Slices/getLimitCurrentFeedBacksSlice';
+import { deleteChatTC } from '../Slices/deleteChatTC';
 
 export const store = configureStore({
     reducer: {
@@ -61,6 +64,9 @@ export const store = configureStore({
         addCurrentFeedBackTC,
         addChatTC,
         getAllUsersSlice,
-        getAllUsersTC
+        getAllUsersTC,
+        getLimitCurrentFeedBacksSlice,
+        getLimitCurrentFeedBacksTC,
+        deleteChatTC
     }
 })

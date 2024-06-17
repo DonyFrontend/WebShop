@@ -18,7 +18,8 @@ export const SignUpUserTC = createAsyncThunk(
             town,
             isAdmin: false,
             wishlist: [],
-            basket: []
+            basket: [],
+            chat: []
         })
     }
 )
