@@ -13,6 +13,7 @@ import Error from './components/error/Error';
 import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
 import Admin from './pages/AdminPage/Admin';
+import FeedBacksPage from './pages/FeedBacksPage/FeedBacksPage';
 function App() {
 
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/orderpage' element={<OrderPage/>}/>
         <Route path='/cardpage' element={<CardPage/>}/>
         <Route path='/adminPanel/*' element={<Admin/>}/>
+        <Route path='/FeedBacks' element={<FeedBacksPage/>} />
       </Routes>
     </div>
 

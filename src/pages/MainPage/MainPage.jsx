@@ -6,7 +6,6 @@ import 'swiper/css/pagination';
 import nikeSlice from './SwiperImages/nikeSlice.png';
 import nikeSlice2 from './SwiperImages/nikeSlice2.png';
 import nikeSlice3 from './SwiperImages/nikeSlice3.png';
-import MainCard from './Card';
 import NikeImage from './BrandsImages/Nike.png';
 import HMImage from './BrandsImages/H&M.png';
 import LevisImage from './BrandsImages/Levis.png';
@@ -141,12 +140,10 @@ const MainPage = () => {
                 <div className='flex flex-col gap-y-4'>
                     <div className='flex gap-x-2'>
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBack</h1>
+                        <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>FeedBack</h1>
                     </div>
                     <div className='grid md:grid-cols-2 grid-cols-1 auto-grid-row:auto lg:grid-cols-4 gap-5'>
-                        <MainCard />
-                        <MainCard />
-                        <MainCard />
+                       
                     </div>
                 </div>
 

@@ -23,7 +23,8 @@ import getFeedBacksTC from '../Slices/getFeedBacksTC';
 import { getFeedBacks } from '../Slices/getFeedBacksTC';
 import { DFeedBackTC } from '../Slices/deleteFeedBackTC';
 import { CurrentFeedbacksTC } from '../Slices/getCurrentFeedBacksTС';
-import getCurrentFeedBacksTС from '../Slices/getCurrentFeedBacksTС';
+import { AllCurrentFeedbacksTC } from '../Slices/AllFeedBacksTC';
+import AllFeedBacksTC from '../Slices/AllFeedBacksTC';
 
 export const store = configureStore({
     reducer: {
@@ -53,6 +54,7 @@ export const store = configureStore({
         getFeedBacksTC,
         DFeedBackTC,
         CurrentFeedbacksTC,
-        getCurrentFeedBacksTС
+        AllFeedBacksTC,
+        AllCurrentFeedbacksTC
     }
 })
