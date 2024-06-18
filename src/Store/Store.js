@@ -34,6 +34,7 @@ import { deleteChatTC } from '../Slices/deleteChatTC';
 import findUserSlice from '../Slices/findUserSlice';
 import { findUserTC } from '../Slices/findUserSlice';
 import { addAdminMessageTC } from '../Slices/addAdminMessageTC';
+import { changeUserDataTC } from '../Slices/changeUserDataTC';
 
 export const store = configureStore({
     reducer: {
@@ -73,6 +74,7 @@ export const store = configureStore({
         deleteChatTC,
         findUserSlice,
         findUserTC,
-        addAdminMessageTC
+        addAdminMessageTC,
+        changeUserDataTC
     }
 })
