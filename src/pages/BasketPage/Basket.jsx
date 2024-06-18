@@ -21,6 +21,14 @@ const Basket = () => {
     }, [dispatch])
 
     function deleteProduct(product) {
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bg='darkviolet'>
+                    Delete product from basket
+                </Box>
+            ),
+        })
         dispatch(deleteBasketProductTC(product))
         dispatch(getUserTC());
     }
@@ -53,23 +61,11 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Shipping: FREE</h5>
             <h5>Total: ${item.price}</h5>
-            <div onClick={() => dispatch(deleteProduct(item))}>
                 <Button
-                    onClick={() => {
-                        toast({
-                            position: 'bottom-left',
-                            render: () => (
-                                <Box color='white' p={3} bg='darkviolet'>
-                                    Delete product from basket
-                                </Box>
-                            ),
-                        })
-                    }
-                    }
+                    onClick={() => deleteProduct(item)}
                 >
                     <img src={bag} alt="Error!" />
                 </Button>
-            </div>
         </div>
     </div>)
 
@@ -94,14 +90,14 @@ const Basket = () => {
                         </label>
                     </div>
                 </div>
-            <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
+                <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
                         <p>Sub Total: {totalPrice}$</p>
                         <p>Coupon: 0$</p>
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
-                    <Link to={'/profile/orders'} className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</Link>                    </div>
+                        <Link to={'/profile/orders'} className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</Link>                    </div>
                 </div>
             </div>
         </div>

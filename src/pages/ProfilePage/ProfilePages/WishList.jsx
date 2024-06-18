@@ -23,6 +23,27 @@ const WishList = () => {
         dispatch(deleteWishlistProductTC(product));
         dispatch(getUserTC());
     }
+
+    function addProduct(item) {
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bg='darkviolet'>
+                    Add product to basket
+                </Box>
+            ),
+        })
+        
+        dispatch(addBasketProduct({
+            product: {
+                title: item.title,
+                description: item.description,
+                images: [item.images],
+                price: item.price,
+            }, newSize: item.size, newColor: item.color
+        }))
+    }
+
     return <div className='flex flex-col gap-y-11'>
         <div>
             <h1 className='font-semibold text-3xl'>Wishlist</h1>
@@ -68,31 +89,13 @@ const WishList = () => {
                 </div>
 
                 <div className='flex items-center gap-x-12'>
-                    <p className='text-lg text-gray-600'>$29.00</p>
-                    <div onClick={() => dispatch(addBasketProduct({
-                        product: {
-                            title: item.title,
-                            description: item.description,
-                            images: [item.images],
-                            price: item.price,
-                        }, newSize: item.size, newColor: item.color
-                    }))}>
+                    <p className='text-lg text-gray-600'>{item.price}$</p>
                         <Button
-                            onClick={() =>
-                                toast({
-                                    position: 'bottom-left',
-                                    render: () => (
-                                        <Box color='white' p={3} bg='darkviolet'>
-                                            Add product to basket
-                                        </Box>
-                                    ),
-                                })
-                            }
+                            onClick={() => addProduct(item)}
                             colorScheme='purple'
                         >
                             Add to basket
                         </Button>
-                    </div>
                 </div>
             </div>) : <h1>Dont have</h1>}
         </div>

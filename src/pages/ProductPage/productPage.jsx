@@ -48,7 +48,7 @@ function Product() {
   const [color, setColor] = useState('');
 
   if (isProductFetch) {
-    return <h1 className="text-4xl p-10">Loading...</h1>
+    return <h1 className="text-4xl p-10 mt-4">Loading...</h1>
   }
 
 
@@ -86,7 +86,7 @@ function Product() {
 
   return (
     <>
-      <div className="w-full flex justify-center">
+      <div className="w-full mt-8 flex justify-center">
         <div className="w-[90%] flex flex-col justify-center mt-10">
           <div className="flex items-center md:ml-16 md:items-start lg:ml-0 flex-col lg:flex-row gap-10 lg:gap-40">
             <div className="lg:w-[35%] w-full md:w-[85%]">
