@@ -24,12 +24,12 @@ export const AllCurrentFeedbacksTC = createAsyncThunk(
 const currentFeedBacksSlice = createSlice({
     name: 'webShop/currentFeedBacks',
     initialState: {
-        currentFeedBacks: [],
+        allCurrentFeedBacks: [],
         isFetch: true
     },
     reducers: {
         setCurrentData(state, action) {
-            state.currentFeedBacks = action.payload;
+            state.allCurrentFeedBacks = action.payload;
             state.isFetch = false;
         }
     }
