@@ -30,6 +30,7 @@ export const FeedBackTC = createAsyncThunk(
         console.log(month);
 
         const date = `${new Date().getDate()} ${allMonths[month]} ${new Date().getFullYear()} Year.`;
+        const date = `${new Date().getDate()} ${allMonths[month]} ${new Date().getFullYear()} Year.`;
 
 
         addDoc(feedBackCollectionRef, {
