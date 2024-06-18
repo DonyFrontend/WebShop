@@ -35,7 +35,8 @@ import findUserSlice from '../Slices/findUserSlice';
 import { findUserTC } from '../Slices/findUserSlice';
 import { addAdminMessageTC } from '../Slices/addAdminMessageTC';
 import { changeUserDataTC } from '../Slices/changeUserDataTC';
-
+import { AllCurrentFeedbacksTC } from '../Slices/AllFeedBacksTC';
+import AllFeedBacksTC from '../Slices/AllFeedBacksTC';
 
 export const store = configureStore({
     reducer: {
@@ -76,6 +77,8 @@ export const store = configureStore({
         findUserSlice,
         findUserTC,
         addAdminMessageTC,
-        changeUserDataTC
+        changeUserDataTC,
+        AllFeedBacksTC,
+        AllCurrentFeedbacksTC
     }
 })
