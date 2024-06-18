@@ -3,9 +3,9 @@ import 'swiper/css';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import slide_1 from './SwiperImages/slide_1.png';
-import slide_2 from './SwiperImages/slide_2.png';
-import MainCard from './Card';
+import nikeSlice from './SwiperImages/nikeSlice.png';
+import nikeSlice2 from './SwiperImages/nikeSlice2.png';
+import nikeSlice3 from './SwiperImages/nikeSlice3.png';
 import NikeImage from './BrandsImages/Nike.png';
 import HMImage from './BrandsImages/H&M.png';
 import LevisImage from './BrandsImages/Levis.png';
@@ -43,10 +43,13 @@ const MainPage = () => {
                 pagination={{ clickable: true }}
             >
                 <SwiperSlide>
-                    <img style={{ width: '100%' }} src={slide_1} alt="Error!" />
+                    <img style={{ width: '100%' }} src={nikeSlice} alt="Error!" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={slide_2} alt="Error!" />
+                    <img style={{ width: '100%' }} src={nikeSlice2} alt="Error!" />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <img style={{ width: '100%' }} src={nikeSlice3} alt="Error!" />
                 </SwiperSlide>
             </Swiper>
         </div>

@@ -10,6 +10,7 @@ import { findProductsTC } from '../../Slices/findProductTC';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Input } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
 import inputImage from './images/inputImage.svg';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
@@ -22,7 +23,7 @@ const Header = () => {
         setClick(!click)
     }
 
-    
+
 
     const [thisUser, setUser] = useState(false);
 
@@ -37,7 +38,7 @@ const Header = () => {
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.findProductTC);
-    const {user} = useSelector(state => state.getThisUserTC);
+    const { user } = useSelector(state => state.getThisUserTC);
 
     useEffect(() => {
         dispatch(getUserTC());
@@ -74,14 +75,15 @@ const Header = () => {
             <CustomLink to={'/men'} text={'Men'} />
             <CustomLink to={'/women'} text={'Women'} />
             <CustomLink to={'/shoe'} text={'Shoe'} />
-            {thisUser ? "" : 
-            <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>             
-        }
-            
+            {thisUser ? "" :
+                <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>
+            }
+
             <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
         </div> : ""}
         <form className='flex gap-x-3'>
             <label htmlFor="search">
+                <Input focusBorderColor='purple.500' value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
                 <Input focusBorderColor='purple.500' value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
             </label>
             {/* <button className='px-3 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]'>Find</button> */}
@@ -94,19 +96,18 @@ const Header = () => {
                     <CustomImagesLink to={'/profile/user'} image={Profile} />
                     <CustomImagesLink to={'/basket'} image={Bag} />
                 </div>
-
                 {user.isAdmin ? <div className='flex pr-2 lg:mr-0 gap-x-1'>
                     <CustomImagesLink to={'/adminPanel/products'} image={adminIcon}/>
                 </div> : ''}
             </div> : <div className='hidden lg:flex gap-x-1'>
-                <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>                
-                <Button colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></Button>                
+                <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>
+                <Button colorScheme='purple'><Link to={'/SignIn'}>Log In</Link></Button>
             </div>
-            
-            }
 
-        
-        
+        }
+
+
+
         <div className='inline-block lg:hidden'>
             <button onClick={onHandleClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -144,10 +145,10 @@ const Header = () => {
 
                 <div onClick={closeDiv}>
                     <Link to={`/shop/${item.id}`} className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</Link>
-                </div>
+            </div>
             </div>) : <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>{products.isFetch == false ? 'Type name of product and click on button' : "Apparently, we don't have such a product :("}  </h1>}
-        </div> : ''}
-    </header>
+    </div> : ''}
+    </header >
 }
 
 export default Header;
