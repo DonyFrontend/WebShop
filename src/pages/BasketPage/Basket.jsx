@@ -96,8 +96,8 @@ const Basket = () => {
                 </div>
             <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
-                        <p>Sub Total: {totalPrice}</p>
-                        <p>Shipping: FREE</p>
+                        <p>Sub Total: {totalPrice}$</p>
+                        <p>Coupon: 0$</p>
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>

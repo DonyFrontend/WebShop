@@ -38,7 +38,7 @@ const Profile = () => {
                             <p className='text-gray-400'>Welcome to your Account</p>
                         </div>
 
-                        <div className='flex flex-col gap-y-4'>
+                        <div className='flex flex-col gap-y-4 sticky top-24'>
                             <CustomLink image={Orders} text={'My orders'} to={'/profile/orders'} />
                             <CustomLink image={Heart} text={'Wishlist'} to={'/profile/wishlist'} />
                             <CustomLink image={User} text={'My info'} to={'/profile/user'} />

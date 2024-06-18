@@ -138,7 +138,7 @@ const MainPage = () => {
                 <div className='flex flex-col gap-y-4'>
                     <div className='flex gap-x-2'>
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBack</h1>
+                        <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBacks</h1>
                     </div>
                     <div className='grid md:grid-cols-2 grid-cols-1 auto-grid-row:auto lg:grid-cols-4 gap-5'>
                        {isFetch ? <h1 className='font-semibold text-3xl'>Loading</h1> : limitFeedBacks.map((item, index) => <MainCard key={index} name={item.name} feedBack={item.feedBack} date={item.date}/>)}

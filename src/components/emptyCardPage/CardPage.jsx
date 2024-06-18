@@ -57,8 +57,8 @@ function CardPage() {
 
             </div>
             <div className="flex flex-col text-center lg:text-left">
-                <p className="flex justify-center lg:justify-start ont-bold text-black text-[30px] lg:pl-[570px] pt-10">Your cart is empty and sad :( </p>
-                <p className="text-[rgba(128,125,126,1)] lg:pl-[650px] font-normal">Add something to make it happy! </p>
+                <p className="flex justify-center lg:justify-start ont-bold text-black text-[30px] lg:pl-[500px] pt-10">Your cart is empty and sad :( </p>
+                <p className="text-[rgba(128,125,126,1)] lg:pl-[560px] font-normal">Add something to make it happy! </p>
             </div>
             <div className="flex justify-center pt-12 pb-5">
                 <Link to={'/shop'} className=" flex font-bold text-white justify-center items-center w-[246px] h-[46px] rounded-[8px] bg-[rgba(138,51,253,1)]">

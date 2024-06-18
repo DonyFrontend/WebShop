@@ -33,6 +33,14 @@ const ChatPage = () => {
     }
 
     function addMessage() {
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bg='darkviolet'>
+                    {message == 0 ? 'The message cannot be empty' : 'Message send!'}
+                </Box>
+            ),
+        })
         if (message != 0) {
             dispatch(addChatTC({ message, name: 'You' }));
             dispatch(getUserTC());
@@ -69,24 +77,11 @@ const ChatPage = () => {
             </div>
             <div className='flex gap-x-1 p-2'>
                 <Input maxLength={200} value={message} onChange={e => onChangeStateInput(e)} placeholder='Type message...' focusBorderColor='purple.500'></Input>
-                <div onClick={addMessage}>
                     <Button colorScheme='purple' mr={3}
-                        onClick={() => {
-                            toast({
-                                position: 'bottom-left',
-                                render: () => (
-                                    <Box color='white' p={3} bg='darkviolet'>
-                                        {message == 0 ? 'The message cannot be empty' : 'Message send!'}
-                                    </Box>
-                                ),
-                            }),
-                                addMessage
-                        }
-                        }
+                        onClick={addMessage}
                     >
                         <img width={40} src={sendButton} alt="Error!" />
                     </Button>
-                </div>
             </div>
 
             <div className='px-2'>{count}/200</div>

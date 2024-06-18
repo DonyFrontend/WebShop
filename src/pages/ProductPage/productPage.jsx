@@ -37,11 +37,11 @@ function Product() {
   useEffect(() => {
     scrollToZero(),
       dispatch(productTC({ id: id.id }));
-      dispatch(similarProductsTC({ id: id.id }));
+    dispatch(similarProductsTC({ id: id.id }));
   }, [id, dispatch])
 
   const { product, isProductFetch } = useSelector(state => state.productPageTC);
-  const {products, isFetch} = useSelector(state => state.similarProductsSlice); 
+  const { products, isFetch } = useSelector(state => state.similarProductsSlice);
   console.log(products);
 
   const [size, setSize] = useState(0);
@@ -49,10 +49,18 @@ function Product() {
 
   if (isProductFetch) {
     return <h1 className="text-4xl p-10">Loading...</h1>
-  } 
+  }
 
 
   const postBasketProduct = (e) => {
+    toast({
+      position: 'bottom-left',
+      render: () => (
+        <Box color='white' p={3} bg={'darkviolet'}>
+          {size == false | color == false ? 'Please select size and color !' : 'Add product to basket'}
+        </Box>
+      ),
+    })
     e.preventDefault();
     if (!(size == false | color == false)) {
       dispatch(addBasketProduct({ product, newSize: size, newColor: color }));
@@ -60,6 +68,14 @@ function Product() {
   }
 
   const postWishlistProduct = (e) => {
+    toast({
+      position: 'bottom-left',
+      render: () => (
+        <Box color='white' p={3} bg='darkviolet'>
+          {size == false | color == false ? 'Please select size and color !' : 'Add product to wishlist'}
+        </Box>
+      ),
+    })
     e.preventDefault();
     if (!(size == false | color == false)) {
       dispatch(addWishlistProduct({ product, newSize: size, newColor: color }));
@@ -134,41 +150,19 @@ function Product() {
                     </Accordion>
                   </div>
                   <div className="my-10 flex flex-col items-center md:flex-row lg:flex-row gap-10">
-                    <div onClick={postBasketProduct}>
-                      <Button
-                        onClick={() =>
-                          toast({
-                            position: 'bottom-left',
-                            render: () => (
-                              <Box color='white' p={3} bg={'darkviolet'}>
-                                {size == false | color == false ? 'Please select size and color !' : 'Add product to basket'}
-                              </Box>
-                            ),
-                          })
-                        }
-                        colorScheme="purple"
-                      >
-                        Add to basket
-                      </Button>
-                    </div>
+                    <Button
+                      onClick={postBasketProduct}
+                      colorScheme="purple"
+                    >
+                      Add to basket
+                    </Button>
 
-                    <div onClick={postWishlistProduct}>
-                      <Button
-                        onClick={() =>
-                          toast({
-                            position: 'bottom-left',
-                            render: () => (
-                              <Box color='white' p={3} bg='darkviolet'>
-                                {size == false | color == false ? 'Please select size and color !' : 'Add product to wishlist'}
-                              </Box>
-                            ),
-                          })
-                        }
-                        colorScheme="purple"
-                      >
-                        Add to wishlist
-                      </Button>
-                    </div>
+                    <Button
+                      onClick={postWishlistProduct}
+                      colorScheme="purple"
+                    >
+                      Add to wishlist
+                    </Button>
 
                     <div className="border-[1px] w-36 lg:w-1/6 text-center border-gray-500 lg:border-black py-2 lg:py-1.5 px-5 font-medium rounded-lg">
                       <p>${product.price}</p>
@@ -238,9 +232,9 @@ function Product() {
             <div className="flex gap-x-1">
               <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
               <h1 className="text-4xl">Similar Products</h1>
-            </div>     
+            </div>
             {isFetch ? <h1 className="text-4xl p-10">Loading...</h1> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 row-auto gap-4">
-              <SimilarProducts products={products}/>
+              <SimilarProducts products={products} />
             </div>}
           </div>
 
