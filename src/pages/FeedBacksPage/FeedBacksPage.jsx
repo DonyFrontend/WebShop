@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AllCurrentFeedbacksTC } from "../../Slices/AllFeedBacksTC";
 
@@ -8,7 +8,7 @@ function FeedBacksPage() {
         console.log(allCurrentFeedBacks);
     useEffect(() => {
         dispatch(AllCurrentFeedbacksTC());
-    }, [dispatch, AllCurrentFeedbacksTC]);
+    }, [dispatch]);
 
     if (isFetch) {
     return <h1>Loading...</h1>
