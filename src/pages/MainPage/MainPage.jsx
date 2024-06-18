@@ -19,6 +19,7 @@ import { newsProductsTC, mensProductsTC, womensProductsTC } from '../../Slices/g
 import SendFB from '../SendFeedBack/SendFB';
 import { getLimitCurrentFeedBacksTC } from '../../Slices/getLimitCurrentFeedBacksSlice';
 import { Button } from '@chakra-ui/react';
+import MainCard from './Card';
 
 const MainPage = () => {
     const products = useSelector(state => state.getProductsSlice);
@@ -43,13 +44,7 @@ const MainPage = () => {
                 pagination={{ clickable: true }}
             >
                 <SwiperSlide>
-                    <img style={{ width: '100%' }} src={nikeSlice} alt="Error!" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img style={{ width: '100%' }} src={nikeSlice2} alt="Error!" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img style={{ width: '100%' }} src={nikeSlice3} alt="Error!" />
+                    <img src={nikeSlice2} alt="Error!" />
                 </SwiperSlide>
             </Swiper>
         </div>

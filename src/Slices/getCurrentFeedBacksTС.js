@@ -30,3 +30,4 @@ const currentFeedBacksSlice = createSlice({
 })
 
 export  const {setCurrentData} = currentFeedBacksSlice.actions;
+export default currentFeedBacksSlice.reducer;

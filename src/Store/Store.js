@@ -23,8 +23,6 @@ import getFeedBacksTC from '../Slices/getFeedBacksTC';
 import { getFeedBacks } from '../Slices/getFeedBacksTC';
 import { DFeedBackTC } from '../Slices/deleteFeedBackTC';
 import { CurrentFeedbacksTC } from '../Slices/getCurrentFeedBacksTС';
-import { AllCurrentFeedbacksTC } from '../Slices/AllFeedBacksTC';
-import AllFeedBacksTC from '../Slices/AllFeedBacksTC';
 import getCurrentFeedBacksTС from '../Slices/getCurrentFeedBacksTС';
 import { addCurrentFeedBackTC } from '../Slices/addCurrentFeedBackTC';
 import { addChatTC } from '../Slices/addChatTC';
@@ -37,6 +35,7 @@ import findUserSlice from '../Slices/findUserSlice';
 import { findUserTC } from '../Slices/findUserSlice';
 import { addAdminMessageTC } from '../Slices/addAdminMessageTC';
 import { changeUserDataTC } from '../Slices/changeUserDataTC';
+
 
 export const store = configureStore({
     reducer: {
@@ -66,6 +65,17 @@ export const store = configureStore({
         getFeedBacksTC,
         DFeedBackTC,
         CurrentFeedbacksTC,
-        getCurrentFeedBacksTС
+        getCurrentFeedBacksTС,
+        addCurrentFeedBackTC,
+        addChatTC,
+        getAllUsersSlice,
+        getAllUsersTC,
+        getLimitCurrentFeedBacksSlice,
+        getLimitCurrentFeedBacksTC,
+        deleteChatTC,
+        findUserSlice,
+        findUserTC,
+        addAdminMessageTC,
+        changeUserDataTC
     }
 })
