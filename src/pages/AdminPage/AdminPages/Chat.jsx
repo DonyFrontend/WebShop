@@ -13,6 +13,10 @@ const Chat = () => {
         dispatch(getAllUsersTC());
     }, [dispatch])
 
+    setInterval(() => {
+        dispatch(getAllUsersTC());
+    }, 10000);
+
     if (isFetch) {
         return <h1 className='font-semibold text-3xl'>Loading...</h1>
     }

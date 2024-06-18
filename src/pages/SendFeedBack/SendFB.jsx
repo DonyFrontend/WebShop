@@ -9,7 +9,7 @@ import {
     ModalCloseButton,
     useDisclosure,
     useToast
-  } from '@chakra-ui/react'
+} from '@chakra-ui/react'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FeedBackTC } from "../../Slices/sendFeedBackTC";
@@ -17,15 +17,23 @@ import { useSelector } from "react-redux";
 
 const SendFB = () => {
     const toast = useToast();
-    const {onOpen, onClose, isOpen} = useDisclosure();
+    const { onOpen, onClose, isOpen } = useDisclosure();
     const [message, setMessage] = useState('');
     const [count, setCount] = useState(message.length);
     const dispatch = useDispatch();
-    const {user} = useSelector(state => state.getThisUserTC);
+    const { user } = useSelector(state => state.getThisUserTC);
 
     function sendFeedBack() {
-        if (message != '') {
-            dispatch(FeedBackTC({message}));
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bg='darkviolet'>
+                    {user.name ? message == 0 ? 'The review cannot be empty' : 'Thanks for leaving a review!' : 'Please log in or sign up!'}
+                </Box>
+            )
+        })
+        if(message != '') {
+            dispatch(FeedBackTC({ message }));
         }
     }
 
@@ -51,27 +59,16 @@ const SendFB = () => {
                 </ModalBody>
 
                 <ModalFooter>
-                    <div onClick={sendFeedBack}>
                         <Button colorScheme='purple' mr={3}
-                            onClick={() => 
-                                toast({
-                                position: 'bottom-left',
-                                render: () => (
-                                    <Box color='white' p={3} bg='darkviolet'>
-                                    {user.name ? message == 0 ?  'The review cannot be empty' :  'Thanks for leaving a review!' :  'Please log in or sign up!'}
-                                    </Box>
-                                ),
-                                })
-                            }
-                            onClickCapture={onClose}>
-                            Send
-                        </Button>
-                    </div>
-                    <Button variant='ghost' onClick={onClose}>Close</Button>
-                </ModalFooter>
-            </ModalContent>
-        </Modal>
-    </div>
+                            onClick={sendFeedBack}
+                        onClickCapture={onClose}>
+                        Send
+                    </Button>
+                <Button variant='ghost' onClick={onClose}>Close</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+    </div >
 }
 
 export default SendFB;
