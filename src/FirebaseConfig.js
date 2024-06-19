@@ -29,7 +29,8 @@ export const wishlistCollectionRef = collection(db, 'wishlist');
 export const usersCollectionRef = collection(db, 'users');
 export const sortProductsCollectionRef = collection(db, 'sortProducts');
 export const feedBackCollectionRef = collection(db, 'feedBacks');
-export const CurrentFeedbacksCollectionRef = collection (db, 'CurrentFeedbacks')
+export const CurrentFeedbacksCollectionRef = collection (db, 'CurrentFeedbacks');
+export const ordersCollectionRef = collection (db, 'orders');
 
 //auth
 export const auth = getAuth(app);

@@ -42,6 +42,7 @@ const MainPage = () => {
                 navigation={{ clickable: true }}
                 slidesPerView={1}
                 pagination={{ clickable: true }}
+                className='z-0'
             >
                 <SwiperSlide>
                     <img src={nikeSlice2} alt="Error!" />

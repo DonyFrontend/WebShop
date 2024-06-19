@@ -7,6 +7,7 @@ import { useToast, Button, Box } from '@chakra-ui/react';
 import { getUserTC } from '../../Slices/getThisUserTC';
 import CardPage from '../../components/emptyCardPage/CardPage';
 import { Link } from 'react-router-dom';
+import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
 
 const Basket = () => {
 
@@ -33,6 +34,11 @@ const Basket = () => {
         dispatch(getUserTC());
     }
 
+    function addProducts() {
+        dispatch(addOrderProductsTC({allProducts: user.basket}));
+        dispatch(getUserTC());
+    }
+
     let totalPrice = 0;
     if (user?.basket?.length != 0 & !isFetch) {
         user.basket.forEach(element => {
@@ -46,21 +52,17 @@ const Basket = () => {
             <div>
                 <img src={item.images} alt="Error" width={200} />
             </div>
-            <div className="flex flex-col gap-y-4">
+            <div className="flex items-center">
                 <div>
-                    <h1 className="font-medium text-xl">{item.title}</h1>
-                </div>
-                <div className="flex flex-col gap-y-1">
-                    <p>Color : {item.color}</p>
-                    <p>Size : {item.size}</p>
+                    <h1 className="font-medium text-2xl">{item.title}</h1>
                 </div>
             </div>
         </div>
 
         <div className="w-[65%] flex justify-around text-lg gap-x-16">
             <h5>${item.price}</h5>
-            <h5>Shipping: FREE</h5>
-            <h5>Total: ${item.price}</h5>
+            <h5>Color: {item.color}</h5>
+            <h5>Size: {item.size}  </h5>
                 <Button
                     onClick={() => deleteProduct(item)}
                 >
@@ -97,7 +99,9 @@ const Basket = () => {
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
-                        <Link to={'/profile/orders'} className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</Link>                    </div>
+                        <Link>
+                            <Button colorScheme='purple' onClick={addProducts}>Proceed To Checkout</Button>
+                        </Link></div>
                 </div>
             </div>
         </div>
