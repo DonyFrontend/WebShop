@@ -26,9 +26,9 @@ export const FeedBackTC = createAsyncThunk(
             'December',
         ]
 
-        const month = new Date().getDay();
+        const month = new Date().getMonth();
 
-        const date = `${new Date().getDate()} ${allMonths[month - 1]} ${new Date().getFullYear()} Year.`;
+        const date = `${new Date().getDate()} ${allMonths[month]} ${new Date().getFullYear()} Year.`;
 
 
         addDoc(feedBackCollectionRef, {
