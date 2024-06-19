@@ -19,6 +19,7 @@ const ProfileModal = () => {
 
     function postData() {
         dispatch(SignOutUserTC());
+        onClose();
     }
 
     return (
@@ -38,7 +39,7 @@ const ProfileModal = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='purple' mr={3} onClick={() => {onClose, postData()}}>
+                        <Button colorScheme='purple' mr={3} onClick={postData}>
                             Exit
                         </Button>
                         <Button variant='ghost' onClick={onClose}>Close</Button>

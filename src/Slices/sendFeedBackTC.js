@@ -27,7 +27,6 @@ export const FeedBackTC = createAsyncThunk(
         ]
 
         const month = new Date().getMonth();
-        console.log(month);
 
         const date = `${new Date().getDate()} ${allMonths[month]} ${new Date().getFullYear()} Year.`;
 
