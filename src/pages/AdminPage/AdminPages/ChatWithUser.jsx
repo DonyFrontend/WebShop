@@ -30,10 +30,6 @@ const ChatWithUser = () => {
         }
     }
 
-    setInterval(() => {
-        dispatch(findUserTC(params.id));
-    }, 12000);
-
     return <div className="flex flex-col justify-between h-full">
         <div className="flex flex-col gap-y-3 h-96 overflow-y-scroll">
             {user.chat.map((item, index) => <div key={index} className='bg-gray-200 rounded-md p-2 flex flex-col gap-y-2'>

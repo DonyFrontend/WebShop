@@ -35,8 +35,8 @@ const MainPage = () => {
         dispatch(getLimitCurrentFeedBacksTC());
     }, [dispatch])
 
-    return <div className='mt-14'>
-        <div>
+    return <div>
+        <div className='mb-5'>
             <Swiper
                 modules={[Navigation, Pagination]}
                 navigation={{ clickable: true }}
@@ -45,7 +45,7 @@ const MainPage = () => {
                 className='z-0'
             >
                 <SwiperSlide>
-                    <img src={nikeSlice2} alt="Error!" />
+                    <img width={'100%'} src={nikeSlice2} alt="Error!" />
                 </SwiperSlide>
             </Swiper>
         </div>
