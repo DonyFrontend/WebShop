@@ -52,10 +52,6 @@ export const getShopProductsTC = createAsyncThunk(
 const getShopProductsSlice = createSlice({
     name: 'webShop/getShopProductsSlice',
     initialState: {
-        isFetch1: true,
-        isFetch2: true,
-        isFetch3: true,
-        isFetch4: true,
         allProducts: [],
         shoes: [],
         shorts: [],
@@ -64,19 +60,15 @@ const getShopProductsSlice = createSlice({
     reducers: {
         setAllProducts(state, action) {
             state.allProducts = action.payload;
-            state.isFetch1 = false;
         },
         setShoes(state, action) {
             state.shoes = action.payload;
-            state.isFetch2 = false;
         },
         setShorts(state, action) {
             state.shorts = action.payload;
-            state.isFetch3 = false;
         },
         setSocks(state, action) {
             state.socks = action.payload;
-            state.isFetch4 = false;
         }
     }
 })

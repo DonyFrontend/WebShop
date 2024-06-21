@@ -40,6 +40,7 @@ import AllFeedBacksTC from '../Slices/AllFeedBacksTC';
 import getShopProductsSlice from '../Slices/getShopProductsSlice';
 import { getShopProductsTC } from '../Slices/getShopProductsSlice';
 import { addOrderProductsTC } from '../Slices/addOrderProductsTC';
+import { addNewProductTC } from '../Slices/addNewProductTC';
 
 export const store = configureStore({
     reducer: {
@@ -86,5 +87,6 @@ export const store = configureStore({
         getShopProductsSlice,
         getShopProductsTC,
         addOrderProductsTC,
+        addNewProductTC
     }
 })

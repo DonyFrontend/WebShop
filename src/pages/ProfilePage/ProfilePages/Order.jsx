@@ -15,7 +15,7 @@ const Order = () => {
             <h1 className='font-semibold text-3xl'>My Orders</h1>
         </div>
 
-        {isFetch ? <h1 className='font-semibold text-3xl'>Loading...</h1> : user.order.map((item, index) => <div key={index} className="flex flex-col gap-y-11">
+        {isFetch ? <h1 className='font-semibold text-3xl'>Loading...</h1> : user.order.length == 0 ? <h1>Dont have</h1> : user.order.map((item, index) => <div key={index} className="flex flex-col gap-y-11">
             <div className="cart flex flex-col p-2 rounded-md">
                 <div className="flex flex-col p-2 gap-y-5 bg-[#f1f0f0]">
                     <div>

@@ -4,26 +4,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { scrollToZero } from '../utils/CustomFC';
 import { Link } from 'react-router-dom';
-import { shopTC } from '../../Slices/getProductsSlice';
-
+// import { shopTC } from '../../Slices/getProductsSlice';
+import { getShopProductsTC } from '../../Slices/getShopProductsSlice';
 
 const Shop = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         scrollToZero()
-        dispatch(shopTC());
-
+        dispatch(getShopProductsTC());
     }, [dispatch])
 
-    const selector = useSelector(state => state.getProductsSlice);
+    const {allProducts, shoes, shorts, socks} = useSelector(state => state.getShopProductsSlice);
+    console.log(allProducts, shoes, shorts, socks);
 
-    // const dispatch = useDispatch();
+    // const [products, setProducts] = useState(allProducts);
+
+
+
 
     const [click, setClick] = useState(false)
+    
     function onHandleClick(){
         setClick(!click)
     }
-    
 
     return <div className="flex w-[100%] justify-center mt-20">
         <div className="flex flex-col lg:flex-row  w-[95%] justify-between">
@@ -64,7 +67,7 @@ const Shop = () => {
         </div>
 
             <div className="w-full lg:w-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {selector.products.length != 0 ? selector.products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
+                {allProducts.length != 0 ? allProducts.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
                     <div className='flex flex-col h-[100%] justify-between'>
                         <div>
                             <img src={item.images[0]} alt="Error!"/>
