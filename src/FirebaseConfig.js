@@ -32,5 +32,6 @@ export const feedBackCollectionRef = collection(db, 'feedBacks');
 export const CurrentFeedbacksCollectionRef = collection (db, 'CurrentFeedbacks');
 export const ordersCollectionRef = collection (db, 'orders');
 
+
 //auth
 export const auth = getAuth(app);
