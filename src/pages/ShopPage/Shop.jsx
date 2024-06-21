@@ -28,7 +28,7 @@ const Shop = () => {
         setClick(!click)
     }
 
-    return <div className="flex w-[100%] justify-center mt-20">
+    return <div className="flex w-[100%] justify-center">
         <div className="flex flex-col lg:flex-row  w-[95%] justify-between">
             <div className="hidden lg:flex w-[15%] p-4 gap-y-3" style={{ borderRight: '1px solid gray' }}>
                 <div className='sticky left-0 top-16 flex flex-col gap-y-5 p-3'>
@@ -66,7 +66,7 @@ const Shop = () => {
             </button>
         </div>
 
-            <div className="w-full lg:w-[80%] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="w-full lg:w-[80%] mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {allProducts.length != 0 ? allProducts.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
                     <div className='flex flex-col h-[100%] justify-between'>
                         <div>

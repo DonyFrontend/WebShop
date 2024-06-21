@@ -27,7 +27,7 @@ const Profile = () => {
 
     return (
         <>
-            <div className="flex w-[100%] justify-center mt-32">
+            <div className="flex w-[100%] justify-center mt-6 h-[600px]">
                 <div className="w-[90%] flex justify-between">
                     <div className='w-[20%] flex flex-col gap-y-12 p-5' style={{ borderRight: '1px solid black' }}>
                         <div className='flex flex-col gap-y-2'>

@@ -35,7 +35,7 @@ const MainPage = () => {
         dispatch(getLimitCurrentFeedBacksTC());
     }, [dispatch])
 
-    return <div className='mt-14'>
+    return <div>
         <div className='mb-5'>
             <Swiper
                 modules={[Navigation, Pagination]}
