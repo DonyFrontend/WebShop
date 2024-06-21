@@ -13,10 +13,6 @@ const Chat = () => {
         dispatch(getAllUsersTC());
     }, [dispatch])
 
-    setInterval(() => {
-        dispatch(getAllUsersTC());
-    }, 10000);
-
     if (isFetch) {
         return <h1 className='font-semibold text-3xl'>Loading...</h1>
     }
@@ -25,9 +21,9 @@ const Chat = () => {
 
     if (findChats == false) {
         return <div className='flex gap-x-2'>
-        <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-        <h1 className='font-semibold text-3xl'>Apparently, there are no new messages here right now.</h1>
-    </div>
+            <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+            <h1 className='font-semibold text-3xl'>Apparently, there are no new messages here right now.</h1>
+        </div>
     }
 
     function deleteChat(id) {
@@ -35,27 +31,34 @@ const Chat = () => {
         dispatch(getAllUsersTC());
     }
 
-    return <div>
-        {users.map((item, index) => item.chat[0] === undefined ? '' : <Card key={index} >
-            <CardHeader>
-                <Heading size='md'>{item.name}</Heading>
-            </CardHeader>
+    return <div className='flex flex-col gap-y-5'>
+        <div className='flex gap-x-2'>
+            <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+            <h1 className='font-semibold text-3xl'>Chats</h1>
+        </div>
 
-            <CardBody>
-                <Box className='flex flex-col gap-y-3'>
-                    {item.chat ? item.chat.map((chatItem, index) => <Text key={index} fontSize='md'>
-                        {chatItem.message}
-                    </Text>) : ''}
+        <div>
+            {users.map((item, index) => item.chat[0] === undefined ? '' : <Card key={index} >
+                <CardHeader>
+                    <Heading size='md'>{item.name}</Heading>
+                </CardHeader>
 
-                    <Box className='flex gap-x-3'>
-                        <Link to={item.id}>
-                            <Button colorScheme='green'>Go to chat</Button>
-                        </Link>
-                        <Button colorScheme='red' onClick={() => deleteChat(item.id)}>Delete chat</Button>
+                <CardBody>
+                    <Box className='flex flex-col gap-y-3'>
+                        {item.chat ? item.chat.map((chatItem, index) => <Text key={index} fontSize='md'>
+                            {chatItem.message}
+                        </Text>) : ''}
+
+                        <Box className='flex gap-x-3'>
+                            <Link to={item.id}>
+                                <Button colorScheme='green'>Go to chat</Button>
+                            </Link>
+                            <Button colorScheme='red' onClick={() => deleteChat(item.id)}>Delete chat</Button>
+                        </Box>
                     </Box>
-                </Box>
-            </CardBody>
-        </Card>)}
+                </CardBody>
+            </Card>)}
+        </div>
     </div>
 }
 

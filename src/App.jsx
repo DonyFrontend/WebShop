@@ -14,8 +14,11 @@ import OrderPage from './components/completeOrderPage/OrderPage';
 import CardPage from './components/emptyCardPage/CardPage';
 import Admin from './pages/AdminPage/Admin';
 import ChatPage from './pages/ChatPage/ChatPage';
-
 import FeedBacksPage from './pages/FeedBacksPage/FeedBacksPage';
+import Men from './pages/ShopPage/ShopPages/Men';
+import Women from './pages/ShopPage/ShopPages/Women';
+import Shoe from './pages/ShopPage/ShopPages/Shoe';
+
 function App() {
 
   return (
@@ -36,6 +39,9 @@ function App() {
         <Route path='/cardpage' element={<CardPage/>}/>
         <Route path='/adminPanel/*' element={<Admin/>}/>
         <Route path='/FeedBacks' element={<FeedBacksPage/>} />
+        <Route path='/men' element={<Men/>} />
+        <Route path='/women' element={<Women/>} />
+        <Route path='/shoe' element={<Shoe/>} />
       </Routes>
 
       <ChatPage/>

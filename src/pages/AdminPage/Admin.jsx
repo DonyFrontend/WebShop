@@ -28,7 +28,7 @@ const Admin = () => {
         return <h1 className='font-semibold text-3xl'>Loading...</h1>
     }
     
-    return <div className="flex min-h-[300px] w-[100%] justify-center mt-32">
+    return <div className="flex min-h-[300px] w-[100%] justify-center mt-2">
     <div className="w-[98%] flex justify-between">
         <div className='w-[10%]flex flex-col gap-y-12 p-1' style={{ borderRight: '1px solid black' }}>
             <div className='flex flex-col gap-y-4 sticky top-16'>
