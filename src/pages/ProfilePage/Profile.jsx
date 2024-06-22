@@ -30,7 +30,7 @@ const Profile = () => {
             <div className="flex w-[100%] justify-center mt-6 h-[600px]">
                 <div className="w-[90%] flex justify-between">
                     <div className='w-[20%] flex flex-col gap-y-12 p-5' style={{ borderRight: '1px solid black' }}>
-                        <div className='flex flex-col gap-y-2'>
+                        <div className='hidden lg:flex flex-col gap-y-2'>
                             <div className='flex gap-x-2'>
                                 <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
                                 <h1 className='font-semibold text-3xl'>Hello {user.name}</h1>
