@@ -6,7 +6,8 @@ import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react'; 
 import { getUserTC } from '../../Slices/getThisUserTC'; 
 import CardPage from '../../components/emptyCardPage/CardPage'; 
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
  
 const Basket = () => { 
  
