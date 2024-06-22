@@ -43,6 +43,7 @@ import { addOrderProductsTC } from '../Slices/addOrderProductsTC';
 import { addNewProductTC } from '../Slices/addNewProductTC';
 import shopPagesSlice from '../Slices/shopPagesSlice';
 import { shopPagesTC } from '../Slices/shopPagesSlice';
+import { deleteProductTC } from '../Slices/deleteProductTC';
 
 export const store = configureStore({
     reducer: {
@@ -91,6 +92,7 @@ export const store = configureStore({
         addOrderProductsTC,
         addNewProductTC,
         shopPagesSlice,
-        shopPagesTC
+        shopPagesTC,
+        deleteProductTC
     }
 })
