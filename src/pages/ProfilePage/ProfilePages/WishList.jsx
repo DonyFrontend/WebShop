@@ -46,7 +46,7 @@ const WishList = () => {
 
     return <div className='flex flex-col gap-y-11'>
         <div>
-            <h1 className='font-semibold text-3xl'>Wishlist</h1>
+            <h1 className='font-semibold text-3xl text-center lg:text-left'>Wishlist</h1>
         </div>
         <div className='flex flex-col gap-y-10'>
             {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex justify-between'>
@@ -71,24 +71,24 @@ const WishList = () => {
                     <div>
                         <img src={item.images} alt="Error!" style={{ width: 200 }} />
                     </div>
-                    <div>
+                    <div className='flex flex-col'>
                         <h1 className='font-bold text-xl'>{item.title}</h1>
-                        <div className='flex gap-x-3'>
+                        <div className='flex flex-col gap-x-3'>
                             <p className='font-semibold'>Color:</p>
                             <p>{item.color}</p>
                         </div>
-                        <div className='flex gap-x-3'>
+                        <div className='flex flex-col lg:flex-row gap-x-3'>
                             <p className='font-semibold'>Size:</p>
                             <p>{item.size}</p>
                         </div>
-                        <div className='flex gap-x-3'>
+                        <div className='flex flex-col lg:flex-row gap-x-3'>
                             <p className='font-semibold'>Quantity:</p>
                             <p>1</p>
                         </div>
                     </div>
                 </div>
 
-                <div className='flex items-center gap-x-12'>
+                <div className='flex lg:flex-row flex-col items-center gap-x-12'>
                     <p className='text-lg text-gray-600'>{item.price}$</p>
                         <Button
                             onClick={() => addProduct(item)}

@@ -1,39 +1,37 @@
-import { useEffect } from 'react';
-import bag from './images/bag.svg';
-import { scrollToZero } from '../utils/CustomFC';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
-import { useToast, Button, Box } from '@chakra-ui/react';
-import { getUserTC } from '../../Slices/getThisUserTC';
-import CardPage from '../../components/emptyCardPage/CardPage';
+import { useEffect } from 'react'; 
+import bag from './images/bag.svg'; 
+import { scrollToZero } from '../utils/CustomFC'; 
+import { useSelector, useDispatch } from 'react-redux'; 
+import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC'; 
+import { useToast, Button, Box } from '@chakra-ui/react'; 
+import { getUserTC } from '../../Slices/getThisUserTC'; 
+import CardPage from '../../components/emptyCardPage/CardPage'; 
 import { Link } from 'react-router-dom';
 import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
-
-const Basket = () => {
-
-
-    const { user, isFetch } = useSelector(state => state.getThisUserTC);
-    const dispatch = useDispatch();
-    const toast = useToast();
-
-    useEffect(() => {
-        scrollToZero()
-        dispatch(getUserTC());
-    }, [dispatch])
-
-    function deleteProduct(product) {
-        toast({
-            position: 'bottom-left',
-            render: () => (
-                <Box color='white' p={3} bg='darkviolet'>
-                    Delete product from basket
-                </Box>
-            ),
-        })
-        dispatch(deleteBasketProductTC(product))
-        dispatch(getUserTC());
+ 
+const Basket = () => { 
+ 
+    const { user, isFetch } = useSelector(state => state.getThisUserTC); 
+    const dispatch = useDispatch(); 
+    const toast = useToast(); 
+ 
+    useEffect(() => { 
+        scrollToZero() 
+        dispatch(getUserTC()); 
+    }, [dispatch]) 
+ 
+    function deleteProduct(product) { 
+        toast({ 
+            position: 'bottom-left', 
+            render: () => ( 
+                <Box color='white' p={3} bg='darkviolet'> 
+                    Delete product from basket 
+                </Box> 
+            ), 
+        }) 
+        dispatch(deleteBasketProductTC(product)) 
+        dispatch(getUserTC()); 
     }
-
     function addProducts() {
         dispatch(addOrderProductsTC({ allProducts: user.basket }));
         dispatch(getUserTC());
