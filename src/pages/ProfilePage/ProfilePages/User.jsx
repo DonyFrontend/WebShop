@@ -12,7 +12,7 @@ const User = (user) => {
         <div>
             <h1 className='font-semibold text-3xl'>My Info</h1>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-row-2 gap-6">
+        <div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-2 lg:grid-row-2 gap-6">
             <div>
                 <h1 className="font-semibold">Name</h1>
                 <div className="bg-[#f1f0f0] rounded-md p-1">
