@@ -23,7 +23,7 @@ export const addOrderProductsTC = createAsyncThunk(
         const month = new Date().getMonth();
         const number = Date.now();
 
-        const time = `at ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
+        const time = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
         const date = `${new Date().getDate()} ${allMonths[month]} ${new Date().getFullYear()} Year at ${time}`;
         
         try {

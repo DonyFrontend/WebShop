@@ -10,6 +10,10 @@ const Order = () => {
         dispatch(getUserTC());
     }, [dispatch])
 
+    if (isFetch) {
+        return <h1>loading</h1>
+    }
+
     return <div className='flex flex-col gap-y-11'>
         <div>
             <h1 className='font-semibold text-3xl'>My Orders</h1>

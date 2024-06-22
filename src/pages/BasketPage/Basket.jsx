@@ -1,41 +1,39 @@
-import { useEffect } from 'react';
-import bag from './images/bag.svg';
-import { scrollToZero } from '../utils/CustomFC';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
-import { useToast, Button, Box } from '@chakra-ui/react';
-import { getUserTC } from '../../Slices/getThisUserTC';
-import CardPage from '../../components/emptyCardPage/CardPage';
+import { useEffect } from 'react'; 
+import bag from './images/bag.svg'; 
+import { scrollToZero } from '../utils/CustomFC'; 
+import { useSelector, useDispatch } from 'react-redux'; 
+import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC'; 
+import { useToast, Button, Box } from '@chakra-ui/react'; 
+import { getUserTC } from '../../Slices/getThisUserTC'; 
+import CardPage from '../../components/emptyCardPage/CardPage'; 
 import { Link } from 'react-router-dom';
 import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
-
-const Basket = () => {
-
-
-    const { user, isFetch } = useSelector(state => state.getThisUserTC);
-    const dispatch = useDispatch();
-    const toast = useToast();
-
-    useEffect(() => {
-        scrollToZero()
-        dispatch(getUserTC());
-    }, [dispatch])
-
-    function deleteProduct(product) {
-        toast({
-            position: 'bottom-left',
-            render: () => (
-                <Box color='white' p={3} bg='darkviolet'>
-                    Delete product from basket
-                </Box>
-            ),
-        })
-        dispatch(deleteBasketProductTC(product))
-        dispatch(getUserTC());
+ 
+const Basket = () => { 
+ 
+    const { user, isFetch } = useSelector(state => state.getThisUserTC); 
+    const dispatch = useDispatch(); 
+    const toast = useToast(); 
+ 
+    useEffect(() => { 
+        scrollToZero() 
+        dispatch(getUserTC()); 
+    }, [dispatch]) 
+ 
+    function deleteProduct(product) { 
+        toast({ 
+            position: 'bottom-left', 
+            render: () => ( 
+                <Box color='white' p={3} bg='darkviolet'> 
+                    Delete product from basket 
+                </Box> 
+            ), 
+        }) 
+        dispatch(deleteBasketProductTC(product)) 
+        dispatch(getUserTC()); 
     }
-
     function addProducts() {
-        dispatch(addOrderProductsTC({allProducts: user.basket}));
+        dispatch(addOrderProductsTC({ allProducts: user.basket }));
         dispatch(getUserTC());
     }
 
@@ -63,11 +61,11 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Color: {item.color}</h5>
             <h5>Size: {item.size}  </h5>
-                <Button
-                    onClick={() => deleteProduct(item)}
-                >
-                    <img src={bag} alt="Error!" />
-                </Button>
+            <Button
+                onClick={() => deleteProduct(item)}
+            >
+                <img src={bag} alt="Error!" />
+            </Button>
         </div>
     </div>)
 
@@ -92,16 +90,17 @@ const Basket = () => {
                         </label>
                     </div>
                 </div>
-                <div className="flex  items-center lg:items-start text-center lg:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
+                <div className="flex items-center lg:items-start md:items-start text-center lg:text-left md:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
                     <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
                         <p>Sub Total: {totalPrice}$</p>
                         <p>Coupon: 0$</p>
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
                     </div>
                     <div>
-                        <Link>
+                        <Link to={'/profile/orders'}>
                             <Button colorScheme='purple' onClick={addProducts}>Proceed To Checkout</Button>
-                        </Link></div>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

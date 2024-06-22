@@ -1,11 +1,8 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, } from 'swiper/react';
 import 'swiper/css';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import nikeSlice from './SwiperImages/nikeSlice.png';
-import nikeSlice2 from './SwiperImages/nikeSlice2.png';
-import nikeSlice3 from './SwiperImages/nikeSlice3.png';
 import NikeImage from './BrandsImages/Nike.png';
 import HMImage from './BrandsImages/H&M.png';
 import LevisImage from './BrandsImages/Levis.png';
@@ -38,14 +35,36 @@ const MainPage = () => {
     return <div>
         <div className='mb-5'>
             <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Autoplay]}
                 navigation={{ clickable: true }}
                 slidesPerView={1}
                 pagination={{ clickable: true }}
                 className='z-0'
+                loop={true}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false
+                }}
             >
                 <SwiperSlide>
-                    <img width={'100%'} src={nikeSlice2} alt="Error!" />
+                    <Link to={'/shop/kkem3MhSSKFcCIBaAfwa'}>
+                        <img width={'100%'} style={{maxHeight: '700px'}} src='https://s41921.pcdn.co/wp-content/uploads/2007/01/Sneaker3Spl1.jpg' alt="Error!" />
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Link to={'/shop/FHvDYNim5tRDGIx7P9vr'}>
+                        <img width={'100%'} style={{maxHeight: '700px'}} src='https://runnerexpert.com/wp-content/uploads/2021/04/Untitled-design-5-2-1024x536.jpg' alt="Error!" />
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Link to='/shop/Ia1eOxOijMRt3fhDRjlr'>
+                        <img width={'100%'} style={{maxHeight: '700px'}} src='https://th.bing.com/th/id/R.8baf3530281e3ca8a315eeb631d79b25?rik=wuJiCr%2bbQuKUMA&pid=ImgRaw&r=0' alt="Error!" />
+                    </Link>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Link to='/shop/0ufiIl0SMp7leyMYKkid'>
+                        <img width={'100%'} style={{maxHeight: '700px'}} src='https://th.bing.com/th/id/R.068ac0c2aa3c810c33c52d2270cb180c?rik=fDUNhVKqRQ3DKw&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fJGwAprF.jpg&ehk=Fgk7R7fqIYM78QkPIqb0Z%2fLL7HN30YNvgF2Eo1pfB2s%3d&risl=&pid=ImgRaw&r=0' alt="Error!" />
+                    </Link>
                 </SwiperSlide>
             </Swiper>
         </div>
@@ -137,7 +156,7 @@ const MainPage = () => {
                 <div className='flex flex-col gap-y-4'>
                     <div className='flex gap-x-2'>
                         <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
-                        <h1 className='font-semiboldtext-3xl md:text-4xl lg:text-3xl'>FeedBacks</h1>
+                        <h1 className='font-semiboldtext-3xl text-3xl md:text-4xl lg:text-3xl'>FeedBacks</h1>
                     </div>
                     <div className='grid md:grid-cols-2 grid-cols-1 auto-grid-row:auto lg:grid-cols-4 gap-5'>
                        {isFetch ? <h1 className='font-semibold text-3xl'>Loading</h1> : limitFeedBacks.map((item, index) => <MainCard key={index} name={item.name} feedBack={item.feedBack} date={item.date}/>)}
