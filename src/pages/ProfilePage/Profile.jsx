@@ -46,7 +46,7 @@ const Profile = () => {
                         </div>
                     </div>
 
-                    <div className='w-[75%]'>
+                    <div className='w-[75%] overflow-y-scroll'>
                         <Routes>
                             <Route path='/*' element={<UserPage user={user}/>}></Route>
                             <Route path='wishlist' element={<WishList />}></Route>

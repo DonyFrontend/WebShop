@@ -35,7 +35,7 @@ const Basket = () => {
     }
 
     function addProducts() {
-        dispatch(addOrderProductsTC({allProducts: user.basket}));
+        dispatch(addOrderProductsTC({ allProducts: user.basket }));
         dispatch(getUserTC());
     }
 
@@ -63,11 +63,11 @@ const Basket = () => {
             <h5>${item.price}</h5>
             <h5>Color: {item.color}</h5>
             <h5>Size: {item.size}  </h5>
-                <Button
-                    onClick={() => deleteProduct(item)}
-                >
-                    <img src={bag} alt="Error!" />
-                </Button>
+            <Button
+                onClick={() => deleteProduct(item)}
+            >
+                <img src={bag} alt="Error!" />
+            </Button>
         </div>
     </div>)
 
@@ -85,26 +85,28 @@ const Basket = () => {
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-y-3">
                     <h1 className="flex font-medium text-xl">Discount  Codes</h1>
                     <p>Enter your coupon code if you have one</p>
-<div className="flex"> 
-                        <label htmlFor="coupon" className="shadow-md"> 
-                            <input type="text" style={{ border: '1px solid #BEBCBD', borderBottomLeftRadius: '7px', borderTopLeftRadius: '7px', padding: 3 }} /> 
-                            <button className="bg-[#8A33FD] mt-5 md:mt-0 lg:mt-0 hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius:'7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button> 
-                        </label> 
-                    </div> 
-                </div> 
-                <div className="flex items-center lg:items-start md:items-start text-center lg:text-left md:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11"> 
-                    <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}> 
-                        <p>Sub Total: {totalPrice}$</p> 
-                        <p>Coupon: 0$</p> 
-                        <h1 className="font-medium">Grand Total: ${totalPrice}</h1> 
-                    </div> 
-                    <div> 
-                        <Link to={'/profile/orders'} className="p-2 bg-[#8A33FD] hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white rounded-[7px]">Proceed To Checkout</Link> 
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
-    </div> 
-} 
- 
+                    <div className="flex">
+                        <label htmlFor="coupon" className="shadow-md">
+                            <input type="text" style={{ border: '1px solid #BEBCBD', borderBottomLeftRadius: '7px', borderTopLeftRadius: '7px', padding: 3 }} />
+                            <button className="bg-[#8A33FD] mt-5 md:mt-0 lg:mt-0 hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius: '7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button>
+                        </label>
+                    </div>
+                </div>
+                <div className="flex items-center lg:items-start md:items-start text-center lg:text-left md:text-left flex-col gap-y-11 md:gap-y-6 lg:gap-y-11">
+                    <div className="flex flex-col gap-y-3" style={{ borderBottom: '1px solid black' }}>
+                        <p>Sub Total: {totalPrice}$</p>
+                        <p>Coupon: 0$</p>
+                        <h1 className="font-medium">Grand Total: ${totalPrice}</h1>
+                    </div>
+                    <div>
+                        <Link to={'/profile/orders'}>
+                            <Button colorScheme='purple' onClick={addProducts}>Proceed To Checkout</Button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 export default Basket;
