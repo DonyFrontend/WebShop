@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { shopTC } from '../../../Slices/getProductsSlice';
 import { Link } from 'react-router-dom';
 import AddProduct from './AddProduct';
+import { Button } from '@chakra-ui/react';
+import { deleteProductTC } from '../../../Slices/deleteProductTC';
 
 const Products = () => {
     const { products, isFetch } = useSelector(state => state.getProductsSlice);
@@ -16,6 +18,11 @@ const Products = () => {
         return <h1 className='font-semibold text-3xl'>Loading...</h1>
     }
 
+    function deleteProduct(id) {
+        dispatch(deleteProductTC(id));
+        dispatch(shopTC());
+    }
+
     return <div className='flex flex-col gap-y-6 w-[100%]'>
         <div className='w-[100%] flex justify-between'>
             <div className='flex gap-x-2'>
@@ -24,12 +31,12 @@ const Products = () => {
             </div>
 
             <div>
-                <AddProduct/>
+                <AddProduct />
             </div>
         </div>
 
-        <div className='grid grid-cols-3 gap-5 auto-rows-auto'>
-            {products.length != 0 ? products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
+        <div className='grid grid-cols-3 gap-11 auto-rows-auto'>
+            {products.length != 0 ? products.map((item, index) => <div key={index} className='flex flex-col gap-y-3 h-[100%] justify-between'><Link to={`/shop/${item.id}`}>
                 <div className='flex flex-col h-[100%] justify-between'>
                     <div>
                         <img src={item.images[0]} alt="Error!" />
@@ -41,7 +48,12 @@ const Products = () => {
                         <p className='font-medium text-base'>Price: ${item.price}</p>
                     </div>
                 </div>
-            </Link>) : <h1 className='font-semibold text-3xl'>Loading...</h1>}
+            </Link>
+                <div className='flex gap-x-2'>
+                    <Button colorScheme='purple'>Change</Button>
+                    <Button colorScheme='red' onClick={() => deleteProduct(item.id)}>Delete</Button>
+                </div>
+            </div>) : <h1 className='font-semibold text-3xl'>Loading...</h1>}
         </div>
     </div>
 }
