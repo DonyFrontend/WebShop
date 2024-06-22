@@ -31,7 +31,11 @@ const Basket = () => {
         }) 
         dispatch(deleteBasketProductTC(product)) 
         dispatch(getUserTC()); 
-    } 
+    }
+    function addProducts() {
+        dispatch(addOrderProductsTC({allProducts: user.basket}));
+        dispatch(getUserTC());
+    }
  
     let totalPrice = 0; 
     if (user?.basket?.length != 0 && !isFetch) { 
