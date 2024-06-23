@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FeedBackTC } from "../../Slices/sendFeedBackTC";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 
 const SendFB = () => {
     const toast = useToast();
@@ -23,7 +24,8 @@ const SendFB = () => {
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.getThisUserTC);
 
-    function sendFeedBack() {
+    function sendFeedBack(e) {
+        e.preventDefault();
         toast({
             position: 'bottom-left',
             render: () => (
@@ -34,6 +36,7 @@ const SendFB = () => {
         })
         if(message != '') {
             dispatch(FeedBackTC({ message }));
+            onClose();
         }
     }
 
@@ -42,28 +45,30 @@ const SendFB = () => {
         setCount(e.target.value.length);
     }
 
+    const inputRef = useRef();
+
     return <div>
         <Button onClick={onOpen} colorScheme="purple">Send FeedBack</Button>
 
-        <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        <Modal initialFocusRef={inputRef} isCentered isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>FeedBack</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <div className="flex flex-col gap-y-5">
+                    <form onSubmit={sendFeedBack} className="flex flex-col gap-y-5">
                         <h1>You can write a review about the convenience of using our site.</h1>
                         <div>{count}/200</div>
-                        <Input maxLength={200} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
-                    </div>
+                        <Input ref={inputRef} maxLength={200} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
+                    </form>
                 </ModalBody>
 
                 <ModalFooter>
-                        <Button colorScheme='purple' mr={3}
-                            onClick={sendFeedBack}
-                        onClickCapture={onClose}>
-                        Send
-                    </Button>
+                    <form onSubmit={sendFeedBack}>
+                        <Button colorScheme='purple' mr={3}>
+                            Send
+                        </Button>
+                    </form>
                 <Button variant='ghost' onClick={onClose}>Close</Button>
             </ModalFooter>
         </ModalContent>
