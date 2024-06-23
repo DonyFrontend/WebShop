@@ -4,7 +4,7 @@ import { productsCollectionRef } from "../FirebaseConfig";
 
 export const addNewProductTC = createAsyncThunk(
     'webShop/addNewProductTC',
-    async ({product}) => {
+    async (product) => {
         console.log(product);
         try {
             addDoc(productsCollectionRef, product);
