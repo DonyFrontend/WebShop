@@ -7,11 +7,12 @@ import {
     ModalBody,
     ModalCloseButton,
     Button,
-    useDisclosure
+    useDisclosure,
 } from '@chakra-ui/react'
 import SignOut from './Images/signOut.svg';
 import { SignOutUserTC } from '../../Slices/SignOutUserTC';
 import { useDispatch } from 'react-redux';
+import {Link} from 'react-router-dom';
 
 const ProfileModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,9 +40,11 @@ const ProfileModal = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='purple' mr={3} onClick={postData}>
-                            Exit
-                        </Button>
+                        <Link to={'/signin'}>
+                            <Button colorScheme='purple' mr={3} onClick={postData}>
+                                Exit
+                            </Button>
+                        </Link>
                         <Button variant='ghost' onClick={onClose}>Close</Button>
                     </ModalFooter>
                 </ModalContent>

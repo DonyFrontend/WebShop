@@ -32,7 +32,8 @@ const ChatPage = () => {
         setCount(e.target.value.length);
     }
 
-    function addMessage() {
+    function addMessage(e) {
+        e.preventDefault();
         toast({
             position: 'bottom-left',
             render: () => (
@@ -75,14 +76,12 @@ const ChatPage = () => {
                     <p>{item.message}</p>
                 </div>) : ''}
             </div>
-            <div className='flex gap-x-1 p-2'>
+            <form onSubmit={addMessage} className='flex gap-x-1 p-2'>
                 <Input maxLength={200} value={message} onChange={e => onChangeStateInput(e)} placeholder='Type message...' focusBorderColor='purple.500'></Input>
-                    <Button colorScheme='purple' mr={3}
-                        onClick={addMessage}
-                    >
+                    <Button colorScheme='purple' mr={3}>
                         <img width={40} src={sendButton} alt="Error!" />
                     </Button>
-            </div>
+            </form>
 
             <div className='px-2'>{count}/200</div>
         </div> : ''}
