@@ -91,12 +91,12 @@ const Header = () => {
 
         {thisUser ?
             <div className='flex gap-x-6'>
-                <div className='flex gap-x-1'>
+                <div className='flex  gap-x-1'>
                     <CustomImagesLink to={'/profile/wishlist'} image={Select} />
                     <CustomImagesLink to={'/profile/user'} image={Profile} />
                     <CustomImagesLink to={'/basket'} image={Bag} />
                 </div>
-                {user.isAdmin ? <div className='flex pr-2 lg:mr-0 gap-x-1'>
+                {user.isAdmin ? <div className='flex  pr-2 lg:mr-0 gap-x-1'>
                     <CustomImagesLink to={'/adminPanel/products'} image={adminIcon}/>
                 </div> : ''}
             </div> : <div className='hidden lg:flex gap-x-1'>

@@ -30,7 +30,8 @@ const UserModal = () => {
     const initialRef = useRef(null)
     const finalRef = useRef(null)
 
-    function changeData() {
+    function changeData(e) {
+        e.preventDefault();
         toast({
             position: 'bottom-left',
             render: () => (
@@ -39,11 +40,11 @@ const UserModal = () => {
                 </Box>
             ),
         })
-        onClose();
         if (!(town === '' || name === '')) {
             dispatch(changeUserDataTC({ name, town }));
+            dispatch(getUserTC());        
+            onClose();
         }
-        dispatch(getUserTC());
     }
 
 
@@ -63,27 +64,31 @@ const UserModal = () => {
                     <ModalHeader>Change your account</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody pb={6}>
-                        <FormControl>
-                            <FormLabel>Name</FormLabel>
-                            <Input value={name} onChange={e => setName(e.target.value)} focusBorderColor='purple.500' ref={initialRef} placeholder='Name' />
-                        </FormControl>
+                        <form onSubmit={changeData}>
+                            <FormControl>
+                                <FormLabel>Name</FormLabel>
+                                <Input value={name} onChange={e => setName(e.target.value)} focusBorderColor='purple.500' ref={initialRef} placeholder='Name' />
+                            </FormControl>
 
-                        <FormControl mt={4}>
-                            <FormLabel>City</FormLabel>
-                            <select onChange={e => setTown(e.target.value)} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
-                                <option value='Bishkek'>Bishkek</option>
-                                <option value='Kara-Balta'>Kara-Balta</option>
-                                <option value='Osh'>Osh</option>
-                                <option value="Talas">Talas</option>
-                                <option value="Karakol">Karakol</option>
-                            </select>
-                        </FormControl>
+                            <FormControl mt={4}>
+                                <FormLabel>City</FormLabel>
+                                <select onChange={e => setTown(e.target.value)} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg:p-3 border-[#3C4242]">
+                                    <option value='Bishkek'>Bishkek</option>
+                                    <option value='Kara-Balta'>Kara-Balta</option>
+                                    <option value='Osh'>Osh</option>
+                                    <option value="Talas">Talas</option>
+                                    <option value="Karakol">Karakol</option>
+                                </select>
+                            </FormControl>
+                        </form>
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='purple' mr={3} onClick={changeData}>
-                            Save
-                        </Button>
+                        <form onSubmit={changeData}>
+                            <Button colorScheme='purple' mr={3}>
+                                Save
+                            </Button>
+                        </form>
                         <Button onClick={onClose}>Cancel</Button>
                     </ModalFooter>
                 </ModalContent>

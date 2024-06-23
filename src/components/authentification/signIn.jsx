@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import twitter from './authImages/twitter.png'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { SignInTC } from "../../Slices/SignInTC";
 import {useDispatch} from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
 
 function SignIn(){
     const dispatch = useDispatch();
@@ -23,8 +25,23 @@ function SignIn(){
 
     function postUser() {
         dispatch(SignInTC({email, password}));
+        navigate('/profile/user')
     }
 
+
+    const [error, setError] = useState('')
+
+
+    useEffect(() => {
+        if (localStorage.error === 'true') {
+            setError('Введите правильные данные')
+        }
+        else{
+            console.log('Успех');
+        }
+    }, [postUser])
+
+    const navigate = useNavigate()
     return(
         <div className="flex  w-full items-center justify-center">
             <form className="flex items-center lg:items-stretch flex-col">
@@ -78,14 +95,15 @@ function SignIn(){
                 </div>
 
                 <div>
-                    <input required type="password" value={password} onChange={OnHandleChange} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
-                </div>
+                    <input type="password" value={password} onChange={OnHandleChange} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                </div> 
+                {error === 'Введите правильные данные' && <p className="text-red-500">Введите правильные данные</p>}
+                {error !== 'Введите правильные данные' && <p className="hidden"></p> }
 
 
                     <Link className="pt-2 text-left lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
-                    <Link to={'/profile/user'}>
+                    
                         <button onClick={postUser} className=" mt-3 w-80 md:w-96 lg:w-40 lg:mt-0 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white"> Sign in</button>
-                    </Link>
                     <div className="mb-16 gap-x-2 md:text-2xl lg:text-base  justify-center lg:justify-start flex">
                     <h1>Don’t have an account?</h1><Link to='/SignUp' className="text-[#8A33FD]">Sign up</Link>  
                     </div>

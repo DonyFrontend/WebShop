@@ -47,11 +47,18 @@ const AddProduct = () => {
 
     function onChangeCounts({ item, itemFC, count }) {
         itemFC([...item, item.length + 1]);
-        setLength(item, count);
+        setLength(count, item);
     }
 
     function onChangeArray(array1, item, data) {
         array1[item] = data;
+    }
+
+    function log() {
+        console.log(colorsArray);
+        console.log(imagesArray);
+        console.log(sizesArray);
+        console.log(categoriesArray);
     }
 
     function addProduct() {
@@ -111,10 +118,10 @@ const AddProduct = () => {
                         <FormControl isRequired>
                             <FormLabel>Colors</FormLabel>
                             <div className='flex flex-col gap-y-3'>
-                                {colorsCount.map((item, index) => <Input name={item} onChange={e => onChangeArray(colorsArray, e.target.name -1, e.target.value)} required key={index} focusBorderColor='purple.500' placeholder='Color' />)}
+                                {colorsCount.map((item, index) => <Input name={index} onChange={e => onChangeArray(colorsArray, e.target.name, e.target.value)} required key={index} focusBorderColor='purple.500' placeholder='Color' />)}
                             </div>
                         </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: colorsCount, itemFC: setColorsCount, count: colorsCount })}>
+                        <Button variant='ghost' onClick={() => onChangeCounts({ item: colorsCount, itemFC: setColorsCount, count: colorsArray })}>
                             <img src={CloseImage} alt="Error!" className='rotate-45'/>
                         </Button>
                     </Box>
@@ -123,10 +130,10 @@ const AddProduct = () => {
                         <FormControl isRequired>
                             <FormLabel>Images (url)</FormLabel>
                             <div className='flex flex-col gap-y-3'>
-                                {imagesCount.map((item, index) => <Input onChange={e => onChangeArray(imagesArray, e.target.name -1, e.target.value)} name={item} required key={index} focusBorderColor='purple.500' placeholder='Image' />)}
+                                {imagesCount.map((item, index) => <Input onChange={e => onChangeArray(imagesArray, e.target.name, e.target.value)} name={index} required key={index} focusBorderColor='purple.500' placeholder='Image' />)}
                             </div>
                         </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: imagesCount, itemFC: setImagesCount, count: imagesCount })}>
+                        <Button variant='ghost' onClick={() => onChangeCounts({ item: imagesCount, itemFC: setImagesCount, count: imagesArray })}>
                             <img src={CloseImage} alt="Error!" className='rotate-45' />
                         </Button>
                     </Box>
@@ -135,10 +142,10 @@ const AddProduct = () => {
                         <FormControl isRequired>
                             <FormLabel>Sizes</FormLabel>
                             <div className='flex flex-col gap-y-3'>
-                                {sizesCount.map((item, index) => <Input onChange={e => onChangeArray(sizesArray, e.target.name -1, e.target.value)} name={item} required key={index} focusBorderColor='purple.500' placeholder='Size' />)}
+                                {sizesCount.map((item, index) => <Input onChange={e => onChangeArray(sizesArray, e.target.name, e.target.value)} name={index} required key={index} focusBorderColor='purple.500' placeholder='Size' />)}
                             </div>
                         </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: sizesCount, itemFC: setSizesCount, count: sizesCount})}>
+                        <Button variant='ghost' onClick={() => onChangeCounts({ item: sizesCount, itemFC: setSizesCount, count: sizesArray})}>
                             <img src={CloseImage} alt="Error!" className='rotate-45' />
                         </Button>
                     </Box>
@@ -147,10 +154,10 @@ const AddProduct = () => {
                         <FormControl isRequired>
                             <FormLabel>Categories</FormLabel>
                             <div className='flex flex-col gap-y-3'>
-                                {categoriesCount.map((item, index) => <Input onChange={e => onChangeArray(categoriesArray, e.target.name -1, e.target.value)} name={item} required key={index} focusBorderColor='purple.500' placeholder='Category' />)}
+                                {categoriesCount.map((item, index) => <Input onChange={e => onChangeArray(categoriesArray, e.target.name, e.target.value)} name={index} required key={index} focusBorderColor='purple.500' placeholder='Category' />)}
                             </div>
                         </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: categoriesCount, itemFC: setCategoriesCount, count: categoriesCount })}>
+                        <Button variant='ghost' onClick={() => onChangeCounts({ item: categoriesCount, itemFC: setCategoriesCount, count: categoriesArray })}>
                             <img src={CloseImage} alt="Error!" className='rotate-45' />
                         </Button>
                     </Box>
@@ -160,6 +167,9 @@ const AddProduct = () => {
                 <ModalFooter>
                     <Button colorScheme='purple' mr={3} onClick={addProduct}>
                         Add
+                    </Button>
+                    <Button colorScheme='purple' mr={3} onClick={log}>
+                        log
                     </Button>
                     <Button variant='ghost'>Close</Button>
                 </ModalFooter>
