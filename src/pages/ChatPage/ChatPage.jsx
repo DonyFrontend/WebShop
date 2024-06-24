@@ -83,7 +83,7 @@ const ChatPage = () => {
             </div>
             <form onSubmit={addMessage} className='flex gap-x-1 p-2'>
                 <Input maxLength={200} value={message} onChange={e => onChangeStateInput(e)} placeholder='Type message...' focusBorderColor='purple.500'></Input>
-                    <Button colorScheme='purple' mr={3}>
+                    <Button onClick={addMessage} colorScheme='purple'>
                         <img width={40} src={sendButton} alt="Error!" />
                     </Button>
             </form>
