@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { shopPagesTC } from "../../../Slices/shopPagesSlice";
 import { Link } from "react-router-dom";
+import LoadPage from "../../LoadPage/LoadPage";
 
 const Men = () => {
     const { men } = useSelector(state => state.shopPagesSlice);
@@ -12,7 +13,9 @@ const Men = () => {
     }, [dispatch])
 
     if (men.length == 0) {
-        return <h1 className='font-semibold text-3xl'>Loading...</h1>
+        return <div className="h-dvh flex items-center">
+            <LoadPage />
+        </div>
     }
 
     return <div className="w-[100%] flex justify-center mt-10">

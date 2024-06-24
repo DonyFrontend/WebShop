@@ -8,7 +8,8 @@ import { getUserTC } from '../../Slices/getThisUserTC';
 import CardPage from '../../components/emptyCardPage/CardPage'; 
 import { Link } from 'react-router-dom';
 import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
- 
+import LoadPage from '../LoadPage/LoadPage'; 
+
 const Basket = () => { 
  
     const { user, isFetch } = useSelector(state => state.getThisUserTC); 
@@ -45,7 +46,9 @@ const Basket = () => {
     }
     console.log(totalPrice);
 
-    const basketProducts = isFetch ? <h1 className='font-semibold text-3xl'>Loading...</h1> : user.basket.length == 0 ? <CardPage /> : user.basket.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
+    const basketProducts = isFetch ? <div className="h-svh flex items-center">
+    <LoadPage/>
+</div> : user.basket.length == 0 ? <CardPage /> : user.basket.map((item, index) => <div key={index} className="card flex items-center justify-between p-7" style={{ borderBottom: '1px solid #BEBCBD' }}>
         <div className="flex gap-x-[40px] justify-center">
             <div>
                 <img src={item.images} alt="Error" width={200} />
