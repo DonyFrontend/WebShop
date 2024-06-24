@@ -33,7 +33,7 @@ const WishList = () => {
                 </Box>
             ),
         })
-        
+
         dispatch(addBasketProduct({
             product: {
                 title: item.title,
@@ -71,31 +71,30 @@ const WishList = () => {
                     <div>
                         <img src={item.images} alt="Error!" style={{ width: 200 }} />
                     </div>
-                    <div className='flex flex-col'>
+                    <div className='flex flex-col gap-y-10'>
                         <h1 className='font-bold text-xl'>{item.title}</h1>
-                        <div className='flex flex-col gap-x-3'>
-                            <p className='font-semibold'>Color:</p>
-                            <p>{item.color}</p>
-                        </div>
-                        <div className='flex flex-col lg:flex-row gap-x-3'>
-                            <p className='font-semibold'>Size:</p>
-                            <p>{item.size}</p>
-                        </div>
-                        <div className='flex flex-col lg:flex-row gap-x-3'>
-                            <p className='font-semibold'>Quantity:</p>
-                            <p>1</p>
+
+                        <div>
+                            <div className='flex flex-col gap-x-3'>
+                                <p className='font-semibold'>Color:</p>
+                                <p>{item.color}</p>
+                            </div>
+                            <div className='flex flex-col lg:flex-row gap-x-3'>
+                                <p className='font-semibold'>Size:</p>
+                                <p>{item.size}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div className='flex lg:flex-row flex-col items-center gap-x-12'>
                     <p className='text-lg text-gray-600'>{item.price}$</p>
-                        <Button
-                            onClick={() => addProduct(item)}
-                            colorScheme='purple'
-                        >
-                            Add to basket
-                        </Button>
+                    <Button
+                        onClick={() => addProduct(item)}
+                        colorScheme='purple'
+                    >
+                        Add to basket
+                    </Button>
                 </div>
             </div>) : <h1>Dont have</h1>}
         </div>
