@@ -11,6 +11,7 @@ import FeedBacks from "./AdminPages/FeedBacks";
 import { getFeedBacks } from "../../Slices/getFeedBacksTC";
 import Chat from "./AdminPages/Chat";
 import ChatWithUser from "./AdminPages/ChatWithUser";
+import LoadPage from "../LoadPage/LoadPage";
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -25,7 +26,9 @@ const Admin = () => {
     const {isFetch} = useSelector(state => state.getThisUserTC);
 
     if (isFetch) {
-        return <h1 className='font-semibold text-3xl'>Loading...</h1>
+        return <div className="h-dvh flex items-center">
+        <LoadPage />
+    </div>
     }
     
     return <div className="flex min-h-[300px] w-[100%] justify-center mt-2">

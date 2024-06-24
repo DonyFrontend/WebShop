@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { shopTC } from '../../../Slices/getProductsSlice';
 import { Link } from 'react-router-dom';
 import AddProduct from './AddProduct';
-import { Button } from '@chakra-ui/react';
+import { Button, Spinner } from '@chakra-ui/react';
 import { deleteProductTC } from '../../../Slices/deleteProductTC';
+import LoadPage from '../../LoadPage/LoadPage';
 
 const Products = () => {
     const { products, isFetch } = useSelector(state => state.getProductsSlice);
@@ -15,7 +16,9 @@ const Products = () => {
     }, [dispatch])
 
     if (isFetch) {
-        return <h1 className='font-semibold text-3xl'>Loading...</h1>
+        return <div className="flex h-full items-center">
+            <LoadPage />
+        </div>
     }
 
     function deleteProduct(id) {
@@ -53,7 +56,13 @@ const Products = () => {
                     <Button colorScheme='purple'>Change</Button>
                     <Button colorScheme='red' onClick={() => deleteProduct(item.id)}>Delete</Button>
                 </div>
-            </div>) : <h1 className='font-semibold text-3xl'>Loading...</h1>}
+            </div>) : <div className='col-start-2 justify-self-center self-center row-start-2'><Spinner
+                thickness='3px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='purple.500'
+                size='xl'
+            /></div>}
         </div>
     </div>
 }

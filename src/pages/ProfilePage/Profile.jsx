@@ -11,6 +11,7 @@ import ProfileModal from './ProfileModal';
 import { scrollToZero } from '../utils/CustomFC';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserTC } from '../../Slices/getThisUserTC';
+import LoadPage from '../LoadPage/LoadPage';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const Profile = () => {
     const {user, isFetch} = useSelector(state => state.getThisUserTC);
 
     if (isFetch) {
-        return <h1 className='font-semibold text-3xl'>Loading...</h1>
+        return <div className="h-dvh flex items-center">
+        <LoadPage />
+    </div>
     }
 
     function onHandleClick() {
