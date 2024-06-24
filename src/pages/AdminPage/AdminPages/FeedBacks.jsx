@@ -4,10 +4,15 @@ import { DFeedBackTC } from '../../../Slices/deleteFeedBackTC';
 import { getFeedBacks } from '../../../Slices/getFeedBacksTC';
 import { addCurrentFeedBackTC } from '../../../Slices/addCurrentFeedBackTC';
 import LoadPage from '../../LoadPage/LoadPage';
+import { useEffect } from 'react';
 
 const FeedBacks = () => {
     const { feedBacks, isFetch } = useSelector(state => state.getFeedBacksTC);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getFeedBacks());
+    }, [dispatch])
 
     if (isFetch) {
         return <div className="flex h-full items-center">
