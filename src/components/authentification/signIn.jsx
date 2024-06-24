@@ -9,28 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 function SignIn(){
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
 
-    const OnHandleChange = (e) =>{
-        const newPassword = e.target.value;
-        setPassword(newPassword)
-        if(newPassword.length <= 8){
-            setMessage('Пароль недостаточно надёжен')
-        } else{
-            setMessage('')
-        }
-    }
-
-    function postUser() {
-        dispatch(SignInTC({email, password}));
-        navigate('/profile/user')
-    }
-
-
     const [error, setError] = useState('')
-
 
     useEffect(() => {
         if (localStorage.error === 'true') {
@@ -39,9 +24,13 @@ function SignIn(){
         else{
             console.log('Успех');
         }
-    }, [postUser])
+    }, [error, setError])
 
-    const navigate = useNavigate()
+    function postUser() {
+        dispatch(SignInTC({email, password}));
+        navigate('/profile/user')
+    }
+
     return(
         <div className="flex  w-full items-center justify-center">
             <form className="flex items-center lg:items-stretch flex-col">
@@ -95,7 +84,7 @@ function SignIn(){
                 </div>
 
                 <div>
-                    <input type="password" value={password} onChange={OnHandleChange} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
                 </div> 
                 {error === 'Введите правильные данные' && <p className="text-red-500">Введите правильные данные</p>}
                 {error !== 'Введите правильные данные' && <p className="hidden"></p> }
