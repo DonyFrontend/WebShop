@@ -28,6 +28,7 @@ import { productTC } from "../../Slices/productPageTC";
 import { useToast, Button } from "@chakra-ui/react";
 import { similarProductsTC } from "../../Slices/similarProductsSlice";
 import SimilarProducts from "./similarProducts";
+import LoadPage from "../LoadPage/LoadPage";
 
 function Product() {
   const dispatch = useDispatch();
@@ -48,7 +49,9 @@ function Product() {
   const [color, setColor] = useState('');
 
   if (isProductFetch) {
-    return <h1 className="text-4xl p-10 mt-4">Loading...</h1>
+    return<div className="h-dvh flex items-center">
+    <LoadPage />
+</div>
   }
 
 
