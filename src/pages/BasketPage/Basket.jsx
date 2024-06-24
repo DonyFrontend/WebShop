@@ -68,7 +68,7 @@ const Basket = () => {
                 <Button 
                     onClick={() => deleteProduct(item)} 
                 > 
-                    <img src={bag} alt="Error!" /> 
+                    <img src={bag} alt="Error" /> 
                 </Button> 
         </div> 
     </div>) 
@@ -87,7 +87,7 @@ const Basket = () => {
                 <div className="flex flex-col items-center lg:items-start md:items-start text-center lg:text-left md:text-left gap-y-3"> 
                     <h1 className="flex font-medium text-xl">Discount Codes</h1> 
                     <p>Enter your coupon code if you have one</p>
-<div className="flex"> 
+        <div className="flex"> 
                         <label htmlFor="coupon" className="shadow-md"> 
                             <input type="text" style={{ border: '1px solid #BEBCBD', borderBottomLeftRadius: '7px', borderTopLeftRadius: '7px', padding: 3 }} /> 
                             <button className="bg-[#8A33FD] mt-5 md:mt-0 lg:mt-0 hover:bg-[#6620C1] active:bg-[#4c2185] transition-colors text-white p-1 font-mono" style={{ borderTopRightRadius:'7px', borderBottomRightRadius: '7px' }}>Apply Coupon</button> 
