@@ -116,26 +116,26 @@ const Header = () => {
             </button>
         </div>
 
-        {title.length != 0 ? <div className='fixed right-0 bottom-0 bg-white h-64 w-[100%] border-[#8A33FD] overflow-y-scroll flex flex-col p-2 gap-y-3'>
-            <div className='fixed top-[445px] left-0'>
+        {title.length != 0 ? <div className='fixed right-0 top-14 bg-white h-64 w-[74%] lg:w-[100%] lg:top-auto lg:bottom-0  border-[#8A33FD] overflow-y-scroll flex flex-col p-2 gap-y-3'>
+            <div className='fixed hidden lg:block top-[445px] left-0'>
                 <Button onClick={closeDiv}>
                     <img src={inputImage} alt="Error!" />
                 </Button>
             </div>
             {title.length == 0 ? '' : products.products.length != 0 ? products.products.map((item, index) => <div key={index} className="flex justify-between items-center">
-                <div className="flex items-center justify-around gap-x-4">
+                <div className="flex  items-center justify-around gap-x-4">
                     <div>
                         <img src={item.images[0]} alt="Error!" style={{ width: 200 }} />
                     </div>
 
                     <div className='flex flex-col justify-around gap-2'>
                         <h1 className='font-semibold text-2xl'>{item.title}</h1>
-                        <div className='flex gap-x-3'>
+                        <div className='hidden md:flex gap-x-3'>
                             <p className='font-semibold text-lg'>Color:</p>
                             <div className='flex text-lg'>{item.colors.map((item, index) => <p key={index}>{item}/ </p>)}</div>
                         </div>
 
-                        <div className='flex gap-x-3'>
+                        <div className=' gap-x-3 hidden md:flex'>
                             <p className='font-semibold text-lg'>Price:</p>
                             <p className='text-lg'>${item.price}</p>
                         </div>
@@ -144,8 +144,8 @@ const Header = () => {
                 </div>
 
                 <div onClick={closeDiv}>
-                    <Link to={`/shop/${item.id}`} className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</Link>
-            </div>
+                    <Link to={`/shop/${item.id}`} className='bg-[#8A33FD] flex active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</Link>
+                </div>
             </div>) : <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>{products.isFetch == false ? 'Type name of product and click on button' : "Apparently, we don't have such a product :("}  </h1>}
     </div> : ''}
     </header >

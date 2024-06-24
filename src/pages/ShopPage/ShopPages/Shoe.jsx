@@ -20,7 +20,7 @@ const Shoe = () => {
     }
 
     return <div className="w-[100%] flex justify-center mt-10">
-        <div className="w-[90%] grid grid-cols-4 auto-rows-auto gap-9">
+        <div className="w-[90%] grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 auto-rows-auto gap-9">
             {shoe.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
                 <div className='flex flex-col h-[100%] justify-between'>
                     <div>
