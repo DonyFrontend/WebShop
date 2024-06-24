@@ -8,6 +8,7 @@ import { getUserTC } from '../../Slices/getThisUserTC';
 import CardPage from '../../components/emptyCardPage/CardPage'; 
 import { Link } from 'react-router-dom';
 import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
+import LoadPage from '../LoadPage/LoadPage';
  
 const Basket = () => { 
  
