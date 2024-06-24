@@ -3,13 +3,21 @@ import { Card, CardHeader, CardBody, Text, Heading, Box, Button } from '@chakra-
 import { DFeedBackTC } from '../../../Slices/deleteFeedBackTC';
 import { getFeedBacks } from '../../../Slices/getFeedBacksTC';
 import { addCurrentFeedBackTC } from '../../../Slices/addCurrentFeedBackTC';
+import LoadPage from '../../LoadPage/LoadPage';
+import { useEffect } from 'react';
 
 const FeedBacks = () => {
     const { feedBacks, isFetch } = useSelector(state => state.getFeedBacksTC);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch(getFeedBacks());
+    }, [dispatch])
+
     if (isFetch) {
-        return <h1 className='font-semibold text-3xl'>Loading...</h1>
+        return <div className="flex h-full items-center">
+        <LoadPage />
+    </div>
     }
 
     if (feedBacks.length == 0) {

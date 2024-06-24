@@ -6,6 +6,7 @@ import { scrollToZero } from '../utils/CustomFC';
 import { Link } from 'react-router-dom';
 // import { shopTC } from '../../Slices/getProductsSlice';
 import { getShopProductsTC } from '../../Slices/getShopProductsSlice';
+import { Spinner } from '@chakra-ui/react';
 
 const Shop = () => {
     const dispatch = useDispatch()
@@ -14,7 +15,7 @@ const Shop = () => {
         dispatch(getShopProductsTC());
     }, [dispatch])
 
-    const {allProducts, shoes, shorts, socks} = useSelector(state => state.getShopProductsSlice);
+    const { allProducts, shoes, shorts, socks } = useSelector(state => state.getShopProductsSlice);
     console.log(allProducts, shoes, shorts, socks);
 
     // const [products, setProducts] = useState(allProducts);
@@ -23,8 +24,8 @@ const Shop = () => {
 
 
     const [click, setClick] = useState(false)
-    
-    function onHandleClick(){
+
+    function onHandleClick() {
         setClick(!click)
     }
 
@@ -41,10 +42,10 @@ const Shop = () => {
                         <AccordionFilter />
                     </div>
                 </div>
-            
-        
+
+
             </div>
-            { click ?<div className='flex rounded-lg text-xl text-center flex-col fixed top-0 left-0 gap-3 p-5 md:p-12 bg-white border border-black'>
+            {click ? <div className='flex rounded-lg text-xl text-center flex-col fixed top-0 left-0 gap-3 p-5 md:p-12 bg-white border border-black'>
                 <div className='sticky left-0 top-12 flex flex-col gap-y-5 p-3'>
                     <div className='flex justify-between'>
                         <h1 className='text-[#807D7E] font-medium text-2xl md:text-3xl'>Filter</h1>
@@ -56,21 +57,21 @@ const Shop = () => {
                         <AccordionFilter />
                     </div>
                 </div>
-                    <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
-                </div> : ''}
-            <div  className='inline-block lg:hidden'>
-            <button className='' onClick={onHandleClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 md:w-10 md:h-10 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </button>
-        </div>
+                <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
+            </div> : ''}
+            <div className='inline-block lg:hidden'>
+                <button className='' onClick={onHandleClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 md:w-10 md:h-10 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
 
             <div className="w-full lg:w-[80%] mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {allProducts.length != 0 ? allProducts.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
                     <div className='flex flex-col h-[100%] justify-between'>
                         <div>
-                            <img src={item.images[0]} alt="Error!"/>
+                            <img src={item.images[0]} alt="Error!" />
                         </div>
                         <div className='flex flex-col gap-y-1'>
                             <h2 className='font-medium text-xl'>{item.title}</h2>
@@ -79,7 +80,13 @@ const Shop = () => {
                             <p className='font-medium text-base'>Price: ${item.price}</p>
                         </div>
                     </div>
-                </Link>) : <h1 className='font-semibold text-3xl'>Loading...</h1>}
+                </Link>) : <div className='col-start-2 justify-self-center row-start-2'><Spinner
+                    thickness='3px'
+                    speed='0.65s'
+                    emptyColor='gray.200'
+                    color='purple.500'
+                    size='xl'
+                /></div>}
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import {
     Modal,
     ModalOverlay,
@@ -7,175 +8,211 @@ import {
     ModalBody,
     ModalCloseButton,
     Button,
-    useDisclosure,
-    FormLabel,
     Input,
+    FormLabel,
     FormControl,
-    Box,
-} from '@chakra-ui/react';
-import CloseImage from './AddProductImages/Add.svg';
+    useDisclosure,
+    useToast,
+    Box
+} from '@chakra-ui/react'
 import { useState } from 'react';
-import {useDispatch} from 'react-redux';
+import addImage from './AddProductImages/Add.svg'
+import removeImage from './AddProductImages/remove.svg';
 import { addNewProductTC } from '../../../Slices/addNewProductTC';
+import {useDispatch} from 'react-redux';
 
 const AddProduct = () => {
+    const toast = useToast();
     const dispatch = useDispatch();
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const {
+        register,
+        formState: { errors },
+        reset,
+        handleSubmit
+    } = useForm({ mode: 'onBlur' })
 
-    const { isOpen, onClose, onOpen } = useDisclosure();
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState();
-    const [desc, setDesc] = useState('');
-    const [colorsCount, setColorsCount] = useState([1]);
-    const [imagesCount, setImagesCount] = useState([1]);
-    const [sizesCount, setSizesCount] = useState([1]);
-    const [categoriesCount, setCategoriesCount] = useState([1]);
+    const onSubmit = (data) => {
+        const isImagesEmpty = images.find(item => item === '');
+        const isCategoriesEmpty = categories.find(item => item === '');
+        const isColorsEmpty = colors.find(item => item === '');
+        const isSizesEmpty = sizes.find(item => item === '');
 
-    let colorsArray = [];
-    let imagesArray = [];
-    let sizesArray = [];
-    let categoriesArray = [];
+        console.log(isImagesEmpty);
 
-
-    function setLength(array1, array2) {
-        array1.length = array2.length;
-    }
-
-    setLength(colorsArray, colorsCount);
-    setLength(imagesArray, imagesCount);
-    setLength(sizesArray, sizesCount);
-    setLength(categoriesArray, categoriesCount);
-
-    function onChangeCounts({ item, itemFC, count }) {
-        itemFC([...item, item.length + 1]);
-        setLength(count, item);
-    }
-
-    function onChangeArray(array1, item, data) {
-        array1[item] = data;
-    }
-
-    function log() {
-        console.log(colorsArray);
-        console.log(imagesArray);
-        console.log(sizesArray);
-        console.log(categoriesArray);
-    }
-
-    function addProduct() {
-        // const colorsFound = colorsArray.find(item => item == false | undefined)
-        // const imagesFound = imagesArray.find(item => item == false | undefined)
-        // const sizesFound = sizesArray.find(item => item == false | undefined)
-        // const categoriesFound = categoriesArray.find(item => item == false | undefined)
-
-        // if (colorsFound & imagesFound & sizesFound & categoriesFound & title & price & desc) {
-            
-        // }
-
-        dispatch(addNewProductTC({product: {
-            categories: categoriesArray,
-            colors: colorsArray,
-            description: desc,
-            images: imagesArray,
-            price,
-            sizes: sizesArray,
-            title
-        }}))
-
-        onClose();
-    }
-
-    return <div>
-        <Button colorScheme='purple' onClick={onOpen}>Add new product</Button>
-
-        <Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior='inside'>
-            <ModalOverlay />
-            <ModalContent>
-                <ModalHeader>Add product</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody className='flex flex-col gap-y-3'>
-                    <Box>
-                        <FormControl isRequired>
-                            <FormLabel>Title</FormLabel>
-                            <Input required value={title} onChange={e => setTitle(e.target.value)} focusBorderColor='purple.500' placeholder='Title' />
-                        </FormControl>
+        if (isImagesEmpty === '' | isCategoriesEmpty === '' | isColorsEmpty === '' | isSizesEmpty === '') {
+            toast({
+                position: 'bottom-left',
+                render: () => (
+                    <Box color='white' p={3} bg='darkviolet'>
+                        Please enter data in all inputs!
                     </Box>
+                )
+            })
+        } else {
+            dispatch(addNewProductTC({
+                title: data.title,
+                description: data.description,
+                price: data.price,
+                categories,
+                colors,
+                images,
+                sizes
+            }))
 
-                    <Box>
-                        <FormControl isRequired>
-                            <FormLabel>Description</FormLabel>
-                            <Input required value={desc} onChange={e => setDesc(e.target.value)} focusBorderColor='purple.500' placeholder='Description' />
-                        </FormControl>
+            toast({
+                position: 'bottom-left',
+                render: () => (
+                    <Box color='white' p={3} bg='darkviolet'>
+                        Add product!
                     </Box>
+                )
+            })
 
-                    <Box>
-                        <FormControl isRequired>
-                            <FormLabel>Price</FormLabel>
-                            <Input required value={price} onChange={e => setPrice(e.target.value)} focusBorderColor='purple.500' placeholder='Price' />
-                        </FormControl>
-                    </Box>
+            reset();
+            setCategories(['']);
+            setColors(['']);
+            setImages(['']);
+            setSizes(['']);
+            onClose();
+        }
+    }
 
-                    <Box className='flex flex-col gap-y-2 items-start'>
-                        <FormControl isRequired>
-                            <FormLabel>Colors</FormLabel>
-                            <div className='flex flex-col gap-y-3'>
-                                {colorsCount.map((item, index) => <Input name={index} onChange={e => onChangeArray(colorsArray, e.target.name, e.target.value)} required key={index} focusBorderColor='purple.500' placeholder='Color' />)}
-                            </div>
-                        </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: colorsCount, itemFC: setColorsCount, count: colorsArray })}>
-                            <img src={CloseImage} alt="Error!" className='rotate-45'/>
+    //inputs functions
+    const [images, setImages] = useState(['']);
+    const [categories, setCategories] = useState(['']);
+    const [colors, setColors] = useState(['']);
+    const [sizes, setSizes] = useState(['']);
+
+    const handleAddInput = ({ data, dataFC }) => {
+        const newInputs = [...data, ''];
+        dataFC(newInputs);
+    };
+
+    const handleRemoveInput = ({ index, data, dataFC }) => {
+        const newInputs = [...data];
+        newInputs.splice(index, 1)
+        dataFC(newInputs);
+    };
+
+    const handleChangeInput = ({ index, value, data, dataFC }) => {
+        const newInputs = [...data];
+        newInputs[index] = value;
+        dataFC(newInputs);
+    }
+
+    return (
+        <>
+            <Button colorScheme='purple' onClick={onOpen}>Add product</Button>
+
+            <Modal
+                isOpen={isOpen}
+                onClose={onClose}
+                scrollBehavior='outside'
+            >
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Add product</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody pb={6}>
+                        <form className='flex flex-col gap-y-6' onSubmit={handleSubmit(onSubmit)}>
+                            <FormControl className='flex flex-col gap-y-1'>
+                                <FormLabel>Title</FormLabel>
+                                <Input  {...register('title', { required: true })} placeholder='Title' focusBorderColor='purple.500' />
+                                {errors.title && <p className='text-red-600'>Input cannot be empty!</p>}
+                            </FormControl>
+
+                            <FormControl className='flex flex-col gap-y-1'>
+                                <FormLabel>Description</FormLabel>
+                                <Input  {...register('description', { required: true })} placeholder='Description' focusBorderColor='purple.500' />
+                                {errors.description && <p className='text-red-600'>Input cannot be empty!</p>}
+                            </FormControl>
+
+                            <FormControl className='flex flex-col gap-y-1'>
+                                <FormLabel>Price</FormLabel>
+                                <Input type='number'  {...register('price', { required: true })} placeholder='Price' focusBorderColor='purple.500' />
+                                {errors.price && <p className='text-red-600'>Input cannot be empty!</p>}
+                            </FormControl>
+
+                            <FormControl className='flex flex-col gap-y-3'>
+                                <FormLabel>Images (url)</FormLabel>
+                                <div className='flex flex-col  gap-y-3'>
+                                        {images.map((item, index) => <div key={index} className='flex gap-x-2'>
+                                            <Input focusBorderColor='purple.500' placeholder={`Image ${index + 1}`} key={index} value={item} onChange={(e) => handleChangeInput({ index, value: e.target.value, data: images, dataFC: setImages })} />
+                                            <Button variant={'ghost'} onClick={() => handleRemoveInput({ data: images, dataFC: setImages, index })}>
+                                                <img className='cursor-pointer' src={removeImage}  alt="Error!" />
+                                            </Button>
+                                        </div>)}
+                                </div>
+
+                                <Button className='flex ' onClick={() => handleAddInput({ data: images, dataFC: setImages })}>
+                                    <img src={addImage} className='rotate-45' alt="Error!" />
+                                </Button>
+                            </FormControl>
+
+                            <FormControl className='flex flex-col gap-y-3'>
+                                <FormLabel>Categories</FormLabel>
+                                <div className='flex flex-col  gap-y-3'>
+                                        {categories.map((item, index) => <div key={index} className='flex gap-x-2'>
+                                            <Input focusBorderColor='purple.500' placeholder={`Category ${index + 1}`} key={index} value={item} onChange={(e) => handleChangeInput({ index, value: e.target.value, data: categories, dataFC: setCategories })} />
+                                            <Button variant={'ghost'} onClick={() => handleRemoveInput({ data: categories, dataFC: setCategories, index })}>
+                                                <img className='cursor-pointer' src={removeImage}  alt="Error!" />
+                                            </Button>
+                                        </div>)}
+                                </div>
+
+                                <Button className='flex ' onClick={() => handleAddInput({ data: categories, dataFC: setCategories })}>
+                                    <img src={addImage} className='rotate-45' alt="Error!" />
+                                </Button>
+                            </FormControl>
+
+                            <FormControl className='flex flex-col gap-y-3'>
+                                <FormLabel>Colors</FormLabel>
+                                <div className='flex flex-col  gap-y-3'>
+                                        {colors.map((item, index) => <div key={index} className='flex gap-x-2'>
+                                            <Input focusBorderColor='purple.500' placeholder={`Color ${index + 1}`} key={index} value={item} onChange={(e) => handleChangeInput({ index, value: e.target.value, data: colors, dataFC: setColors })} />
+                                            <Button variant={'ghost'} onClick={() => handleRemoveInput({ data: colors, dataFC: setColors, index })}>
+                                                <img className='cursor-pointer' src={removeImage}  alt="Error!" />
+                                            </Button>
+                                        </div>)}
+                                </div>
+
+                                <Button className='flex ' onClick={() => handleAddInput({ data: colors, dataFC: setColors })}>
+                                    <img src={addImage} className='rotate-45' alt="Error!" />
+                                </Button>
+                            </FormControl>
+
+                            <FormControl className='flex flex-col gap-y-3'>
+                                <FormLabel>Sizes</FormLabel>
+                                <div className='flex flex-col  gap-y-3'>
+                                        {sizes.map((item, index) => <div key={index} className='flex gap-x-2'>
+                                            <Input focusBorderColor='purple.500' placeholder={`Color ${index + 1}`} key={index} value={item} onChange={(e) => handleChangeInput({ index, value: e.target.value, data: sizes, dataFC: setSizes })} />
+                                            <Button variant={'ghost'} onClick={() => handleRemoveInput({ data: sizes, dataFC: setSizes, index })}>
+                                                <img className='cursor-pointer' src={removeImage}  alt="Error!" />
+                                            </Button>
+                                        </div>)}
+                                </div>
+
+                                <Button className='flex ' onClick={() => handleAddInput({ data: sizes, dataFC: setSizes })}>
+                                    <img src={addImage} className='rotate-45' alt="Error!" />
+                                </Button>
+                            </FormControl>
+
+
+                            <button className='hidden'>add</button>
+                        </form>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='purple' mr={3} onClick={handleSubmit(onSubmit)}>
+                            Add
                         </Button>
-                    </Box>
-                    
-                    <Box className='flex flex-col gap-y-2 items-start'>
-                        <FormControl isRequired>
-                            <FormLabel>Images (url)</FormLabel>
-                            <div className='flex flex-col gap-y-3'>
-                                {imagesCount.map((item, index) => <Input onChange={e => onChangeArray(imagesArray, e.target.name, e.target.value)} name={index} required key={index} focusBorderColor='purple.500' placeholder='Image' />)}
-                            </div>
-                        </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: imagesCount, itemFC: setImagesCount, count: imagesArray })}>
-                            <img src={CloseImage} alt="Error!" className='rotate-45' />
-                        </Button>
-                    </Box>
-
-                    <Box className='flex flex-col gap-y-2 items-start'>
-                        <FormControl isRequired>
-                            <FormLabel>Sizes</FormLabel>
-                            <div className='flex flex-col gap-y-3'>
-                                {sizesCount.map((item, index) => <Input onChange={e => onChangeArray(sizesArray, e.target.name, e.target.value)} name={index} required key={index} focusBorderColor='purple.500' placeholder='Size' />)}
-                            </div>
-                        </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: sizesCount, itemFC: setSizesCount, count: sizesArray})}>
-                            <img src={CloseImage} alt="Error!" className='rotate-45' />
-                        </Button>
-                    </Box>
-
-                    <Box className='flex flex-col gap-y-2 items-start'>
-                        <FormControl isRequired>
-                            <FormLabel>Categories</FormLabel>
-                            <div className='flex flex-col gap-y-3'>
-                                {categoriesCount.map((item, index) => <Input onChange={e => onChangeArray(categoriesArray, e.target.name, e.target.value)} name={index} required key={index} focusBorderColor='purple.500' placeholder='Category' />)}
-                            </div>
-                        </FormControl>
-                        <Button variant='ghost' onClick={() => onChangeCounts({ item: categoriesCount, itemFC: setCategoriesCount, count: categoriesArray })}>
-                            <img src={CloseImage} alt="Error!" className='rotate-45' />
-                        </Button>
-                    </Box>
-
-                </ModalBody>
-
-                <ModalFooter>
-                    <Button colorScheme='purple' mr={3} onClick={addProduct}>
-                        Add
-                    </Button>
-                    <Button colorScheme='purple' mr={3} onClick={log}>
-                        log
-                    </Button>
-                    <Button variant='ghost'>Close</Button>
-                </ModalFooter>
-            </ModalContent>
-        </Modal>
-    </div>
+                        <Button onClick={onClose}>Cancel</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </>
+    )
 }
 
 export default AddProduct;

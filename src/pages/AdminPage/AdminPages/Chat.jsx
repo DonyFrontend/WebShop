@@ -4,6 +4,7 @@ import { getAllUsersTC } from '../../../Slices/getAllUsersSlice';
 import { Box, Button, Card, CardBody, CardHeader, Heading, Text } from '@chakra-ui/react';
 import { deleteChatTC } from '../../../Slices/deleteChatTC';
 import { Link } from 'react-router-dom';
+import LoadPage from '../../LoadPage/LoadPage';
 
 const Chat = () => {
     const { users, isFetch } = useSelector(state => state.getAllUsersSlice);
@@ -14,7 +15,9 @@ const Chat = () => {
     }, [dispatch])
 
     if (isFetch) {
-        return <h1 className='font-semibold text-3xl'>Loading...</h1>
+        return <div className="flex h-full items-center">
+        <LoadPage />
+    </div>
     }
 
     const findChats = users.filter(item => item.chat[0]);

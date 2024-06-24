@@ -1,6 +1,6 @@
 import { Box, Button, Input } from '@chakra-ui/react';
 import buttonImage from './images/button.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import closeButton from './images/closeButton.svg';
 import sendButton from './images/sendButton.svg';
 import { useSelector } from 'react-redux';
@@ -19,6 +19,10 @@ const ChatPage = () => {
     const { user } = useSelector(state => state.getThisUserTC);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUserTC());
+    }, [dispatch])
 
     if (!user.email) return '';
 
@@ -49,6 +53,7 @@ const ChatPage = () => {
             setCustomMessage(true);
             setCount(0);
         }
+        dispatch(getUserTC());
     }
 
     return <div className='fixed right-7 bottom-14'>
