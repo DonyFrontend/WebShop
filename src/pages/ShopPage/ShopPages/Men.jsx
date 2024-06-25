@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { shopPagesTC } from "../../../Slices/shopPagesSlice";
 import { Link } from "react-router-dom";
 import LoadPage from "../../LoadPage/LoadPage";
+import {scrollToZero} from '../../utils/CustomFC';
 
 const Men = () => {
     const { men } = useSelector(state => state.shopPagesSlice);
@@ -10,6 +11,7 @@ const Men = () => {
 
     useEffect(() => {
         dispatch(shopPagesTC());
+        scrollToZero();
     }, [dispatch])
 
     if (men.length == 0) {
@@ -19,7 +21,7 @@ const Men = () => {
     }
 
     return <div className="w-[100%] flex justify-center mt-10">
-        <div className="w-[90%] grid grid-cols-4 auto-rows-auto gap-9">
+        <div className="w-[90%] grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 auto-rows-auto gap-9">
             {men.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
                 <div className='flex flex-col h-[100%] justify-between'>
                     <div>
