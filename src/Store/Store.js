@@ -93,6 +93,6 @@ export const store = configureStore({
         addNewProductTC,
         shopPagesSlice,
         shopPagesTC,
-        deleteProductTC
+        deleteProductTC,
     }
 })

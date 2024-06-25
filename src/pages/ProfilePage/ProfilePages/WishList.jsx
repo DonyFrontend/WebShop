@@ -49,9 +49,9 @@ const WishList = () => {
             <h1 className='font-semibold text-3xl text-center lg:text-left'>Wishlist</h1>
         </div>
         <div className='flex flex-col gap-y-10'>
-            {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex justify-between'>
-                <div className='flex items-center gap-x-10'>
-                    <div onClick={() => deleteProduct(item)}>
+            {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex flex-col lg:flex-row justify-between'>
+                <div className='flex flex-col justify-between lg:flex-row items-center gap-x-10'>
+                    <div className='flex' onClick={() => deleteProduct(item)}>
                         <Button
                             onClick={() => {
                                 toast({
@@ -75,11 +75,11 @@ const WishList = () => {
                         <h1 className='font-bold text-xl'>{item.title}</h1>
 
                         <div>
-                            <div className='flex flex-col gap-x-3'>
-                                <p className='font-semibold'>Color:</p>
+                            <div className='flex text-center lg:text-left gap-y-3 lg:gap-y-0 flex-col gap-x-3'>
+                                <p className='font-semibold '>Color:</p>
                                 <p>{item.color}</p>
                             </div>
-                            <div className='flex flex-col lg:flex-row gap-x-3'>
+                            <div className='flex flex-col text-center lg:text-left lg:flex-row gap-y-3 lg:gap-y-0 lg:gap-x-3'>
                                 <p className='font-semibold'>Size:</p>
                                 <p>{item.size}</p>
                             </div>
@@ -87,7 +87,7 @@ const WishList = () => {
                     </div>
                 </div>
 
-                <div className='flex lg:flex-row flex-col items-center gap-x-12'>
+                <div className='flex mt-2.5 lg:flex-row flex-col items-center gap-x-12'>
                     <p className='text-lg text-gray-600'>{item.price}$</p>
                     <Button
                         onClick={() => addProduct(item)}

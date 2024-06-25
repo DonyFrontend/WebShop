@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 import Google from '../../assets/Google.png'
-import twitter from './authImages/twitter.png'
 import { useEffect, useState } from "react"
 import { SignInTC } from "../../Slices/SignInTC";
 import {useDispatch} from 'react-redux';
 import { useNavigate } from "react-router-dom";
-
+import { scrollToZero } from "../../pages/utils/CustomFC";
+import signInWithGoogle from "../../pages/utils/SignInWithGoogleFC";
 
 function SignIn(){
     const dispatch = useDispatch();
@@ -24,6 +24,7 @@ function SignIn(){
         else{
             console.log('Успех');
         }
+        scrollToZero();
     }, [error, setError])
 
     function postUser() {
@@ -41,17 +42,10 @@ function SignIn(){
                 </div>
 
                 <div>
-                <div className=" w-80 md:w-96 mb-5 lg:mb-0 lg:w-[100%] border-[1px] rounded-md border-black">
+                <div onClick={() => signInWithGoogle({navigate})} className="cursor-pointer w-80 md:w-96 mb-5 lg:mb-0 lg:w-[100%] border-[1px] rounded-md border-black">
                     <div className="flex lg:text-xl md:text-2xl flex-row p-2 content-evenly justify-center">
                     <img className="mx-[10px] md:mt-1.5 lg:mt-1.5 w-5 h-5" src={Google} alt="" ></img>
                         <h2  className="text-[#8A33FD]">Continue With Google</h2>
-                    </div>
-                </div>
-
-                <div className=" mb-5 md:w-96 lg:mb-0 w-80 lg:w-[100%] lg:mt-5 border-[1px] rounded-md border-black">
-                    <div className="flex lg:text-xl md:text-2xl flex-row p-2 content-evenly justify-center">
-                    <img className="mx-[10px] md:mt-1.5 lg:mt-1.5 w-5 h-5" src={twitter} alt="" ></img>
-                        <h2 className="text-[#8A33FD]">Continue With Twitter</h2>
                     </div>
                 </div>
             </div>
