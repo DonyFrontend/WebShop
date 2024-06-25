@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { AllCurrentFeedbacksTC } from "../../Slices/AllFeedBacksTC";
 import LoadPage from '../LoadPage/LoadPage';
+import { scrollToZero } from '../utils/CustomFC';
 
 const ReviewCard = ({ date, feedBack, name }) => (
     <div className="bg-white shadow-lg border-purple-800 border rounded-lg p-4 m-4 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
@@ -19,6 +20,7 @@ function FeedBacksPage() {
 
     useEffect(() => {
         dispatch(AllCurrentFeedbacksTC());
+        scrollToZero();
     }, [dispatch]);
 
     if (isFetch) {
