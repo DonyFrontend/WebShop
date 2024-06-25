@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { shopPagesTC } from "../../../Slices/shopPagesSlice";
 import { Link } from "react-router-dom";
 import LoadPage from "../../LoadPage/LoadPage";
+import { scrollToZero } from "../../utils/CustomFC";
 
 
 const Shoe = () => {
@@ -11,6 +12,7 @@ const Shoe = () => {
 
     useEffect(() => {
         dispatch(shopPagesTC());
+        scrollToZero();
     }, [dispatch])
 
     if (shoe.length == 0) {
