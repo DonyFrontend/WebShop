@@ -146,7 +146,7 @@ const MainPage = () => {
                                     <p className='font-medium lg:text-base md:text-xl'>Price: ${item.price}</p>
                                 </div>
                             </div>
-                        </Link>) :<Spinner
+                        </Link>) : <Spinner
                             thickness='3px'
                             speed='0.65s'
                             emptyColor='gray.200'
@@ -178,7 +178,7 @@ const MainPage = () => {
                         <h1 className='font-semiboldtext-3xl text-3xl md:text-4xl lg:text-3xl'>FeedBacks</h1>
                     </div>
                     <div className='grid md:grid-cols-2 grid-cols-1 auto-grid-row:auto lg:grid-cols-4 gap-5'>
-                        {isFetch ?<Spinner
+                        {isFetch ? <Spinner
                             thickness='3px'
                             speed='0.65s'
                             emptyColor='gray.200'
@@ -189,8 +189,9 @@ const MainPage = () => {
                 </div>
 
                 <div className='flex gap-x-2 mb-4'>
-                    <Button colorScheme='purple'>Show all FeedBacks</Button>
-
+                    <Link to='/feedBacks'>
+                        <Button colorScheme='purple'>Show all FeedBacks</Button>
+                    </Link>
                     <SendFB />
                 </div>
             </div>
