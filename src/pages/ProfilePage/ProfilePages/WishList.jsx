@@ -96,7 +96,9 @@ const WishList = () => {
                         Add to basket
                     </Button>
                 </div>
-            </div>) : <h1>Dont have</h1>}
+            </div>) : <div className='flex gap-x-2'>
+            <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+            <h1 className='font-semibold text-3xl'>You don`t have any products right now</h1></div>}
         </div>
     </div>
 }
