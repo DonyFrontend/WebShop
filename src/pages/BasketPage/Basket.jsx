@@ -6,12 +6,12 @@ import { deleteBasketProductTC } from '../../Slices/deleteBasketProductTC';
 import { useToast, Button, Box } from '@chakra-ui/react'; 
 import { getUserTC } from '../../Slices/getThisUserTC'; 
 import CardPage from '../../components/emptyCardPage/CardPage'; 
-import { Link } from 'react-router-dom';
 import { addOrderProductsTC } from '../../Slices/addOrderProductsTC';
 import LoadPage from '../LoadPage/LoadPage';
- 
+import { useNavigate } from 'react-router-dom';
+
 const Basket = () => { 
- 
+    const navigate = useNavigate();
     const { user, isFetch } = useSelector(state => state.getThisUserTC); 
     const dispatch = useDispatch(); 
     const toast = useToast(); 
@@ -34,7 +34,7 @@ const Basket = () => {
         dispatch(getUserTC()); 
     }
     function addProducts() {
-        dispatch(addOrderProductsTC({allProducts: user.basket}));
+        dispatch(addOrderProductsTC({allProducts: user.basket, navigate}));
         dispatch(getUserTC());
     }
  
@@ -100,9 +100,7 @@ const Basket = () => {
                         <h1 className="font-medium">Grand Total: ${totalPrice}</h1> 
                     </div> 
                     <div> 
-                    <Link to={'/profile/orders'}>
-                            <Button colorScheme='purple' onClick={addProducts}>Proceed To Checkout</Button>
-                        </Link> 
+                        <Button colorScheme='purple' onClick={addProducts}>Proceed To Checkout</Button>
                     </div> 
                 </div> 
             </div> 
