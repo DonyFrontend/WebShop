@@ -41,7 +41,7 @@ const Chat = () => {
         </div>
 
         <div>
-            {users.map((item, index) => item.chat[0] === undefined ? '' : <Card key={index} >
+            {users.map((item, index) => item.chat[0] === undefined ? '' : <Card className='transition-all' _hover={{boxShadow: '0 6px 7px 5px gray', padding: 1}} boxShadow={'0 4px 6px 4px gray'} key={index} >
                 <CardHeader>
                     <Heading size='md'>{item.name}</Heading>
                 </CardHeader>
