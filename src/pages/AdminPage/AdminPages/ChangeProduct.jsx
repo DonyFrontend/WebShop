@@ -17,8 +17,9 @@ import {
 import { useEffect, useState } from 'react';
 import addImage from './AddProductImages/Add.svg'
 import removeImage from './AddProductImages/remove.svg';
-import { addNewProductTC } from '../../../Slices/addNewProductTC';
+import { changeProductTC } from '../../../Slices/changeProductTC';
 import {useDispatch} from 'react-redux';
+import { shopTC } from '../../../Slices/getProductsSlice';
 
 const ChangeProduct = (product) => {
     const toast = useToast();
@@ -26,13 +27,14 @@ const ChangeProduct = (product) => {
     const defaultProduct = product.product;
     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const onSubmit = (data) => {
+    const onSubmit = (e) => {
+        e.preventDefault();
         const isImagesEmpty = images.find(item => item === '');
         const isCategoriesEmpty = categories.find(item => item === '');
         const isColorsEmpty = colors.find(item => item === '');
         const isSizesEmpty = sizes.find(item => item === '');
         
-        if (isImagesEmpty === '' | isCategoriesEmpty === '' | isColorsEmpty === '' | isSizesEmpty === '') {
+        if (isImagesEmpty === '' | isCategoriesEmpty === '' | isColorsEmpty === '' | isSizesEmpty === '' | title === '' | desc === '' | price == false) {
             toast({
                 position: 'bottom-left',
                 render: () => (
@@ -42,24 +44,27 @@ const ChangeProduct = (product) => {
                 )
             })
         } else {
-            dispatch(addNewProductTC({
-                title: data.title,
-                description: data.description,
-                price: data.price,
+            dispatch(changeProductTC({
+                title,
+                description: desc,
+                price: price,
                 categories,
                 colors,
                 images,
-                sizes
+                sizes,
+                id: product.product.id
             }))
 
             toast({
                 position: 'bottom-left',
                 render: () => (
                     <Box color='white' p={3} bg='darkviolet'>
-                        Add product!
+                        Change product!
                     </Box>
                 )
             })
+
+            dispatch(shopTC());
 
             setCategories(['']);
             setColors(['']);

@@ -68,8 +68,8 @@ export const newsProductsTC = createAsyncThunk(
 
 export const sortProductsTC = createAsyncThunk(
     'webshop/sortProducts',
-    async (props, {dispatch}) => {
-        const p = query(productsCollectionRef, where('categories', 'array-contains', props));
+    async ({category, data}, {dispatch}) => {
+        const p = query(productsCollectionRef, where(category, 'array-contains', data));
         onSnapshot(p, (snapshot) => {
             let newProducts = [];
             snapshot.docs.forEach((doc) => {

@@ -62,9 +62,9 @@ const AccordionFilter = () => {
                 </h1>
                 <AccordionPanel className='flex flex-col'>
                     <RadioGroup className='flex flex-col gap-y-2'>
-                        <Radio value='1' onClick={() => dispatch(sortProductsTC('Men'))}>Men</Radio>
-                        <Radio value='2' onClick={() => dispatch(sortProductsTC('Women'))}>Women</Radio>
-                        <Radio value='3' onClick={() => dispatch(sortProductsTC('Unisex'))}>Unisex</Radio>
+                        <Radio value='1' onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Men'}))}>Men</Radio>
+                        <Radio value='2' onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Women'}))}>Women</Radio>
+                        <Radio value='3' onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Unisex'}))}>Unisex</Radio>
                         <Radio value='4' onClick={() => dispatch(shopTC())}>All</Radio>
                     </RadioGroup>
                 </AccordionPanel>
@@ -81,36 +81,18 @@ const AccordionFilter = () => {
                 </h1>
                 <AccordionPanel className='flex flex-col'>
                     <CheckboxGroup>
-                        <Checkbox>Black</Checkbox>
-                        <Checkbox>Blue</Checkbox>
-                        <Checkbox>Brown</Checkbox>
-                        <Checkbox>Green</Checkbox>
-                        <Checkbox>Grey</Checkbox>
-                        <Checkbox>Orange</Checkbox>
-                        <Checkbox>Pink</Checkbox>
-                        <Checkbox>Purple</Checkbox>
-                        <Checkbox>Red</Checkbox>
-                        <Checkbox>White</Checkbox>
-                        <Checkbox>Yellow</Checkbox>
+                        <Checkbox value={'Black'}>Black</Checkbox>
+                        <Checkbox value={'Blue'}>Blue</Checkbox>
+                        <Checkbox value={'Brown'}>Brown</Checkbox>
+                        <Checkbox value={'Green'}>Green</Checkbox>
+                        <Checkbox value={'Gray'}>Gray</Checkbox>
+                        <Checkbox value={'Orange'}>Orange</Checkbox>
+                        <Checkbox value={'Pink'}>Pink</Checkbox>
+                        <Checkbox value={'Purple'}>Purple</Checkbox>
+                        <Checkbox value={'Red'}>Red</Checkbox>
+                        <Checkbox value={'White'}>White</Checkbox>
+                        <Checkbox value={'Yellow'}>Yellow</Checkbox>
                     </CheckboxGroup>
-                </AccordionPanel>
-            </AccordionItem>
-
-            <AccordionItem>
-                <h1>
-                    <AccordionButton>
-                        <Box as='span' flex='1' textAlign='left'>
-                            <h2 className='text-lg'>Kids</h2>
-                        </Box>
-                        <AccordionIcon />
-                    </AccordionButton>
-                </h1>
-
-                <AccordionPanel className='flex flex-col'>
-                    <RadioGroup className='flex flex-col gap-y-2'>
-                        <Radio value='1'>Boys</Radio>
-                        <Radio value='2'>Girls</Radio>
-                    </RadioGroup>
                 </AccordionPanel>
             </AccordionItem>
         </Accordion>
