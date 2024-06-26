@@ -6,6 +6,7 @@ import AddProduct from './AddProduct';
 import { Button, Spinner } from '@chakra-ui/react';
 import { deleteProductTC } from '../../../Slices/deleteProductTC';
 import LoadPage from '../../LoadPage/LoadPage';
+import ChangeProduct from './ChangeProduct';
 
 const Products = () => {
     const { products, isFetch } = useSelector(state => state.getProductsSlice);
@@ -53,7 +54,7 @@ const Products = () => {
                 </div>
             </Link>
                 <div className='flex gap-x-2'>
-                    <Button colorScheme='purple'>Change</Button>
+                    <ChangeProduct product={item}/>
                     <Button colorScheme='red' onClick={() => deleteProduct(item.id)}>Delete</Button>
                 </div>
             </div>) : <div className='col-start-2 justify-self-center self-center row-start-2'><Spinner

@@ -9,7 +9,7 @@ import signInWithGoogle from "../../pages/utils/SignInWithGoogleFC";
 
 function SignIn() {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
 
     const [password, setPassword] = useState('')

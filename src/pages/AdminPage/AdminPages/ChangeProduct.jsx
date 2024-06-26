@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form';
 import {
     Modal,
     ModalOverlay,
@@ -15,31 +14,24 @@ import {
     useToast,
     Box
 } from '@chakra-ui/react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import addImage from './AddProductImages/Add.svg'
 import removeImage from './AddProductImages/remove.svg';
 import { addNewProductTC } from '../../../Slices/addNewProductTC';
 import {useDispatch} from 'react-redux';
 
-const AddProduct = () => {
+const ChangeProduct = (product) => {
     const toast = useToast();
     const dispatch = useDispatch();
+    const defaultProduct = product.product;
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const {
-        register,
-        formState: { errors },
-        reset,
-        handleSubmit
-    } = useForm({ mode: 'onBlur' })
 
     const onSubmit = (data) => {
         const isImagesEmpty = images.find(item => item === '');
         const isCategoriesEmpty = categories.find(item => item === '');
         const isColorsEmpty = colors.find(item => item === '');
         const isSizesEmpty = sizes.find(item => item === '');
-
-        console.log(isImagesEmpty);
-
+        
         if (isImagesEmpty === '' | isCategoriesEmpty === '' | isColorsEmpty === '' | isSizesEmpty === '') {
             toast({
                 position: 'bottom-left',
@@ -69,7 +61,6 @@ const AddProduct = () => {
                 )
             })
 
-            reset();
             setCategories(['']);
             setColors(['']);
             setImages(['']);
@@ -78,11 +69,32 @@ const AddProduct = () => {
         }
     }
 
+    const [title, setTitle] = useState(defaultProduct.title);
+    const [desc, setDesc] = useState(defaultProduct.description);
+    const [price, setPrice] = useState(defaultProduct.price);
+
     //inputs functions
     const [images, setImages] = useState(['']);
     const [categories, setCategories] = useState(['']);
     const [colors, setColors] = useState(['']);
     const [sizes, setSizes] = useState(['']);
+
+    useEffect(() => {
+        const setDefaultData = () => {
+            const imagesData = defaultProduct.images;
+            const colorsData = defaultProduct.colors;
+            const categoriesData = defaultProduct.categories;
+            const sizesData = defaultProduct.sizes;
+    
+            setImages([...imagesData, '']);
+            setCategories([...categoriesData, '']);
+            setColors([...colorsData, '']);
+            setSizes([...sizesData, '']);
+        }
+    
+        setDefaultData();
+    }, [defaultProduct])
+
 
     const handleAddInput = ({ data, dataFC }) => {
         const newInputs = [...data, ''];
@@ -103,7 +115,7 @@ const AddProduct = () => {
 
     return (
         <>
-            <Button colorScheme='purple' onClick={onOpen}>Add product</Button>
+            <Button colorScheme='purple' onClick={onOpen}>Change</Button>
 
             <Modal
                 isOpen={isOpen}
@@ -112,26 +124,23 @@ const AddProduct = () => {
             >
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>Add product</ModalHeader>
+                    <ModalHeader>Change product</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody pb={6}>
-                        <form className='flex flex-col gap-y-6' onSubmit={handleSubmit(onSubmit)}>
+                        <form className='flex flex-col gap-y-6' onSubmit={onSubmit}>
                             <FormControl className='flex flex-col gap-y-1'>
                                 <FormLabel>Title</FormLabel>
-                                <Input  {...register('title', { required: true })} placeholder='Title' focusBorderColor='purple.500' />
-                                {errors.title && <p className='text-red-600'>Input cannot be empty!</p>}
+                                <Input  value={title} onChange={e => setTitle(e.target.value)} placeholder='Title' focusBorderColor='purple.500' />
                             </FormControl>
 
                             <FormControl className='flex flex-col gap-y-1'>
                                 <FormLabel>Description</FormLabel>
-                                <Input  {...register('description', { required: true })} placeholder='Description' focusBorderColor='purple.500' />
-                                {errors.description && <p className='text-red-600'>Input cannot be empty!</p>}
+                                <Input  value={desc} onChange={e => setDesc(e.target.value)} placeholder='Description' focusBorderColor='purple.500' />
                             </FormControl>
 
                             <FormControl className='flex flex-col gap-y-1'>
                                 <FormLabel>Price</FormLabel>
-                                <Input type='number'  {...register('price', { required: true })} placeholder='Price' focusBorderColor='purple.500' />
-                                {errors.price && <p className='text-red-600'>Input cannot be empty!</p>}
+                                <Input type='number' value={price} onChange={e => setPrice(e.target.value)} placeholder='Price' focusBorderColor='purple.500' />
                             </FormControl>
 
                             <FormControl className='flex flex-col gap-y-3'>
@@ -204,7 +213,7 @@ const AddProduct = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='purple' mr={3} onClick={handleSubmit(onSubmit)}>
+                        <Button colorScheme='purple' mr={3} onClick={onSubmit}>
                             Add
                         </Button>
                         <Button onClick={onClose}>Cancel</Button>
@@ -215,4 +224,4 @@ const AddProduct = () => {
     )
 }
 
-export default AddProduct;
+export default ChangeProduct;
