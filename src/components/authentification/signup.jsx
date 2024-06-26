@@ -13,7 +13,6 @@ function SignUp(path) {
     }, [])
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
