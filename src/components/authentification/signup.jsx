@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Google from '../../assets/Google.png'
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
@@ -12,6 +12,7 @@ function SignUp(path) {
     }, [])
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
@@ -46,13 +47,11 @@ function SignUp(path) {
                 </div>
 
 
-                <div onClick={signInWithGoogle} className="cursor-pointer mb-5 lg:mb-0 md:w-96 w-80 lg:w-[100%] lg:mt-5 border-[1px] rounded-md border-black">
-                    <Link to={'/profile/user'}>
+                <div onClick={() => signInWithGoogle({navigate})} className="cursor-pointer mb-5 lg:mb-0 md:w-96 w-80 lg:w-[100%] lg:mt-5 border-[1px] rounded-md border-black">
                         <div className="flex lg:text-xl md:text-2xl flex-row p-2 content-evenly justify-center">
                             <img className="mx-3 md:mt-1.5 lg:mt-1.5 w-5 h-5" src={Google} alt="" ></img>
                             <h2 className="text-[#8A33FD]">Continue With Google</h2>
                         </div>
-                    </Link>
                 </div>
 
 
