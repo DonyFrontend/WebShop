@@ -84,7 +84,7 @@ const Basket = () => {
         </div>
     </div>)
 
-    return <div className="flex flex-col mt-14">
+    return <div className="flex flex-col">
         <div className="w-[100%] flex items-center text-center justify-center lg:text-left md:text-left lg:justify-between md:justify-between bg-[#3C4242] p-3">
             <h5 className='text-white text-xl'>Your products:</h5>
         </div>
