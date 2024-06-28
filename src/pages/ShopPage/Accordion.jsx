@@ -7,7 +7,6 @@ import {
     AccordionIcon,
     Box
 } from '@chakra-ui/react'
-import { Checkbox, CheckboxGroup } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { sortProductsTC } from '../../Slices/getProductsSlice';
 import navBarIcon from './images/navBarIcon.svg';
@@ -19,31 +18,31 @@ const AccordionFilter = () => {
     return <div className='flex flex-col gap-y-5'>
         <div className='flex flex-col gap-y-4'>
             <div>
-                <div onClick={() => dispatch(sortProductsTC('Shoe'))} className='flex justify-between cursor-pointer'>
+                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Shoes'}))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Shoes</p>
                     <img src={navBarIcon} alt="Error!" />
                 </div>
             </div>
             <div>
-                <div onClick={() => dispatch(sortProductsTC('Shorts'))} className='flex justify-between cursor-pointer'>
+                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Shorts'}))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Shorts</p>
                     <img src={navBarIcon} alt="Error!" />
                 </div>
             </div>
             <div>
-                <div onClick={() => dispatch(sortProductsTC('Pants'))} className='flex justify-between cursor-pointer'>
+                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Pants'}))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Pants</p>
                     <img src={navBarIcon} alt="Error!" />
                 </div>
             </div>
             <div>
-                <div onClick={() => dispatch(sortProductsTC('Jacket'))} className='flex justify-between cursor-pointer'>
+                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Jacket'}))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Jackets</p>
                     <img src={navBarIcon} alt="Error!" />
                 </div>
             </div>
             <div>
-                <div onClick={() => dispatch(sortProductsTC('Socks'))} className='flex justify-between cursor-pointer'>
+                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Socks'}))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Socks</p>
                     <img src={navBarIcon} alt="Error!" />
                 </div>
@@ -70,7 +69,7 @@ const AccordionFilter = () => {
                 </AccordionPanel>
             </AccordionItem>
 
-            <AccordionItem>
+            {/* <AccordionItem>
                 <h1>
                     <AccordionButton>
                         <Box as='span' flex='1' textAlign='left'>
@@ -94,7 +93,7 @@ const AccordionFilter = () => {
                         <Checkbox value={'Yellow'}>Yellow</Checkbox>
                     </CheckboxGroup>
                 </AccordionPanel>
-            </AccordionItem>
+            </AccordionItem> */}
         </Accordion>
     </div>
 }

@@ -25,7 +25,6 @@ const productSlice = createSlice({
     reducers: {
         setProductData(state, action) {
             state.product = action.payload;
-            console.log(state.product, 'HI');
         }, 
         toggleFetch(state,action){ 
             state.isProductFetch = action.payload

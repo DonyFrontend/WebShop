@@ -39,14 +39,14 @@ const FeedBacks = () => {
         dispatch(getFeedBacks());
     }
 
-    return <div>
+    return <div className='flex flex-col gap-y-5'>
         <div className='flex gap-x-2'>
             <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
             <h1 className='font-semibold text-3xl'>FeedBacks</h1>
         </div>
 
-        <div className='flex flex-col gap-y-5'>
-            {feedBacks.map((item, index) => <Card key={index} >
+        <div className='flex flex-col gap-y-6 pb-4'>
+            {feedBacks.map((item, index) => <Card className='transition-all' _hover={{boxShadow: '0 6px 7px 5px gray', padding: 1}} boxShadow={'0 4px 6px 4px gray'} key={index} >
                 <CardHeader>
                     <Heading size='md'>{item.name}</Heading>
                 </CardHeader>
