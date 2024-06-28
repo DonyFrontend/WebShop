@@ -39,13 +39,13 @@ const Products = () => {
             </div>
         </div>
 
-        <div className='grid grid-cols-3 gap-11 auto-rows-auto'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-11 auto-rows-auto'>
             {products.length != 0 ? products.map((item, index) => <div key={index} className='flex flex-col gap-y-3 h-[100%] justify-between'><Link to={`/shop/${item.id}`}>
                 <div className='flex flex-col h-[100%] justify-between'>
                     <div>
                         <img src={item.images[0]} alt="Error!" />
                     </div>
-                    <div className='flex flex-col gap-y-1'>
+                    <div className='flex flex-col items-center lg:items-start md:items-start gap-y-1'>
                         <h2 className='font-medium text-xl'>{item.title}</h2>
                         <div className='flex gap-1 text-lg'>{item.categories.map((item, index) => <p key={index} className='text-gray-600'>{item}/</p>)}</div>
                         <p className='text-lg text-gray-600'>{item.colors.length} Colors</p>
@@ -53,7 +53,7 @@ const Products = () => {
                     </div>
                 </div>
             </Link>
-                <div className='flex gap-x-2'>
+                <div className='flex justify-center md:justify-start lg:justify-start  gap-x-2'>
                     <ChangeProduct product={item}/>
                     <Button colorScheme='red' onClick={() => deleteProduct(item.id)}>Delete</Button>
                 </div>

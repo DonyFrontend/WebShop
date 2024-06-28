@@ -40,7 +40,7 @@ const Chat = () => {
             <h1 className='font-semibold text-3xl'>Chats</h1>
         </div>
 
-        <div className='flex flex-col gap-y-6 pb-4'>
+        <div className='flex w-80 md:w-[80%] lg:w-full flex-col gap-y-6 pb-4'>
             {users.map((item, index) => item.chat[0] === undefined ? '' : <Card className='transition-all' _hover={{boxShadow: '0 6px 7px 5px gray', padding: 1}} boxShadow={'0 4px 6px 4px gray'} key={index} >
                 <CardHeader>
                     <Heading size='md'>{item.name}</Heading>
