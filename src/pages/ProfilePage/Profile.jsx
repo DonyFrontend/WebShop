@@ -55,7 +55,7 @@ const Profile = () => {
                     </div>
 
 
-                     {click ? <div className='flex rounded-lg text-xl text-center flex-col fixed top-12 left-0 gap-3 p-5 md:p-12 bg-white border border-black'>
+                     {click ? <div className='flex z-50 rounded-lg text-xl text-center flex-col fixed top-0 left-0 gap-3 p-5 bg-white border border-black'>
                             <CustomLink image={Orders} text={'My orders'} to={'/profile/orders'} />
                             <CustomLink image={Heart} text={'Wishlist'} to={'/profile/wishlist'} />
                             <CustomLink image={User} text={'My info'} to={'/profile/user'} />

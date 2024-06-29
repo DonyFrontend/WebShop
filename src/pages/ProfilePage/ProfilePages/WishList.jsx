@@ -75,7 +75,7 @@ const WishList = () => {
                         <h1 className='font-bold text-center lg:text-left text-xl'>{item.title}</h1>
 
                         <div>
-                            <div className='flex text-center lg:text-left gap-y-3 lg:gap-y-0 flex-col gap-x-3'>
+                            <div className='flex text-center lg:text-left gap-y-3 lg:gap-y-0 gap-x-3'>
                                 <p className='font-semibold '>Color:</p>
                                 <p>{item.color}</p>
                             </div>

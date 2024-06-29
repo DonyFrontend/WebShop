@@ -80,17 +80,19 @@ const Header = () => {
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>
             }
 
-        <div className='md:hidden gap-1.5 grid grid-cols-2 border-t-black border-t'>
+    {thisUser ?  <div className='md:hidden gap-1.5 grid grid-cols-2 border-t-black border-t'>
                     <CustomImagesLink to={'/profile/wishlist'} image={Select} />
                     <CustomImagesLink to={'/profile/user'} image={Profile} />
                     <CustomImagesLink to={'/basket'} image={Bag} />
                 {user.isAdmin ? 
                     <CustomImagesLink to={'/adminPanel/products'} image={adminIcon}/>
                  : ''}
-            </div>
+            </div> : ""}
+        
 
             <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
         </div>  : ""}
+        
         <form className='flex gap-x-3'>
             <label htmlFor="search">
                 <Input focusBorderColor='purple.500' value={title} onChange={onHandleTitle} type="text" placeholder='Search...' className='w-16 md:w-40 lg:w-56 border-gray-500 border-[1px] rounded-lg active:border-violet-600 p-1' />
@@ -106,7 +108,7 @@ const Header = () => {
                     <CustomImagesLink to={'/basket'} image={Bag} />
                 </div>
                 {user.isAdmin ? <div className='flex  pr-2 lg:mr-0 gap-x-1'>
-                    <CustomImagesLink to={'/adminPanel/products'} image={adminIcon}/>
+                    <CustomImagesLink to={'/adminPanel/*'} image={adminIcon}/>
                 </div> : ''}
             </div> : <div className='hidden lg:flex gap-x-1'>
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>

@@ -63,8 +63,9 @@ const UserModal = () => {
                 <ModalContent>
                     <ModalHeader>Change your account</ModalHeader>
                     <ModalCloseButton />
+                    <form onSubmit={changeData}>
+
                     <ModalBody pb={6}>
-                        <form onSubmit={changeData}>
                             <FormControl>
                                 <FormLabel>Name</FormLabel>
                                 <Input value={name} onChange={e => setName(e.target.value)} focusBorderColor='purple.500' ref={initialRef} placeholder='Name' />
@@ -80,17 +81,15 @@ const UserModal = () => {
                                     <option value="Karakol">Karakol</option>
                                 </select>
                             </FormControl>
-                        </form>
                     </ModalBody>
 
                     <ModalFooter>
-                        <form onSubmit={changeData}>
-                            <Button colorScheme='purple' mr={3}>
+                            <Button type='submit' colorScheme='purple' mr={3}>
                                 Save
                             </Button>
-                        </form>
                         <Button onClick={onClose}>Cancel</Button>
                     </ModalFooter>
+                    </form>
                 </ModalContent>
             </Modal></>
     )
