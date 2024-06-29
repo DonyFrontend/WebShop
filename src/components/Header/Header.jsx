@@ -108,7 +108,7 @@ const Header = () => {
                     <CustomImagesLink to={'/basket'} image={Bag} />
                 </div>
                 {user.isAdmin ? <div className='flex  pr-2 lg:mr-0 gap-x-1'>
-                    <CustomImagesLink to={'/adminPanel/products'} image={adminIcon}/>
+                    <CustomImagesLink to={'/adminPanel/*'} image={adminIcon}/>
                 </div> : ''}
             </div> : <div className='hidden lg:flex gap-x-1'>
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>

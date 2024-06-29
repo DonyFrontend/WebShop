@@ -61,7 +61,7 @@ const ChatPage = () => {
             {isOpen ? <img src={closeButton} alt='Error!' /> : <img src={buttonImage} alt="Error!" />}
         </Button>
 
-        {isOpen ? <div className='fixed w-[25%] h-[60%] flex flex-col justify-between right-7 bottom-44 bg-white rounded-xl' style={{ boxShadow: '0px 1px 4px 1px gray' }}>
+        {isOpen ? <div className='fixed w-[65%] h-[60%] lg:w-[25%] md:w-[40%] flex flex-col justify-between right-7 bottom-44 bg-white rounded-xl' style={{ boxShadow: '0px 1px 4px 1px gray' }}>
 
             <div className='flex items-center justify-between bg-purple-500 rounded-t-xl p-1 px-2'>
                 <h1 className='text-white text-lg font-semibold'>Clothe Net Support</h1>
