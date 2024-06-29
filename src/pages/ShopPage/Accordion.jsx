@@ -18,7 +18,7 @@ const AccordionFilter = () => {
     return <div className='flex flex-col gap-y-5'>
         <div className='flex flex-col gap-y-4'>
             <div>
-                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Shoes'}))} className='flex justify-between cursor-pointer'>
+                <div onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Shoe'}))} className='flex justify-between cursor-pointer'>
                     <p className='text-[#807D7E] font-semibold'>Shoes</p>
                     <img src={navBarIcon} alt="Error!" />
                 </div>
