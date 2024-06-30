@@ -37,7 +37,7 @@ const Profile = () => {
     return (
         <>
             <div className="flex w-[100%] justify-center mt-6 h-[600px]">
-                <div className="w-[90%] flex justify-between">
+                <div className="w-[90%] flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between">
                     <div className='w-[20%] hidden lg:flex flex-col gap-y-12 p-5' style={{ borderRight: '1px solid black' }}>
                         <div className='hidden lg:flex flex-col gap-y-2'>
                             <div className='flex gap-x-2'>
@@ -62,7 +62,7 @@ const Profile = () => {
                             <ProfileModal />
                             <button className='border border-gray-500 rounded-lg px-5 md:mt-5 md:py-2.5' onClick={onHandleClick}>Close</button>
                         </div> : ''}
-                            <div className='inline-block lg:hidden'>
+                            <div className='w-full inline-block lg:hidden'>
                                 <button onClick={onHandleClick}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

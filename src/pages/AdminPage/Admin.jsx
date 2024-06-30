@@ -44,7 +44,7 @@ const Admin = () => {
                     </svg>
                 </button>
             </div>
-    <div className="w-[98%] flex flex-col lg:flex-row lg:justify-between justify-center items-center lg:items-start">
+    <div className="w-[98%] flex flex-col lg:flex-row lg:justify-between items-center lg:items-start">
         <div className='w-[10%] hidden lg:flex flex-col gap-y-12 p-1' style={{ borderRight: '1px solid black' }}>
             <div className='flex flex-col gap-y-4 sticky top-16'>
                 <CustomLink image={ProductsImage} text={'Products'} to={'/adminPanel/products'} />

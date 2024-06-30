@@ -8,7 +8,7 @@ const User = (user) => {
         return <h1>Loading...</h1>
     }
 
-    return <div className="w-[70%] flex flex-col gap-y-10">
+    return <div className="w-full lg:items-start items-stretch flex flex-col gap-y-10">
         <div>
             <h1 className='font-semibold text-3xl text-center lg:text-left'>My Info</h1>
         </div>
