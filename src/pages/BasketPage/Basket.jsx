@@ -67,7 +67,9 @@ const Basket = () => {
 
     function checkCoupon(e) {
         e.preventDefault();
-        if (user.basket.length === 0) {
+        if (workCoupons !== 0) {
+            showToast('You can only use 1 coupon at a time')
+        } else if (user.basket.length === 0) {
             showToast('Please buy products!');
         } else if (userCoupon === '') {
             showToast('The input cannot be empty');
@@ -80,6 +82,8 @@ const Basket = () => {
                 console.log(newCoupon[coupon]);
                 setWorkoCoupons(newCoupon[coupon]);
                 setGrandPrice(grandPrice - newCoupon[coupon]);
+                setUserCoupon('');
+                showToast('Coupon was be used');
             }
         }
     }
