@@ -20,7 +20,12 @@ export const SignUpUserTC = createAsyncThunk(
             wishlist: [],
             basket: [],
             chat: [],
-            order: []
+            order: [],
+            coupons: [
+                'ItAcademy',
+                'Nike400',
+                'Jordan2024'
+            ]
         })
     }
 )
