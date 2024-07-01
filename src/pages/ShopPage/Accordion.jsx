@@ -8,12 +8,16 @@ import {
     Box
 } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux';
-import { sortProductsTC } from '../../Slices/getProductsSlice';
+import { sortProductsFromGenderTC, sortProductsTC } from '../../Slices/getProductsSlice';
 import navBarIcon from './images/navBarIcon.svg';
 import { shopTC } from '../../Slices/getProductsSlice';
+import {store} from '../../Store/Store';
 
 const AccordionFilter = () => {
     const dispatch = useDispatch();
+
+    const state = store.getState().getProductsSlice.products;
+    console.log(state);
 
     return <div className='flex flex-col gap-y-5'>
         <div className='flex flex-col gap-y-4'>
@@ -61,9 +65,9 @@ const AccordionFilter = () => {
                 </h1>
                 <AccordionPanel className='flex flex-col'>
                     <RadioGroup className='flex flex-col gap-y-2'>
-                        <Radio value='1' onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Men'}))}>Men</Radio>
-                        <Radio value='2' onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Women'}))}>Women</Radio>
-                        <Radio value='3' onClick={() => dispatch(sortProductsTC({category: 'categories', data: 'Unisex'}))}>Unisex</Radio>
+                        <Radio value='1' onClick={() => dispatch(sortProductsFromGenderTC({data: 'Men', products: state}))}>Men</Radio>
+                        <Radio value='2' onClick={() => dispatch(sortProductsFromGenderTC({data: 'Women', products: state}))}>Women</Radio>
+                        <Radio value='3' onClick={() => dispatch(sortProductsFromGenderTC({data: 'Unisex', products: state}))}>Unisex</Radio>
                         <Radio value='4' onClick={() => dispatch(shopTC())}>All</Radio>
                     </RadioGroup>
                 </AccordionPanel>
