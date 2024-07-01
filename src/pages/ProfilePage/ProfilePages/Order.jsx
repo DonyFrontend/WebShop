@@ -16,7 +16,7 @@ const Order = () => {
 
     return <div className='flex flex-col gap-y-11'>
         <div>
-            <h1 className='font-semibold text-3xl'>My Orders</h1>
+            <h1 className='font-semibold text-3xl text-center lg:text-left'>My Orders</h1>
         </div>
 
         {isFetch ? <h1 className='font-semibold text-3xl'>Loading...</h1> : user.order.length == 0 ? <div className="flex gap-x-2">
@@ -25,39 +25,39 @@ const Order = () => {
                 <div className="cart flex flex-col p-2 rounded-md">
                     <div className="flex flex-col p-2 gap-y-5 bg-[#f1f0f0]">
                         <div>
-                            <h1 className="font-semibold text-lg">Order number: #{item.number}</h1>
+                            <h1 className="font-semibold text-lg flex flex-col text-center lg:flex-row">Order number: #{item.number}</h1>
                         </div>
                         <div className="flex flex-col gap-y-2">
-                            <p className="text-gray-500"><span className="font-bold">Order Date:</span> {item.date}</p>
-                            <p className="text-gray-500"><span className="font-bold">Order Status:</span> Inprogress</p>
-                            <p className="text-gray-500"><span className="font-bold">Payment Method:</span> Cash on delivery</p>
+                            <p className="text-gray-500 flex flex-col text-center lg:flex-row gap-y-3"><span className="font-bold">Order Date:</span> {item.date}</p>
+                            <p className="text-gray-500 flex flex-col text-center lg:flex-row gap-y-3"><span className="font-bold">Order Status:</span> Inprogress</p>
+                            <p className="text-gray-500 flex flex-col text-center lg:flex-row gap-y-3"><span className="font-bold">Payment Method:</span> Cash on delivery</p>
                         </div>
                     </div>
 
 
-                    <div className="flex justify-between items-center">
-                        <div className="flex items-center justify-around">
+                    <div className="flex justify-between items-center flex-col lg:flex-row lg:items-center gap-x-10">
+                        <div className="flex items-center justify-around flex-col lg:flex-row lg:items-center gap-x-10">
                             <div>
                                 <img src={item.images} style={{ width: 200 }} />
                             </div>
                             <div>
-                                <h1 className='font-semibold text-xl'>{item.title}</h1>
-                                <div className='flex gap-x-3'>
+                                <h1 className='font-semibold text-xl text-center lg:text-left '>{item.title}</h1>
+                                <div className='flex gap-x-3 flex-col text-center lg:text-left lg:flex-row gap-y-3 lg:gap-y-0 lg:gap-x-3'>
                                     <p className='font-semibold'>Color:</p>
                                     <p>{item.color}</p>
                                 </div>
-                                <div className='flex gap-x-3'>
+                                <div className='flex gap-x-3 flex-col text-center lg:text-left lg:flex-row gap-y-3 lg:gap-y-0 lg:gap-x-3'>
                                     <p className='font-semibold'>Size:</p>
                                     <p>{item.size}</p>
                                 </div>
 
-                                <div className='flex gap-x-3'>
+                                <div className='flex gap-x-3 flex-col text-center lg:text-left lg:flex-row gap-y-3 lg:gap-y-0 lg:gap-x-3'>
                                     <p className='font-semibold'>Price:</p>
                                     <p>${item.price}</p>
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div className="flex">
                             <button className='bg-[#8A33FD] active:bg-[#4c2185] text-white p-2 rounded-md hover:bg-[#6620C1] transition-all'>View Detail</button>
                         </div>
                     </div>
