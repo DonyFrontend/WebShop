@@ -58,7 +58,7 @@ const ChangeProduct = (product) => {
             dispatch(changeProductTC({
                 title: data.title,
                 description: data.description,
-                price: data.price,
+                price: Number(data.price),
                 categories,
                 colors,
                 images,
