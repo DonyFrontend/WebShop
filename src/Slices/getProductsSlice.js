@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { productsCollectionRef } from "../FirebaseConfig";
 import { getDocs, limit, onSnapshot, where } from "firebase/firestore";
 import { query } from "firebase/firestore";
+import { scrollToZero } from "../pages/utils/CustomFC";
 
 export const shopTC = createAsyncThunk(
     'webShop/products',
@@ -69,6 +70,7 @@ export const newsProductsTC = createAsyncThunk(
 export const sortProductsTC = createAsyncThunk(
     'webshop/sortProducts',
     async ({category, data}, {dispatch}) => {
+        scrollToZero();
         const p = query(productsCollectionRef, where(category, 'array-contains', data));
         onSnapshot(p, (snapshot) => {
             let newProducts = [];
@@ -77,10 +79,21 @@ export const sortProductsTC = createAsyncThunk(
                     id: doc.id,
                     ...doc.data()
                 })
-            })
+            }) 
             
-            dispatch(setData(newProducts));            
+        dispatch(setData(newProducts));            
         })
+    }
+)
+
+export const sortProductsFromGenderTC = createAsyncThunk(
+    'webShop/sortProductsFromGenderTC',
+    async ({data, products}, {dispatch}) => {
+        scrollToZero();
+        console.log(products);
+        const newProducts = products.filter(item => item.categories.find(item => item === data));
+        console.log(newProducts);
+        dispatch(setData(newProducts));
     }
 )
 
@@ -105,8 +118,11 @@ const productsSlice = createSlice({
         setNewData(state, action) {
             state.new = action.payload;
         },
+    },
+    selectors: {
+        getInfo: (state) => state.products
     }
 })
 
 export const {setData, setMenData, setNewData, setWomenData} = productsSlice.actions;
-export default productsSlice.reducer; 
+export default productsSlice.reducer;

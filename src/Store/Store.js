@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
-import getProductsSlice from '../Slices/getProductsSlice';
+import getProductsSlice, { sortProductsFromGenderTC } from '../Slices/getProductsSlice';
 import { SignInTC } from '../Slices/SignInTC';
 import { SignOutUserTC } from '../Slices/SignOutUserTC';
 import { SignUpUserTC } from '../Slices/SignUpUserTC';
@@ -53,6 +53,7 @@ export const store = configureStore({
         SignOutUserTC,
         SignUpUserTC,
         sortProductsTC,
+        sortProductsFromGenderTC,
         productPageTC,
         addBasketProduct,
         getBasketProductSlice,
