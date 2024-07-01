@@ -48,9 +48,10 @@ const WishList = () => {
         <div>
             <h1 className='font-semibold text-3xl text-center lg:text-left'>Wishlist</h1>
         </div>
+
         <div className='flex flex-col gap-y-10'>
-            {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex flex-col lg:flex-row justify-between'>
-                <div className='flex flex-col justify-between lg:flex-row items-start lg:items-center gap-x-10'>
+            {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex flex-col md:flex-row lg:flex-row justify-between'>
+                <div className='flex flex-col justify-between lg:flex-row md:flex-row items-start lg:items-center gap-x-10'>
                     <div className='flex' onClick={() => deleteProduct(item)}>
                         <Button
                             onClick={() => {
@@ -72,14 +73,14 @@ const WishList = () => {
                         <img src={item.images} alt="Error!" style={{ width: 200 }} />
                     </div>
                     <div className='flex flex-col gap-y-10'>
-                        <h1 className='font-bold text-center lg:text-left text-xl'>{item.title}</h1>
+                        <h1 className='font-bold text-center md:text-left lg:text-left text-xl'>{item.title}</h1>
 
                         <div>
-                            <div className='flex text-center flex-col lg:flex-row lg:text-left gap-y-3 lg:gap-y-0 gap-x-3'>
+                            <div className='flex text-center flex-col lg:flex-row md:text-left md:gap-y-0 lg:text-left gap-y-3 lg:gap-y-0 gap-x-3'>
                                 <p className='font-semibold '>Color:</p>
                                 <p>{item.color}</p>
                             </div>
-                            <div className='flex flex-col text-center lg:text-left lg:flex-row gap-y-1 pt-2.5 lg:pt-0 lg:gap-y-0 lg:gap-x-3'>
+                            <div className='flex flex-col text-center md:flex-row md:text-left md:gap-y-0 lg:text-left lg:flex-row gap-y-1 pt-2.5 lg:pt-0 lg:gap-y-0 lg:gap-x-3'>
                                 <p className='font-semibold'>Size:</p>
                                 <p>{item.size}</p>
                             </div>
@@ -87,7 +88,7 @@ const WishList = () => {
                     </div>
                 </div>
 
-                <div className='flex mt-2.5 lg:flex-row flex-col items-center gap-x-12'>
+                <div className='flex mt-2.5 lg:flex-row flex-col md:justify-end items-center gap-x-12'>
                     <p className='text-lg text-gray-600'>{item.price}$</p>
                     <Button
                         onClick={() => addProduct(item)}
@@ -100,6 +101,7 @@ const WishList = () => {
             <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
             <h1 className='font-semibold text-3xl'>You don`t have any products right now</h1></div>}
         </div>
+
     </div>
 }
 
