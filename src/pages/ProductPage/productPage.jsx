@@ -23,7 +23,7 @@ import {
 } from "@chakra-ui/react";
 import { addBasketProduct } from "../../Slices/addBasketProductTC";
 import { addWishlistProduct } from "../../Slices/addWishlistProductTC";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { productTC } from "../../Slices/productPageTC";
 import { useToast, Button } from "@chakra-ui/react";
 import { similarProductsTC } from "../../Slices/similarProductsSlice";
@@ -34,6 +34,7 @@ function Product() {
   const dispatch = useDispatch();
   const toast = useToast();
   const id = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     scrollToZero(),
@@ -49,9 +50,9 @@ function Product() {
   const [color, setColor] = useState('');
 
   if (isProductFetch) {
-    return<div className="h-dvh flex items-center">
-    <LoadPage />
-</div>
+    return <div className="h-dvh flex items-center">
+      <LoadPage />
+    </div>
   }
 
 
@@ -85,12 +86,19 @@ function Product() {
     }
   }
 
+  function goToBack() {
+    navigate(-1);
+  }
 
 
   return (
     <>
       <div className="w-full mt-8 flex justify-center">
-        <div className="w-[90%] flex flex-col justify-center mt-10">
+        <div className="w-[90%] flex flex-col gap-y-5 justify-center mt-10">
+          <Button w={60} onClick={goToBack} variant={'ghost'}>
+            Go to back
+          </Button>
+
           <div className="flex items-center md:ml-16 md:items-start lg:ml-0 flex-col lg:flex-row gap-10 lg:gap-40">
             <div className="lg:w-[35%] w-full md:w-[85%]">
               <Swiper
@@ -100,7 +108,7 @@ function Product() {
                 pagination={{ clickable: true }}
               >
                 {product?.images?.map((item, index) => <SwiperSlide key={index} className="flex items-center">
-                  <img style={{ width: "100%" }} src={item} alt="Error!" />
+                  <img src={item} alt="Error!" />
                 </SwiperSlide>)}
               </Swiper>
             </div>

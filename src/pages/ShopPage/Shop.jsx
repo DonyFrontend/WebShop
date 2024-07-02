@@ -79,7 +79,7 @@ const Shop = () => {
                             <p className='font-medium text-base'>Price: ${item.price}</p>
                         </div>
                     </div>
-                </Link>) : <div className='col-start-2 justify-self-center row-start-2'><Spinner
+                </Link>) : <div className='justify-self-center row-start-13 md:col-start-1 md:justify-self-end md:row-start-13 lg:col-start-2 lg:justify-self-center lg:row-start-2'><Spinner
                     thickness='3px'
                     speed='0.65s'
                     emptyColor='gray.200'
