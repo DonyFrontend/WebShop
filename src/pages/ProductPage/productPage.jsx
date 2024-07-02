@@ -94,9 +94,12 @@ function Product() {
     <>
       <div className="w-full mt-8 flex justify-center">
         <div className="w-[90%] flex flex-col gap-y-5 justify-center mt-10">
-          <Button w={60} onClick={goToBack} variant={'ghost'}>
-            Go to back
-          </Button>
+          <div className="flex justify-center border border-gray-200 w-40 rounded-lg">
+              <Button w={60} onClick={goToBack} variant={'ghost'}>
+                Go to back
+              </Button>
+          </div>
+          
 
           <div className="flex items-center md:ml-16 md:items-start lg:ml-0 flex-col lg:flex-row gap-10 lg:gap-40">
             <div className="lg:w-[35%] w-full md:w-[85%]">
@@ -112,15 +115,15 @@ function Product() {
               </Swiper>
             </div>
 
-            <div className="w-[65%] mt-5 flex justify-center">
+            <div className="w-[80%] mt-5 flex flex-col">
               <div className="">
-                <h1 className="text-4xl text-center lg:text-left">
+                <h1 className="flex text-4xl text-center lg:text-left">
                   {product.title}
                 </h1>
 
 
 
-                <div>
+                <div className="">
                   <div className="text-xl my-10">
                     <Accordion allowMultiple>
                       <AccordionItem>
@@ -156,7 +159,7 @@ function Product() {
                       </AccordionItem>
                     </Accordion>
                   </div>
-                  <div className="my-10 flex flex-col items-center md:flex-row lg:flex-row gap-10">
+                  <div className="my-10 flex flex-col justify-center lg:justify-start items-center md:flex-row lg:flex-row gap-10">
                     <Button
                       onClick={postBasketProduct}
                       colorScheme="purple"
