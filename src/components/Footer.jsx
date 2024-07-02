@@ -56,7 +56,7 @@ const Footer = () => {
                     }
 
                     <div className="flex justify-center lg:justify-start left-28 pt-20">
-                        <div className="text-center grid grid-cols-1 gap-3 md:grid-cols-4 gap-y-2.5 lg:gap-y-0 lg:grid-cols-4 text-xl text-white md-2">
+                        <div className="text-center grid grid-cols-2 gap-3 md:grid-cols-4 gap-y-2.5 lg:gap-y-0 lg:grid-cols-4 text-xl text-white md-2">
                             <img src={Facebook} alt="Error!" />
                             <img src={Instagram} alt="Error!" />
                             <img src={Twitter} alt="Error!" />

@@ -19,7 +19,7 @@ export const shopTC = createAsyncThunk(
 
 export const mensProductsTC = createAsyncThunk(
     'webShoop/menProducts',
-    async (props, {dispatch}) => {
+    async (props, { dispatch }) => {
         const p = query(productsCollectionRef, where('categories', 'array-contains', 'Men'), limit(8));
         onSnapshot(p, (snapshot) => {
             let newProducts = [];
@@ -29,13 +29,13 @@ export const mensProductsTC = createAsyncThunk(
                     ...doc.data()
                 })
             })
-            dispatch(setMenData(newProducts));            
+            dispatch(setMenData(newProducts));
         })
     }
 )
 export const womensProductsTC = createAsyncThunk(
     'webShoop/menProducts',
-    async (props, {dispatch}) => {
+    async (props, { dispatch }) => {
         const p = query(productsCollectionRef, where('categories', 'array-contains', 'Women'), limit(8));
         onSnapshot(p, (snapshot) => {
             let newProducts = [];
@@ -45,13 +45,13 @@ export const womensProductsTC = createAsyncThunk(
                     ...doc.data()
                 })
             })
-            dispatch(setWomenData(newProducts));            
+            dispatch(setWomenData(newProducts));
         })
     }
 )
 export const newsProductsTC = createAsyncThunk(
     'webShop/menProducts',
-    async (props, {dispatch}) => {
+    async (props, { dispatch }) => {
         const productsData = query(productsCollectionRef, limit(4));
 
         onSnapshot(productsData, (snapshot) => {
@@ -62,14 +62,14 @@ export const newsProductsTC = createAsyncThunk(
                     ...doc.data()
                 })
             })
-            dispatch(setNewData(newProducts));            
+            dispatch(setNewData(newProducts));
         })
     }
 )
 
 export const sortProductsTC = createAsyncThunk(
     'webshop/sortProducts',
-    async ({category, data}, {dispatch}) => {
+    async ({ category, data }, { dispatch }) => {
         scrollToZero();
         const p = query(productsCollectionRef, where(category, 'array-contains', data));
         onSnapshot(p, (snapshot) => {
@@ -79,21 +79,32 @@ export const sortProductsTC = createAsyncThunk(
                     id: doc.id,
                     ...doc.data()
                 })
-            }) 
-            
-        dispatch(setData(newProducts));            
+            })
+
+            dispatch(setData(newProducts));
         })
     }
 )
 
 export const sortProductsFromGenderTC = createAsyncThunk(
     'webShop/sortProductsFromGenderTC',
-    async ({data, products}, {dispatch}) => {
+    async ({ data, products }, { dispatch }) => {
         scrollToZero();
         console.log(products);
         const newProducts = products.filter(item => item.categories.find(item => item === data));
-        console.log(newProducts);
-        dispatch(setData(newProducts));
+        if (newProducts[0] === undefined) {
+            dispatch(setSavesData([undefined]));
+        } else {
+            dispatch(setSavesData(newProducts));
+        }
+    }
+)
+
+export const allGenderTC = createAsyncThunk(
+    'webShop/allGenderTC',
+    async (products, {dispatch}) => {
+        scrollToZero();
+        dispatch(setSavesData(products));
     }
 )
 
@@ -101,6 +112,7 @@ const productsSlice = createSlice({
     name: 'products',
     initialState: {
         products: [],
+        saveProducts: [],
         men: [],
         women: [],
         new: []
@@ -108,6 +120,7 @@ const productsSlice = createSlice({
     reducers: {
         setData(state, action) {
             state.products = action.payload;
+            state.saveProducts = action.payload;
         },
         setMenData(state, action) {
             state.men = action.payload;
@@ -118,11 +131,11 @@ const productsSlice = createSlice({
         setNewData(state, action) {
             state.new = action.payload;
         },
-    },
-    selectors: {
-        getInfo: (state) => state.products
+        setSavesData(state, action) {
+            state.products = action.payload;
+        }
     }
 })
 
-export const {setData, setMenData, setNewData, setWomenData} = productsSlice.actions;
+export const { setData, setMenData, setNewData, setWomenData, setSavesData } = productsSlice.actions;
 export default productsSlice.reducer;

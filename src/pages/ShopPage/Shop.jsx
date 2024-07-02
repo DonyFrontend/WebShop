@@ -67,7 +67,10 @@ const Shop = () => {
             </div>
 
             <div className="w-full lg:w-[80%] mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {products.length != 0 ? products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
+                {products.length != 0 ? products[0] === undefined ? <div className='flex gap-x-2'>
+                    <span style={{ width: 10, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+                    <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>Sorry, but we don`t have these products right now :(</h1>
+                </div> : products.map((item, index) => <Link to={`/shop/${item.id}`} key={index}>
                     <div className='flex flex-col h-[100%] justify-between'>
                         <div>
                             <img src={item.images[0]} alt="Error!" />
@@ -79,7 +82,7 @@ const Shop = () => {
                             <p className='font-medium text-base'>Price: ${item.price}</p>
                         </div>
                     </div>
-                </Link>) : <div className='col-start-2 justify-self-center row-start-2'><Spinner
+                </Link>) : <div className='justify-self-center row-start-13 md:col-start-1 md:justify-self-end md:row-start-13 lg:col-start-2 lg:justify-self-center lg:row-start-2'><Spinner
                     thickness='3px'
                     speed='0.65s'
                     emptyColor='gray.200'

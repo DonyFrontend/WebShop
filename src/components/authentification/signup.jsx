@@ -46,15 +46,6 @@ function SignUp(path) {
                     <h2 className=" pt-5 lg:pt-0 text-xl text-left text-gray-500">Sign up for free to access to in any of our products </h2>
                 </div>
 
-
-                <div onClick={() => signInWithGoogle({navigate})} className="cursor-pointer mb-5 lg:mb-0 md:w-96 w-80 lg:w-[100%] lg:mt-5 border-[1px] rounded-md border-black">
-                        <div className="flex lg:text-xl md:text-2xl flex-row p-2 content-evenly justify-center">
-                            <img className="mx-3 md:mt-1.5 lg:mt-1.5 w-5 h-5" src={Google} alt="" ></img>
-                            <h2 className="text-[#8A33FD]">Continue With Google</h2>
-                        </div>
-                </div>
-
-
                 <div className="w-full text-left lg:mt-10">
                     <div className="text-left">
                         <h2 className="my-[10px] text-2xl lg:text-xl">Select town</h2>
@@ -96,7 +87,7 @@ function SignUp(path) {
                         <input type="checkbox" /> <p>Subscribe to our monthly newsletter</p>
                     </div>
                 </div>
-                <Link to={path}>
+                <Link to={'/profile/*'}>
                     <button disabled={password.length <= 8} onClick={postUser} className="w-80 md:w-96 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white">Sign up</button>
                 </Link>
                 <div className="mb-16 gap-x-2 md:text-2xl lg:text-base justify-center lg:justify-start flex">
