@@ -76,11 +76,11 @@ const WishList = () => {
                         <h1 className='font-bold text-center md:text-left lg:text-left text-xl'>{item.title}</h1>
 
                         <div>
-                            <div className='flex text-center flex-col lg:flex-row md:text-left md:gap-y-0 lg:text-left gap-y-3 lg:gap-y-0 gap-x-3'>
+                            <div className='flex text-center justify-center lg:justify-start md:justify-start md:flex-row lg:flex-row md:text-left md:gap-y-0 lg:text-left gap-y-3 lg:gap-y-0 gap-x-3'>
                                 <p className='font-semibold '>Color:</p>
                                 <p>{item.color}</p>
                             </div>
-                            <div className='flex flex-col text-center md:flex-row md:text-left md:gap-y-0 lg:text-left lg:flex-row gap-y-1 pt-2.5 lg:pt-0 lg:gap-y-0 lg:gap-x-3'>
+                            <div className='flex justify-center lg:justify-start md:justify-start text-center gap-x-1 md:flex-row md:text-left md:gap-y-0 lg:text-left lg:flex-row gap-y-1 pt-2.5 lg:pt-0 lg:gap-y-0 lg:gap-x-3'>
                                 <p className='font-semibold'>Size:</p>
                                 <p>{item.size}</p>
                             </div>
@@ -88,8 +88,8 @@ const WishList = () => {
                     </div>
                 </div>
 
-                <div className='flex mt-2.5 lg:flex-row flex-col md:justify-end items-center gap-x-12'>
-                    <p className='text-lg text-gray-600'>{item.price}$</p>
+                <div className='flex mt-2.5 lg:flex-row gap-y-1 flex-col md:justify-end items-center gap-x-6'>
+                    <p className='text-lg border border-black p-1.5 px-7 rounded-lg text-gray-600'>{item.price}$</p>
                     <Button
                         onClick={() => addProduct(item)}
                         colorScheme='purple'

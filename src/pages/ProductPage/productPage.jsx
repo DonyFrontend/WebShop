@@ -3,7 +3,6 @@ import "swiper/css";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import stars from "./productImages/stars.png";
 import credit from "./productImages/credit.png";
 import truck from "./productImages/truck.png";
 import Size from "./productImages/Size.png";
@@ -91,7 +90,7 @@ function Product() {
     <>
       <div className="w-full mt-8 flex justify-center">
         <div className="w-[90%] flex flex-col justify-center mt-10">
-          <div className="flex items-center md:ml-16 md:items-start lg:ml-0 flex-col lg:flex-row gap-10 lg:gap-40">
+          <div className="flex items-center justify-center md:ml-16 md:items-start lg:ml-0 flex-col lg:flex-row gap-10 lg:gap-40">
             <div className="lg:w-[35%] w-full md:w-[85%]">
               <Swiper
                 modules={[Navigation, Pagination]}
@@ -105,16 +104,13 @@ function Product() {
               </Swiper>
             </div>
 
-            <div className="w-[65%] mt-5 flex">
+            <div className="w-[65%] mt-5 flex justify-center">
               <div className="">
                 <h1 className="text-4xl text-center lg:text-left">
                   {product.title}
                 </h1>
 
-                <div className="flex mt-10 justify-center gap-y-5 lg:gap-y-0 md:justify-start  lg:justify-start flex-col lg:flex-row items-center lg:items-start gap-x-4">
-                  <img className="md:w-52 lg:w-40" src={stars} alt="Error!" />
-                  <p className="md:text-2xl lg:text-base">3.5</p>
-                </div>
+
 
                 <div>
                   <div className="text-xl my-10">
@@ -171,7 +167,7 @@ function Product() {
                       <p>${product.price}</p>
                     </div>
                   </div>
-                  <div className="w-full mt-5 border-y-[1px] border-gray-300"></div>
+                  <hr></hr>
                   <div className="flex mt-16 text-xl lg:text-xl md:text-2xl flex-col">
                     <div className="flex flex-col items-center md:flex-row  lg:flex-row gap-10">
                       <img className="lg:w-5 w-10 h-10 lg:h-5 mt-1" src={credit} alt="" />
