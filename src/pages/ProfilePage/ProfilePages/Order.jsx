@@ -28,9 +28,9 @@ const Order = () => {
                             <h1 className="font-semibold text-lg flex flex-col text-center lg:flex-row">Order number: #{item.number}</h1>
                         </div>
                         <div className="flex flex-col gap-y-2">
-                            <p className="text-gray-500 flex flex-col text-center lg:flex-row gap-y-3"><span className="font-bold">Order Date:</span> {item.date}</p>
-                            <p className="text-gray-500 flex flex-col text-center lg:flex-row gap-y-3"><span className="font-bold">Order Status:</span> Inprogress</p>
-                            <p className="text-gray-500 flex flex-col text-center lg:flex-row gap-y-3"><span className="font-bold">Payment Method:</span> Cash on delivery</p>
+                            <div className="text-gray-500 flex text-center gap-x-1"><span className="font-bold">Order Date:</span> <p>{item.date}</p></div>
+                            <div className="text-gray-500 flex text-center gap-x-1"><span className="font-bold">Order Status:</span> <p>Inprogress</p></div>
+                            <div className="text-gray-500 flex text-center gap-x-1"><span className="font-bold">Payment Method:</span><p>Cash on delivery</p></div>
                         </div>
                     </div>
 
