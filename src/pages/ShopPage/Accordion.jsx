@@ -12,11 +12,12 @@ import { sortProductsFromGenderTC, sortProductsTC } from '../../Slices/getProduc
 import navBarIcon from './images/navBarIcon.svg';
 import { shopTC } from '../../Slices/getProductsSlice';
 import {store} from '../../Store/Store';
+import { allGenderTC } from '../../Slices/getProductsSlice';
 
 const AccordionFilter = () => {
     const dispatch = useDispatch();
 
-    const state = store.getState().getProductsSlice.products;
+    const state = store.getState().getProductsSlice.saveProducts;
     console.log(state);
 
     return <div className='flex flex-col gap-y-5'>
@@ -51,6 +52,12 @@ const AccordionFilter = () => {
                     <img src={navBarIcon} alt="Error!" />
                 </div>
             </div>
+            <div>
+                <div onClick={() => dispatch(shopTC())} className='flex justify-between cursor-pointer'>
+                    <p className='text-[#807D7E] font-semibold'>All</p>
+                    <img src={navBarIcon} alt="Error!" />
+                </div>
+            </div>
         </div>
 
         <Accordion allowMultiple>
@@ -68,7 +75,7 @@ const AccordionFilter = () => {
                         <Radio value='1' onClick={() => dispatch(sortProductsFromGenderTC({data: 'Men', products: state}))}>Men</Radio>
                         <Radio value='2' onClick={() => dispatch(sortProductsFromGenderTC({data: 'Women', products: state}))}>Women</Radio>
                         <Radio value='3' onClick={() => dispatch(sortProductsFromGenderTC({data: 'Unisex', products: state}))}>Unisex</Radio>
-                        <Radio value='4' onClick={() => dispatch(shopTC())}>All</Radio>
+                        <Radio value='4' onClick={() => dispatch(allGenderTC(state))}>All</Radio>
                     </RadioGroup>
                 </AccordionPanel>
             </AccordionItem>

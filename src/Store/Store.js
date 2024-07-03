@@ -45,6 +45,7 @@ import shopPagesSlice from '../Slices/shopPagesSlice';
 import { shopPagesTC } from '../Slices/shopPagesSlice';
 import { deleteProductTC } from '../Slices/deleteProductTC';
 import { changeProductTC } from '../Slices/changeProductTC';
+import { allGenderTC } from '../Slices/getProductsSlice';
 
 export const store = configureStore({
     reducer: {
@@ -96,6 +97,7 @@ export const store = configureStore({
         shopPagesSlice,
         shopPagesTC,
         deleteProductTC,
-        changeProductTC
+        changeProductTC,
+        allGenderTC
     }
 })
