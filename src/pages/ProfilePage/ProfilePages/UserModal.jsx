@@ -68,7 +68,7 @@ const UserModal = () => {
                     <ModalBody pb={6}>
                             <FormControl>
                                 <FormLabel>Name</FormLabel>
-                                <Input value={name} onChange={e => setName(e.target.value)} focusBorderColor='purple.500' ref={initialRef} placeholder='Name' />
+                                <Input value={name} onChange={e => setName(e.target.value)} focusBorderColor='purple.500' ref={initialRef} maxLength={7} placeholder='Name' />
                             </FormControl>
 
                             <FormControl mt={4}>

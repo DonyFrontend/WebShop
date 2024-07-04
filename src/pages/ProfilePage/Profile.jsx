@@ -36,9 +36,9 @@ const Profile = () => {
 
     return (
         <>
-            <div className="flex w-[100%] justify-center mt-6 h-[600px]">
-                <div className="w-[90%] flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between">
-                    <div className='w-[20%] hidden lg:flex flex-col gap-y-12 p-5' style={{ borderRight: '1px solid black' }}>
+            <div className="flex w-full justify-center mt-6 h-[600px]">
+                <div className="w-11/12 flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between">
+                    <div className='w-1/5 hidden lg:flex flex-col gap-y-12 p-5 truncate' style={{ borderRight: '1px solid black' }}>
                         <div className='hidden lg:flex flex-col gap-y-2'>
                             <div className='flex gap-x-2'>
                                 <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
