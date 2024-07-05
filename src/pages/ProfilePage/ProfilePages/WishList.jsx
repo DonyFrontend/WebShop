@@ -53,7 +53,7 @@ const WishList = () => {
             {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex flex-col md:flex-row lg:flex-row justify-between'>
                 <div className='flex relative flex-col justify-between lg:flex-row md:flex-row md:items-start lg:items-center gap-x-10'>
                     <div className='flex' onClick={() => deleteProduct(item)}>
-                        <button className='flex absolute md:static md:top-0 md:left-0 max-[767px]:top-5 max-[767px]:left-10'
+                        <button className='flex md:bg-gray-200 md:rounded-lg md:w-8 md:h-8 items-center justify-center absolute md:static max-[767px]:top-5 max-[767px]:left-40 max-[500px]:left-16 max-[450px]:left-10'
                             onClick={() => {
                                 toast({
                                     position: 'bottom-left',
@@ -66,7 +66,7 @@ const WishList = () => {
                             }
                             }
                         >
-                            <img className='w-4 md:w-8 lg:w-4' src={image} alt="Error!" />
+                            <img className='w-4 md:w-3 lg:w-3' src={image} alt="Error!" />
                         </button>
                     </div>
                     <div className='flex w-full mt-2.5 lg:mt-0 md:mt-0 lg:w-52 lg:justify-start justify-center'>
