@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { SignUpUserTC } from "../../Slices/SignUpUserTC"
 import { scrollToZero } from "../../pages/utils/CustomFC"
 
+
 function SignUp() {
     useEffect(() => {
         scrollToZero();
