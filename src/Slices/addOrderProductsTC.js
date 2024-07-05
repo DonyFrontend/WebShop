@@ -4,7 +4,7 @@ import { auth, usersCollectionRef } from "../FirebaseConfig";
 
 export const addOrderProductsTC = createAsyncThunk(
     'webShop/addOrderProductsTC',
-    async ({ allProducts, navigate }) => {
+    async ({ allProducts, navigate, price }) => {
         const allMonths = [
             'January',
             'February',
@@ -35,7 +35,7 @@ export const addOrderProductsTC = createAsyncThunk(
                             title: item.title,
                             description: item.description,
                             images: item.images,
-                            price: item.price,
+                            price,
                             size: item.size,
                             color: item.color,
                             date,

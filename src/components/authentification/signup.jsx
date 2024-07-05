@@ -1,18 +1,15 @@
-import { Link, useNavigate } from "react-router-dom"
-import Google from '../../assets/Google.png'
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { SignUpUserTC } from "../../Slices/SignUpUserTC"
 import { scrollToZero } from "../../pages/utils/CustomFC"
-import signInWithGoogle from "../../pages/utils/SignInWithGoogleFC"
 
-function SignUp(path) {
+function SignUp() {
     useEffect(() => {
         scrollToZero();
     }, [])
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
