@@ -46,7 +46,7 @@ const Basket = () => {
         if (user.basket.length == 0) {
             showToast('You don`t have any products!');
         } else {
-            dispatch(addOrderProductsTC({ allProducts: user.basket, navigate }));
+            dispatch(addOrderProductsTC({ allProducts: user.basket, price: grandPrice, navigate }));
             dispatch(getUserTC());
         }
     }

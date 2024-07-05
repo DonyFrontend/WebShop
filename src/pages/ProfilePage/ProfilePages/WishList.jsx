@@ -51,7 +51,7 @@ const WishList = () => {
 
         <div className='flex flex-col gap-y-10'>
             {user.wishlist.length != 0 ? user.wishlist.map((item, index) => <div key={index} className='w-[100%] flex flex-col md:flex-row lg:flex-row justify-between'>
-                <div className='flex flex-col justify-between lg:flex-row md:flex-row items-start lg:items-center gap-x-10'>
+                <div className='flex flex-col justify-between lg:flex-row md:flex-row md:items-start items-center lg:items-center gap-x-10'>
                     <div className='flex' onClick={() => deleteProduct(item)}>
                         <Button
                             onClick={() => {
@@ -66,10 +66,10 @@ const WishList = () => {
                             }
                             }
                         >
-                            <img src={image} alt="Error!" />
+                            <img className='w-4 md:w-24 lg:w-3' src={image} alt="Error!" />
                         </Button>
                     </div>
-                    <div className='flex w-full lg:w-52 lg:justify-start justify-center'>
+                    <div className='flex w-full mt-2.5 lg:mt-0 md:mt-0 lg:w-52 lg:justify-start justify-center'>
                         <img src={item.images} alt="Error!" style={{ width: 200 }} />
                     </div>
                     <div className='flex flex-col gap-y-10'>

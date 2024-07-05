@@ -47,7 +47,7 @@ const Admin = () => {
         </div>
 
         {click ?<div className='z-50 flex rounded-lg text-xl md:text-2xl text-center flex-col fixed top-0 left-0 gap-3 p-5 md:p-8 bg-white border border-black'>
-            <div className='flex flex-col gap-y-3 sticky mt-10'>
+            <div className='flex flex-col gap-y-3 sticky'>
                 <CustomLink image={ProductsImage} text={'Products'} to={'/adminPanel/products'} />
                 <CustomLink image={ChatImage} text={'Chat'} to={'/adminPanel/chat'} />
                 <CustomLink image={ChatImage} text={'FeedBacks'} to={'/adminPanel/feedBacks'} />
