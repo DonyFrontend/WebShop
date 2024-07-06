@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { SignUpUserTC } from "../../Slices/SignUpUserTC"
 import { scrollToZero } from "../../pages/utils/CustomFC"
+import { signUpWithGoogle } from "../../pages/utils/SignInWithGoogleFC"
+import Google from '../../assets/Google.png'
+import { Box, useToast } from "@chakra-ui/react"
 
 function SignUp() {
     useEffect(() => {
@@ -10,6 +13,8 @@ function SignUp() {
     }, [])
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const toast = useToast();
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
@@ -29,8 +34,20 @@ function SignUp() {
         }
     }
 
-    function postUser() {
-        dispatch(SignUpUserTC({ email, password, name, town }));
+    function postUser(e) {
+        e.preventDefault();
+        dispatch(SignUpUserTC({ email, password, name, town, navigate }));
+    }
+
+    function showToast(message) {
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bg='darkviolet'>
+                    {message}
+                </Box>
+            ),
+        })
     }
 
     return (
@@ -41,6 +58,15 @@ function SignUp() {
                         Sign Up
                     </h1>
                     <h2 className=" pt-5 lg:pt-0 text-xl text-left text-gray-500">Sign up for free to access to in any of our products </h2>
+                </div>
+
+                <div>
+                    <div onClick={() => signUpWithGoogle({ navigate, dispatch, showToast })} className="cursor-pointer w-80 md:w-96 mb-5 lg:mb-0 lg:w-[100%] border-[1px] rounded-md border-black">
+                        <div className="flex lg:text-xl md:text-2xl flex-row p-2 content-evenly justify-center">
+                            <img className="mx-[10px] md:mt-1.5 lg:mt-1.5 w-5 h-5" src={Google} alt="" ></img>
+                            <h2 className="text-[#8A33FD]">Continue With Google</h2>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="w-full text-left lg:mt-10">
@@ -84,9 +110,7 @@ function SignUp() {
                         <input type="checkbox" /> <p>Subscribe to our monthly newsletter</p>
                     </div>
                 </div>
-                <Link to={'/profile/*'}>
-                    <button disabled={password.length <= 8} onClick={postUser} className="w-80 md:w-96 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white">Sign up</button>
-                </Link>
+                    <button onClick={postUser} className="w-80 md:w-96 lg:w-40 rounded-md border-[1px] border-black p-4 bg-[#8A33FD] text-white cursor-pointer">Sign up</button>
                 <div className="mb-16 gap-x-2 md:text-2xl lg:text-base justify-center lg:justify-start flex">
                     <h1>Already have an  account?</h1><Link to='/SignIn' className="text-[#8A33FD]"> Log in</Link>
                 </div>

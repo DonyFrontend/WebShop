@@ -6,11 +6,12 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { scrollToZero } from "../../pages/utils/CustomFC";
 import signInWithGoogle from "../../pages/utils/SignInWithGoogleFC";
+import { Box, useToast } from "@chakra-ui/react";
 
 function SignIn() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const toast = useToast();
 
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('');
@@ -27,10 +28,23 @@ function SignIn() {
         scrollToZero();
     }, [error, setError])
 
-    function postUser() {
-        dispatch(SignInTC({ email, password }));
-        navigate('/profile/user')
+    function showToast(message) {
+        toast({
+            position: 'bottom-left',
+            render: () => (
+                <Box color='white' p={3} bg='darkviolet'>
+                    {message}
+                </Box>
+            ),
+        })
     }
+
+    function postUser(e) {
+        e.preventDefault();
+        dispatch(SignInTC({ email, password, navigate, showToast }));
+    }
+
+
 
     return (
         <div className="flex  w-full items-center justify-center">
@@ -61,10 +75,6 @@ function SignIn() {
 
 
                 <div className="flex  flex-col mb-10 lg:mb-0">
-
-
-
-
                     <div className="text-left">
                         <h2 className=" my-[10px] text-2xl lg:text-xl">Email</h2>
                     </div>
@@ -80,8 +90,6 @@ function SignIn() {
                     <div>
                         <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="p-2 w-80 md:w-96 lg:w-[100%] border-[1px] rounded-md lg;p-3 border-[#3C4242]" />
                     </div>
-                    {error === 'Введите правильные данные' && <p className="text-red-500">Введите правильные данные</p>}
-                    {error !== 'Введите правильные данные' && <p className="hidden"></p>}
 
                     <Link className="pt-2 text-left lg:my-0 lg:text-end text-[#8A33FD]" to={'https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop'}>Forget your password?</Link>
 
