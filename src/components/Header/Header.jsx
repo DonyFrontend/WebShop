@@ -14,6 +14,7 @@ import inputImage from './images/inputImage.svg';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../FirebaseConfig';
 import { getUserTC } from '../../Slices/getThisUserTC';
+import { scrollToZero } from '../../pages/utils/CustomFC';
 
 
 const Header = () => {
@@ -54,7 +55,7 @@ const Header = () => {
     
     
     return <header className="sticky top-0 w-full z-20 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px] gap-3">
-        <div>
+        <div onClick={scrollToZero}>
             <Link to='/'>
                 <img src={logo} width={120} alt="Error!" />
             </Link>
