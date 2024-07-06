@@ -34,7 +34,7 @@ const SendFB = () => {
                 </Box>
             )
         })
-        if(message != '') {
+        if (message != '') {
             dispatch(FeedBackTC({ message }));
             onClose();
         }
@@ -55,24 +55,23 @@ const SendFB = () => {
             <ModalContent>
                 <ModalHeader>FeedBack</ModalHeader>
                 <ModalCloseButton />
-                <ModalBody>
-                    <form onSubmit={sendFeedBack} className="flex flex-col gap-y-5">
+                <form onSubmit={sendFeedBack} className="flex flex-col gap-y-5">
+                    <ModalBody>
                         <h1>You can write a review about the convenience of using our site.</h1>
                         <div>{count}/200</div>
                         <Input ref={inputRef} maxLength={200} value={message} onChange={changeInput} focusBorderColor="purple.500" placeholder="Write your comment..."></Input>
-                    </form>
-                </ModalBody>
+                    </ModalBody>
 
-                <ModalFooter>
-                    <form onSubmit={sendFeedBack}>
-                        <Button colorScheme='purple' mr={3}>
+                    <ModalFooter>
+                        <Button type="submit" colorScheme='purple' mr={3}>
                             Send
                         </Button>
-                    </form>
-                <Button variant='ghost' onClick={onClose}>Close</Button>
-            </ModalFooter>
-        </ModalContent>
-    </Modal>
+                        <Button variant='ghost' onClick={onClose}>Close</Button>
+                    </ModalFooter>
+                </form>
+
+            </ModalContent>
+        </Modal>
     </div >
 }
 

@@ -1,1 +1,1 @@
-export const CouponsSales = [{ItAcademy: 200}, {Nike400: 400}];
+export const CouponsSales = [{ItAcademy: 20}, {Nike400: 40}];
