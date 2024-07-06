@@ -19,6 +19,10 @@ const ChatWithUser = () => {
         dispatch(findUserTC(params.id));
     }, [params.id, dispatch])
 
+    setInterval(() => {
+        dispatch(findUserTC(params.id));
+    }, 4800);
+
     if (isFetch) {
         return <div className="flex h-full items-center">
             <LoadPage />
