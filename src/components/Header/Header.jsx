@@ -53,7 +53,7 @@ const Header = () => {
     }
     
     
-    return <header className="sticky top-0 w-full z-20 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px]">
+    return <header className="sticky top-0 w-full z-20 bg-white flex flex-row justify-between h-14 items-center p-6 py-2 border-gray-400 border-b-[1px] gap-3">
         <div>
             <Link to='/'>
                 <img src={logo} width={120} alt="Error!" />
@@ -67,7 +67,7 @@ const Header = () => {
             <CustomLink to={'/shoe'} text={'Shoe'} />
         </div>
 
-        {click ? <div className='flex rounded-lg text-xl md:text-2xl text-center flex-col fixed top-0 right-0 gap-3 p-5 md:p-12 bg-white border border-black'>
+        {click ? <div className='flex z-10 rounded-lg text-xl md:text-2xl text-center flex-col fixed top-0 right-0 gap-3 p-5 md:p-12 bg-white border border-black'>
             <div className='border-b-2 border-gray-300'>
                 <h1>MENU</h1>
             </div>
@@ -80,7 +80,8 @@ const Header = () => {
                 <Button colorScheme='purple'><Link to={'/SignUp'}>Sign Up</Link></Button>
             }
 
-    {thisUser ?  <div className='md:hidden gap-1.5 grid grid-cols-2 border-t-black border-t'>
+            <div className='border-t-black border-t'/>
+    {thisUser ?  <div className='md:hidden gap-1.5 grid grid-cols-2 '>
                     <CustomImagesLink to={'/profile/wishlist'} image={Select} />
                     <CustomImagesLink to={'/profile/user'} image={Profile} />
                     <CustomImagesLink to={'/basket'} image={Bag} />
@@ -119,7 +120,7 @@ const Header = () => {
 
 
 
-        <div className='inline-block lg:hidden'>
+        <div className='lg:hidden flex'>
             <button onClick={onHandleClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
