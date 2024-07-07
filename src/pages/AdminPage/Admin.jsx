@@ -21,6 +21,7 @@ const Admin = () => {
     }
 
     const dispatch = useDispatch();
+    const {user} = useSelector(state => state.getThisUserTC);
 
 
     useEffect(() => {
@@ -32,10 +33,18 @@ const Admin = () => {
     const {isFetch} = useSelector(state => state.getThisUserTC);
 
     if (isFetch) {
-        return <div className="h-dvh flex items-center">
+        return <div className="h-dvh flex items-center p-8">
         <LoadPage />
     </div>
     }
+
+    if (user.isAdmin === false) {
+        return <div className="flex gap-x-2">
+            <span style={{ width: 5, height: 40, backgroundColor: '#8A33FD', borderRadius: 15 }}></span>
+            <h1 className='font-semibold text-3xl md:text-4xl lg:text-3xl'>Sorry, but you isn`t admin :)</h1>
+        </div>
+    }
+
     return <div className="flex min-h-[300px] w-[100%] justify-center mt-2">
     <div className="w-[98%] flex justify-between">
         <div className='w-[10%] hidden lg:flex flex-col gap-y-12 p-1' style={{ borderRight: '1px solid black' }}>
